@@ -10,6 +10,10 @@ export default {
                 sans: ["Inter", "system-ui", "sans-serif"],
                 heading: ["Poppins", "system-ui", "sans-serif"],
             },
+            colors: {
+                primary: "#0f2a44",   // deep academic blue
+                accent: "#1e88e5",    // lighter blue for links & actions
+            },
         },
     },
     plugins: [],

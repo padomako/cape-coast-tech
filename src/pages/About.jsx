@@ -1,33 +1,28 @@
+import PageHeader from "../components/PageHeader"
+
 export default function About() {
     return (
-        <div className="bg-white">
-
-            {/* Page Header */}
-            <section className="bg-blue-900 text-white py-20">
-                <div className="max-w-6xl mx-auto px-6 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                        About Cape Coast Technical Institute
-                    </h1>
-                    <p className="text-lg text-gray-200">
-                        Building technical excellence, discipline, and character
-                    </p>
-                </div>
-            </section>
+        <>
+            {/* Standard Page Header */}
+            <PageHeader
+                title="About Us"
+                subtitle="Learn more about our history, vision, mission, and values"
+            />
 
             {/* History */}
-            <section className="py-20 border-b border-gray-200">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-blue-900 mb-6">
+            <section className="py-5">
+                <div className="container">
+                    <h2 className="fw-bold text-primary mb-3">
                         Our History
                     </h2>
-                    <p className="text-gray-700 leading-relaxed mb-4">
+                    <p>
                         Cape Coast Technical Institute is a public technical secondary
                         institution located at Abura in Cape Coast, Central Region of Ghana.
                         The institute was established to provide quality technical and
                         vocational education to support national development and skills
                         acquisition.
                     </p>
-                    <p className="text-gray-700 leading-relaxed">
+                    <p>
                         Over the years, the school has produced disciplined and skilled
                         graduates who have contributed meaningfully to industry, higher
                         education, and society. The institute continues to uphold strong
@@ -37,76 +32,84 @@ export default function About() {
             </section>
 
             {/* Vision & Mission */}
-            <section className="bg-gray-50 py-20 border-b border-gray-200">
-                <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <section className="py-5 bg-light border-top border-bottom">
+                <div className="container">
+                    <div className="row g-4">
 
-                    {/* Vision */}
-                    <div>
-                        <h2 className="text-3xl font-bold text-blue-900 mb-4">
-                            Our Vision
-                        </h2>
-                        <p className="text-gray-700 leading-relaxed">
-                            To be a leading technical secondary institution in Ghana,
-                            recognized for academic excellence, innovation, discipline, and
-                            the development of skilled and responsible graduates.
-                        </p>
+                        {/* Vision */}
+                        <div className="col-md-6">
+                            <h2 className="fw-bold text-primary mb-3">
+                                Our Vision
+                            </h2>
+                            <p>
+                                To be a leading technical secondary institution in Ghana,
+                                recognized for academic excellence, innovation, discipline, and
+                                the development of skilled and responsible graduates.
+                            </p>
+                        </div>
+
+                        {/* Mission */}
+                        <div className="col-md-6">
+                            <h2 className="fw-bold text-primary mb-3">
+                                Our Mission
+                            </h2>
+                            <p>
+                                To provide quality technical and academic education through
+                                effective teaching, practical training, and character
+                                development, equipping students with the skills and values needed
+                                for lifelong success.
+                            </p>
+                        </div>
+
                     </div>
-
-                    {/* Mission */}
-                    <div>
-                        <h2 className="text-3xl font-bold text-blue-900 mb-4">
-                            Our Mission
-                        </h2>
-                        <p className="text-gray-700 leading-relaxed">
-                            To provide quality technical and academic education through
-                            effective teaching, practical training, and character development,
-                            equipping students with the skills and values needed for lifelong
-                            success.
-                        </p>
-                    </div>
-
                 </div>
             </section>
 
             {/* Core Values */}
-            <section className="py-20 border-b border-gray-200">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-blue-900 mb-8">
+            <section className="py-5">
+                <div className="container">
+                    <h2 className="fw-bold text-primary mb-4">
                         Our Core Values
                     </h2>
 
-                    <div className="grid md:grid-cols-2 gap-6 text-gray-700">
-                        <p>✔ Discipline and Integrity</p>
-                        <p>✔ Academic and Technical Excellence</p>
-                        <p>✔ Respect and Responsibility</p>
-                        <p>✔ Innovation and Creativity</p>
-                        <p>✔ Teamwork and Leadership</p>
-                        <p>✔ Commitment to National Development</p>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <ul>
+                                <li>Discipline and Integrity</li>
+                                <li>Academic and Technical Excellence</li>
+                                <li>Respect and Responsibility</li>
+                            </ul>
+                        </div>
+                        <div className="col-md-6">
+                            <ul>
+                                <li>Innovation and Creativity</li>
+                                <li>Teamwork and Leadership</li>
+                                <li>Commitment to National Development</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
 
             {/* Administration Message */}
-            <section className="bg-gray-50 py-20">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-blue-900 mb-6">
+            <section className="py-5 bg-light border-top">
+                <div className="container">
+                    <h2 className="fw-bold text-primary mb-3">
                         Message from the Administration
                     </h2>
-                    <p className="text-gray-700 leading-relaxed">
+                    <p>
                         At Cape Coast Technical Institute, we believe that education extends
                         beyond the classroom. Our administration, staff, and stakeholders
                         are committed to creating a safe, disciplined, and supportive
                         learning environment where students can thrive academically and
                         socially.
                     </p>
-                    <p className="text-gray-700 leading-relaxed mt-4">
+                    <p>
                         We welcome parents, guardians, and partners to work with us as we
-                        continue to build a strong foundation for the future of our
-                        students.
+                        continue to build a strong foundation for the future of our students.
                     </p>
                 </div>
             </section>
-
-        </div>
+        </>
     )
 }

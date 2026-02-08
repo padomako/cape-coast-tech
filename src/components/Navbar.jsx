@@ -1,53 +1,76 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
+import logo from "../assets/images/logo.png"   // 👈 adjust filename if needed
 
 export default function Navbar() {
     const [open, setOpen] = useState(false)
 
-    return (
-        <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-            <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    const linkClass = ({ isActive }) =>
+        "nav-link px-3" + (isActive ? " fw-semibold text-primary" : "")
 
-                {/* School Name / Logo placeholder */}
-                <Link
+    return (
+        <header
+            style={{
+                position: "fixed",
+                top: 0,
+                width: "100%",
+                zIndex: 3000,
+                background: "#fff",
+                borderBottom: "1px solid #e5e7eb",
+            }}
+        >
+            <nav className="container d-flex align-items-center justify-content-between py-2">
+
+                {/* Brand: Logo + Name */}
+                <NavLink
                     to="/"
-                    className="text-lg font-bold text-blue-900"
+                    className="d-flex align-items-center gap-2 text-decoration-none"
                     onClick={() => setOpen(false)}
                 >
-                    Cape Coast Technical Institute
-                </Link>
+                    <img
+                        src={logo}
+                        alt="Cape Coast Technical Institute Logo"
+                        style={{
+                            height: "40px",
+                            width: "auto",
+                        }}
+                    />
+                    <span className="fw-bold text-primary">
+                        Cape Coast Technical Institute
+                    </span>
+                </NavLink>
 
                 {/* Desktop Menu */}
-                <nav className="hidden md:flex gap-6 font-medium">
-                    <Link to="/" className="hover:text-blue-700">Home</Link>
-                    <Link to="/about" className="hover:text-blue-700">About</Link>
-                    <Link to="/academics" className="hover:text-blue-700">Academics</Link>
-                    <Link to="/admissions" className="hover:text-blue-700">Admissions</Link>
-                    <Link to="/students" className="hover:text-blue-700">Students</Link>
-                    <Link to="/contact" className="hover:text-blue-700">Contact</Link>
-                </nav>
+                <ul className="d-none d-lg-flex list-unstyled mb-0 align-items-center">
+                    <li><NavLink to="/" className={linkClass}>Home</NavLink></li>
+                    <li><NavLink to="/about" className={linkClass}>About</NavLink></li>
+                    <li><NavLink to="/academics" className={linkClass}>Academics</NavLink></li>
+                    <li><NavLink to="/admissions" className={linkClass}>Admissions</NavLink></li>
+                    <li><NavLink to="/students" className={linkClass}>Students</NavLink></li>
+                    <li><NavLink to="/contact" className={linkClass}>Contact</NavLink></li>
+                </ul>
 
-                {/* Mobile Hamburger */}
+                {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-blue-900 text-2xl"
+                    className="btn btn-outline-primary d-lg-none"
                     onClick={() => setOpen(!open)}
                     aria-label="Toggle menu"
                 >
                     ☰
                 </button>
-            </div>
+            </nav>
 
             {/* Mobile Menu */}
             {open && (
-                <div className="md:hidden bg-white border-t shadow">
-                    <nav className="flex flex-col px-6 py-4 gap-4 font-medium">
-                        <Link to="/" onClick={() => setOpen(false)}>Home</Link>
-                        <Link to="/about" onClick={() => setOpen(false)}>About</Link>
-                        <Link to="/academics" onClick={() => setOpen(false)}>Academics</Link>
-                        <Link to="/admissions" onClick={() => setOpen(false)}>Admissions</Link>
-                        <Link to="/students" onClick={() => setOpen(false)}>Students</Link>
-                        <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
-                    </nav>
+                <div className="d-lg-none bg-white border-top">
+                    <ul className="list-unstyled mb-0 py-3 text-center">
+                        <li className="py-2"><NavLink to="/" onClick={() => setOpen(false)}>Home</NavLink></li>
+                        <li className="py-2"><NavLink to="/about" onClick={() => setOpen(false)}>About</NavLink></li>
+                        <li className="py-2"><NavLink to="/academics" onClick={() => setOpen(false)}>Academics</NavLink></li>
+                        <li className="py-2"><NavLink to="/admissions" onClick={() => setOpen(false)}>Admissions</NavLink></li>
+                        <li className="py-2"><NavLink to="/students" onClick={() => setOpen(false)}>Students</NavLink></li>
+                        <li className="py-2"><NavLink to="/contact" onClick={() => setOpen(false)}>Contact</NavLink></li>
+                    </ul>
                 </div>
             )}
         </header>

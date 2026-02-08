@@ -1,79 +1,93 @@
+import { Link } from "react-router-dom"
+
 export default function News() {
     return (
-        <section className="bg-white py-24 border-t border-gray-200">
-            <div className="max-w-6xl mx-auto px-6">
+        <section className="py-5 bg-light">
+            <div className="container">
 
-                {/* Heading */}
-                <div className="text-center mb-14">
-                    <h2 className="text-3xl font-bold text-blue-900 mb-4">
+                {/* Section Heading */}
+                <div className="text-center mb-5">
+                    <h2 className="fw-bold text-primary">
                         News & Announcements
                     </h2>
-                    <p className="text-gray-600">
+                    <p className="text-muted">
                         Stay updated with the latest information from Cape Coast Technical Institute
                     </p>
                 </div>
 
-                {/* News Cards */}
-                <div className="grid md:grid-cols-3 gap-8">
+                {/* News Items */}
+                <div className="row g-4">
 
-                    {/* Card 1 */}
-                    <div className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-                        <span className="text-sm text-blue-700 font-medium">
-                            Admissions
-                        </span>
-                        <h3 className="text-lg font-semibold mt-3 mb-2">
-                            2025/2026 Academic Year Admissions Open
-                        </h3>
-                        <p className="text-gray-700 text-sm mb-4">
-                            Applications are now open for prospective students seeking admission
-                            into Cape Coast Technical Institute.
-                        </p>
-                        <a href="#" className="text-blue-900 font-medium hover:underline">
-                            Read More →
-                        </a>
+                    {/* News Item 1 */}
+                    <div className="col-md-6 col-lg-4">
+                        <div className="card h-100 shadow-sm">
+                            <div className="card-body">
+                                <small className="text-muted d-block mb-2">
+                                    Admissions • July 2025
+                                </small>
+                                <h5 className="card-title fw-bold">
+                                    2025/2026 Academic Year Admissions Open
+                                </h5>
+                                <p className="card-text">
+                                    Applications are now open for prospective students seeking
+                                    admission into Cape Coast Technical Institute.
+                                </p>
+                                <Link to="/admissions" className="btn btn-outline-primary btn-sm">
+                                    Read More →
+                                </Link>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Card 2 */}
-                    <div className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-                        <span className="text-sm text-blue-700 font-medium">
-                            Academics
-                        </span>
-                        <h3 className="text-lg font-semibold mt-3 mb-2">
-                            First Semester Academic Calendar Released
-                        </h3>
-                        <p className="text-gray-700 text-sm mb-4">
-                            Students and parents are advised to download and take note of
-                            important academic dates for the semester.
-                        </p>
-                        <a href="#" className="text-blue-900 font-medium hover:underline">
-                            View Details →
-                        </a>
+                    {/* News Item 2 */}
+                    <div className="col-md-6 col-lg-4">
+                        <div className="card h-100 shadow-sm">
+                            <div className="card-body">
+                                <small className="text-muted d-block mb-2">
+                                    Academics • June 2025
+                                </small>
+                                <h5 className="card-title fw-bold">
+                                    Mid-Semester Examinations Timetable Released
+                                </h5>
+                                <p className="card-text">
+                                    Students are advised to check the academic office notice board
+                                    for the full examination timetable.
+                                </p>
+                                <Link to="/academics" className="btn btn-outline-primary btn-sm">
+                                    View Details →
+                                </Link>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Card 3 */}
-                    <div className="bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-                        <span className="text-sm text-blue-700 font-medium">
-                            Sports
-                        </span>
-                        <h3 className="text-lg font-semibold mt-3 mb-2">
-                            Inter-School Sports Competition Highlights
-                        </h3>
-                        <p className="text-gray-700 text-sm mb-4">
-                            Our students showcased excellence and teamwork during the recent
-                            inter-school sports competition.
-                        </p>
-                        <a href="#" className="text-blue-900 font-medium hover:underline">
-                            See Photos →
-                        </a>
+                    {/* News Item 3 */}
+                    <div className="col-md-6 col-lg-4">
+                        <div className="card h-100 shadow-sm">
+                            <div className="card-body">
+                                <small className="text-muted d-block mb-2">
+                                    Student Life • May 2025
+                                </small>
+                                <h5 className="card-title fw-bold">
+                                    Inter-House Sports Competition Announced
+                                </h5>
+                                <p className="card-text">
+                                    The annual inter-house sports competition will take place on
+                                    campus. All students are encouraged to participate.
+                                </p>
+                                <Link to="/students" className="btn btn-outline-primary btn-sm">
+                                    Learn More →
+                                </Link>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
 
-                {/* Button */}
-                <div className="text-center mt-14">
-                    <button className="bg-blue-900 text-white px-8 py-3 rounded-md hover:bg-blue-800 transition">
+                {/* View All */}
+                <div className="text-center mt-4">
+                    <Link to="/news" className="btn btn-primary">
                         View All News
-                    </button>
+                    </Link>
                 </div>
 
             </div>
