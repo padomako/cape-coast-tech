@@ -29,24 +29,6 @@ export default function Contact() {
                 </div>
             </section>
 
-            {/* Map */}
-            <section className="py-5 bg-light border-top border-bottom">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Our Location
-                    </h2>
-
-                    <div className="ratio ratio-16x9">
-                        <iframe
-                            title="Cape Coast Technical Institute Map"
-                            src="https://www.google.com/maps?q=Abura,%20Cape%20Coast&output=embed"
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                        ></iframe>
-                    </div>
-                </div>
-            </section>
-
             {/* WhatsApp */}
             <section className="py-5">
                 <div className="container text-center">

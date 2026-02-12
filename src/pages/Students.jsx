@@ -1,106 +1,137 @@
-import PageHeader from "../components/PageHeader"
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+
+import CampusLife from "../components/students/CampusLife"
+import Hostels from "../components/students/Hostels"
+import GraduateDocuments from "../components/students/GraduateDocuments"
+
+import defaultImage from "../assets/images/students-default.jpg"
+import gearIcon from "../assets/images/gear.png"
 
 export default function Students() {
+
+    // ✅ FIXED DEFAULT STATE
+    const [active, setActive] = useState("students")
+    const navigate = useNavigate()
+
+    const menuItems = [
+        { id: "campus", label: "CAMPUS LIFE" },
+        { id: "hostels", label: "RECOMMENDED HOSTEL" },
+        { id: "portal", label: "STUDENT PORTAL" },
+        { id: "documents", label: "GRADUATE DOCUMENTS" }
+    ]
+
+    /* Redirect for portal */
+
+    const getHeader = () => {
+        switch (active) {
+            case "campus":
+                return "CAMPUS LIFE"
+            case "hostels":
+                return "RECOMMENDED HOSTELS"
+            case "documents":
+                return "GRADUATE DOCUMENTS"
+            case "students":
+            default:
+                return "STUDENTS"
+        }
+    }
+
+    const renderContent = () => {
+        switch (active) {
+
+            case "campus":
+                return <CampusLife />
+
+            case "hostels":
+                return <Hostels />
+
+            case "documents":
+                return <GraduateDocuments />
+
+            // ✅ NEW EXPLICIT STUDENTS CASE
+            case "students":
+            default:
+                return (
+                    <div className="students-default-content">
+
+                        <div className="student-section">
+                            <img
+                                src={defaultImage}
+                                alt="Students"
+                                className="students-main-image"
+                            />
+
+                            <p className="students-caption">
+                                There can be no school without students.
+                                Cape Coast Technical Institute values its students as
+                                the heart of the institution.
+                            </p>
+                        </div>
+
+                    </div>
+                )
+        }
+    }
+
     return (
-        <>
-            {/* Standard Page Header */}
-            <PageHeader
-                title="Students"
-                subtitle="Student life, leadership, and co-curricular activities"
-            />
+        <section className="students-page container py-5">
 
-            {/* Student Life */}
-            <section className="py-5">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Student Life
-                    </h2>
-                    <p>
-                        Student life at Cape Coast Technical Institute goes beyond the
-                        classroom. The school provides a disciplined and supportive
-                        environment that encourages personal growth, teamwork, and leadership.
-                    </p>
+            {/* CENTERED HEADER ABOVE SIDEBAR + CONTENT */}
+            <div className="students-header text-center mb-5">
+                <h2>{getHeader()}</h2>
+                <div className="header-divider">
+                    <span className="divider-line"></span>
+                    <div className="divider-icon-wrapper">
+                        <img src={gearIcon} alt="Gear Icon" />
+                    </div>
+                    <span className="divider-line"></span>
                 </div>
-            </section>
+            </div>
 
-            {/* Clubs & Societies */}
-            <section className="py-5 bg-light border-top border-bottom">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-4">
-                        Clubs and Societies
-                    </h2>
+            <div className="row">
 
-                    <div className="row">
-                        <div className="col-md-6">
-                            <ul>
-                                <li>Science and Technology Club</li>
-                                <li>ICT / Coding Club</li>
-                                <li>Debate and Literary Society</li>
-                            </ul>
+                {/* SIDEBAR */}
+                <div className="col-md-4 col-lg-3">
+                    <aside className="students-sidebar">
+
+                        {/* TOP STUDENTS BLOCK */}
+                        <div
+                            className={`students-sidebar-header ${active === "students" ? "active" : ""}`}
+                            onClick={() => setActive("students")}
+                        >
+                            STUDENTS
                         </div>
-                        <div className="col-md-6">
-                            <ul>
-                                <li>Religious Fellowships</li>
-                                <li>Drama and Cultural Troupe</li>
-                                <li>Entrepreneurship Club</li>
-                            </ul>
-                        </div>
+
+                        <ul className="students-menu">
+                            {menuItems.map(item => (
+                                <li
+                                    key={item.id}
+                                    onClick={() => {
+                                        if (item.id === "portal") {
+                                            navigate("/student-login")
+                                        } else {
+                                            setActive(item.id)
+                                        }
+                                    }}
+                                    className={active === item.id ? "active" : ""}
+                                >
+                                    <span>{item.label}</span>
+                                    <span className="arrow">››</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </aside>
+                </div>
+
+                {/* CONTENT */}
+                <div className="col-md-8 col-lg-9">
+                    <div key={active} className="students-content-animate">
+                        {renderContent()}
                     </div>
                 </div>
-            </section>
 
-            {/* Sports */}
-            <section className="py-5">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Sports and Games
-                    </h2>
-                    <p>
-                        Sports activities promote physical fitness, teamwork, and school
-                        spirit. Students are encouraged to participate in both indoor and
-                        outdoor sporting activities.
-                    </p>
-
-                    <ul>
-                        <li>Football</li>
-                        <li>Athletics</li>
-                        <li>Basketball</li>
-                        <li>Indoor Games</li>
-                    </ul>
-                </div>
-            </section>
-
-            {/* Prefects */}
-            <section className="py-5 bg-light border-top border-bottom">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Prefects and Student Leadership
-                    </h2>
-                    <p>
-                        The school operates a structured student leadership system led by
-                        prefects. Prefects assist school authorities in maintaining
-                        discipline, promoting good conduct, and representing the interests
-                        of the student body.
-                    </p>
-                </div>
-            </section>
-
-            {/* Activities */}
-            <section className="py-5">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Student Activities
-                    </h2>
-
-                    <ul>
-                        <li>Inter-school academic competitions</li>
-                        <li>Speech and prize-giving ceremonies</li>
-                        <li>Cultural and diversity programmes</li>
-                        <li>Educational excursions</li>
-                        <li>Community service activities</li>
-                    </ul>
-                </div>
-            </section>
-        </>
+            </div>
+        </section>
     )
 }

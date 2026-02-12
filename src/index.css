@@ -1,3 +1,1150 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ==================================================
+   BRAND VARIABLES
+================================================== */
+:root {
+    --brand-dark: #0b0b0b;
+    --brand-dark-2: #121212;
+    --brand-gold: #f5b400;
+    --brand-gold-soft: #ffd666;
+    --brand-text: #ffffff;
+    --brand-text-muted: #cfcfcf;
+}
+
+/* ==================================================
+   BASE
+================================================== */
+body {
+    background-color: var(--brand-dark);
+    color: var(--brand-text);
+}
+
+/* Space below fixed navbar */
+.app-content {
+    padding-top: 72px;
+}
+
+/* ==================================================
+   TEXT
+================================================== */
+.text-primary {
+    color: var(--brand-gold) !important;
+}
+
+.text-muted {
+    color: var(--brand-text-muted) !important;
+}
+
+/* ==================================================
+   BACKGROUNDS
+================================================== */
+.bg-primary {
+    background-color: var(--brand-gold) !important;
+}
+
+.bg-dark {
+    background-color: var(--brand-dark) !important;
+}
+
+.bg-section {
+    background-color: var(--brand-dark-2);
+}
+
+/* ==================================================
+   BUTTONS
+================================================== */
+.btn-primary {
+    background-color: var(--brand-gold);
+    border-color: var(--brand-gold);
+    color: #000;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-gold-soft);
+    border-color: var(--brand-gold-soft);
+    color: #000;
+}
+
+.btn-outline-primary {
+    color: var(--brand-gold);
+    border-color: var(--brand-gold);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--brand-gold);
+    color: #000;
+}
+
+/* ==================================================
+   SECTION UTILITIES
+================================================== */
+.section-dark {
+    background-color: var(--brand-dark);
+}
+
+.section-soft {
+    background-color: var(--brand-dark-2);
+}
+
+.section-padding {
+    padding: 3rem 0;
+}
+
+.gold-frame {
+    border: 2px solid var(--brand-gold);
+    padding: 1.5rem;
+}
+
+.gold-divider {
+    height: 3px;
+    width: 60px;
+    background: var(--brand-gold);
+    margin: 1rem auto;
+}
+
+/* ==================================================
+   HERO / CAROUSEL
+================================================== */
+.hero-carousel {
+    position: relative;
+    height: 520px;
+    overflow: hidden;
+}
+
+.carousel,
+.carousel-inner,
+.carousel-item {
+    height: 100%;
+}
+
+/* HERO CAPTION */
+.hero-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: rgba(0, 0, 0, 0.55);
+    border-left: 5px solid var(--brand-gold);
+
+    padding: 1.5rem 1.2rem;
+    /* 👈 REDUCED HEIGHT */
+    max-width: 520px;
+    width: 88%;
+
+    text-align: left;
+    /* looks tighter than center */
+}
+
+.hero-caption h2 {
+    color: var(--brand-gold);
+    font-weight: 700;
+    font-size: 2rem;
+    /* 👈 smaller */
+    line-height: 1.15;
+    /* 👈 tighter */
+    margin-bottom: 0.35rem;
+    /* 👈 less gap */
+}
+
+.hero-caption p {
+    color: #e0e0e0;
+    font-size: 1rem;
+    line-height: 1.35;
+    margin: 0;
+}
+
+.hero-wrapper {
+    position: relative;
+    background: var(--brand-dark);
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* ==================================================
+   CAROUSEL INDICATORS
+================================================== */
+.carousel-indicators {
+    bottom: 24px;
+    justify-content: center;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: var(--brand-gold);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+}
+
+/* ==================================================
+   HERO → STATS OVERLAP (NO GAPS)
+================================================== */
+/* FLOATING STATS */
+.stats-float {
+    position: absolute;
+    bottom: -60px;
+    /* how much it hangs out */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 20;
+}
+
+.stats-card {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom,
+            rgba(10, 10, 10, 0.96),
+            rgba(0, 0, 0, 0.96));
+    border: 2px solid var(--brand-gold);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+}
+
+/* ==================================================
+   STATS ANIMATION
+================================================== */
+.stat-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.stat-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==================================================
+   WELCOME SECTION
+================================================== */
+.welcome-section {
+    padding-top: 8rem;
+    /* space for floating stats */
+    padding-bottom: 5rem;
+    background-color: var(--brand-dark-2);
+}
+
+/* ==================================================
+   HIGHLIGHTS
+================================================== */
+.highlight-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* ==================================================
+   RESPONSIVE TWEAKS
+================================================== */
+@media (max-width: 768px) {
+    .hero-caption {
+        top: auto;
+        bottom: 80px;
+        transform: translateX(-50%);
+        padding: 0.65rem 1rem;
+        max-width: 92%;
+    }
+
+    .hero-caption h2 {
+        font-size: 1.4rem;
+    }
+
+    .hero-caption p {
+        font-size: 0.9rem;
+    }
+
+    .stats-overlap {
+        margin-top: -60px;
+    }
+}
+
+/* ===============================
+   SUBTLE SECTION SEPARATORS
+================================ */
+
+/* Soft gradient separator */
+.section-separator {
+    position: relative;
+}
+
+.section-separator::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right,
+            transparent,
+            rgba(245, 180, 0, 0.35),
+            transparent);
+}
+
+.section-divider-line {
+    position: relative;
+}
+
+.section-divider-line::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background-color: var(--brand-gold);
+    opacity: 0.35;
+}
+
+.section-fade {
+    position: relative;
+}
+
+.section-fade::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0.35));
+    pointer-events: none;
+}
+
+/* ===============================
+   NAVBAR – ACADEMICS DROPDOWN
+================================ */
+.nav-item-dropdown {
+    position: relative;
+}
+
+.nav-link-custom {
+    color: var(--brand-text);
+    cursor: pointer;
+    padding: 0.5rem 0;
+    font-weight: 500;
+}
+
+.nav-link-custom:hover {
+    color: var(--brand-gold);
+}
+
+/* Dropdown panel */
+.nav-dropdown {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    min-width: 260px;
+
+    background: rgba(10, 10, 10, 0.98);
+    border: 1px solid rgba(245, 180, 0, 0.35);
+    border-radius: 10px;
+
+    padding: 0.75rem 0;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: all 0.25s ease;
+    z-index: 50;
+}
+
+/* Show on hover */
+.nav-item-dropdown:hover .nav-dropdown {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Dropdown links */
+.nav-dropdown a {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    color: #ddd;
+    font-size: 0.95rem;
+    text-decoration: none;
+}
+
+.nav-dropdown a:hover {
+    background: rgba(245, 180, 0, 0.08);
+    color: var(--brand-gold);
+}
+
+/* ===============================
+   ACADEMICS OVERVIEW HERO
+================================ 
+.academics-hero {
+    position: relative;
+    background-image: url("https://images.unsplash.com/photo-1588072432836-e10032774350");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* filter: saturate(0.85);
+}
+
+/* Dark overlay for readability 
+.academics-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+    .academics-overlay {
+        padding: 4.5rem 1rem;
+    }
+
+    .academics-hero h1 {
+        font-size: 2.2rem;
+    }
+} */
+
+/* ===============================
+   PAGE HEADER (WITH BACKGROUND IMAGE)
+================================ */
+.page-header {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Academics specific header image */
+.page-header-academics {
+    background-image: url("https://images.unsplash.com/photo-1588072432836-e10032774350");
+}
+
+/* Overlay for readability */
+.page-header-overlay {
+    background: rgba(0, 0, 0, 0.55);
+    padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+    .page-header-overlay {
+        padding: 4.5rem 1rem;
+    }
+
+    .page-header h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Programme links */
+.gold-frame ul li a {
+    color: #ddd;
+    text-decoration: none;
+    display: block;
+    padding: 0.35rem 0;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.gold-frame ul li a:hover {
+    color: var(--brand-gold);
+    padding-left: 6px;
+}
+
+.bi {
+    color: var(--brand-gold);
+    font-size: 1.2rem;
+}
+
+/* ===============================
+   TRADE AREA DROPDOWNS
+================================ */
+.trade-area {
+    background: var(--brand-dark);
+    border: 2px solid var(--brand-gold);
+    border-radius: 14px;
+    padding: 1.25rem 1.5rem;
+}
+
+/* ===============================
+   AUTO-OPEN TRADE AREAS ON HOVER (DESKTOP)
+================================ */
+
+/* Desktop only */
+@media (hover: hover) and (pointer: fine) {
+
+    /* Highlight header on hover */
+    .trade-area:hover>summary {
+        color: var(--brand-gold-soft);
+    }
+}
+
+/* Smooth dropdown animation */
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subtle lift + depth on hover */
+.trade-area {
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.trade-area:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.trade-area summary {
+    list-style: none;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--brand-gold);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Remove default arrow */
+.trade-area summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Custom arrow */
+.trade-area summary::after {
+    content: "▾";
+    margin-left: auto;
+    transition: transform 0.2s ease;
+}
+
+/* Rotate arrow when open */
+.trade-area[open] summary::after {
+    transform: rotate(180deg);
+}
+
+/* Programme links */
+.trade-area ul li a {
+    color: #ddd;
+    text-decoration: none;
+    display: block;
+    padding: 0.35rem 0;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.trade-area ul li a:hover {
+    color: var(--brand-gold);
+    padding-left: 6px;
+}
+
+/* ===============================
+   AUTO-OPEN ONE TRADE AREA AT A TIME (DESKTOP)
+================================ */
+
+/* Collapse all lists by default */
+.trade-area ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+/* Desktop hover logic */
+@media (hover: hover) and (pointer: fine) {
+
+    /* Open only hovered trade area */
+    .trade-area:hover ul {
+        max-height: 520px;
+        /* enough for longest list */
+        opacity: 1;
+    }
+
+    /* Ensure others stay closed */
+    .trade-area:not(:hover) ul {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    /* Header highlight */
+    .trade-area:hover>summary {
+        color: var(--brand-gold-soft);
+    }
+}
+
+/* ===============================
+   TEACHING & LEARNING APPROACH
+================================ */
+
+.approach-card {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(245, 180, 0, 0.25);
+    border-radius: 14px;
+    padding: 2rem 1.75rem;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.approach-card h5 {
+    color: var(--brand-gold);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.approach-card p {
+    color: var(--brand-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.approach-icon {
+    font-size: 2.2rem;
+    color: var(--brand-gold);
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+/* Hover polish */
+.approach-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.65);
+}
+
+/* ===============================
+   STUDENTS PAGE
+================================ */
+
+.page-header-students {
+    background-image: url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Sidebar */
+.students-sidebar {
+    background: var(--brand-dark);
+    border: 2px solid var(--brand-gold);
+    border-radius: 12px;
+    padding: 1.25rem;
+}
+
+.sidebar-title {
+    color: #fff;
+    background: #3a3a3a;
+    padding: 0.6rem 1rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-links a {
+    display: block;
+    padding: 0.75rem 0;
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sidebar-links a:hover {
+    color: var(--brand-gold);
+    padding-left: 6px;
+}
+
+/* Right content */
+.students-image img {
+    border: 3px solid var(--brand-gold);
+}
+
+.students-text p {
+    color: #ddd;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .students-sidebar {
+        margin-bottom: 2rem;
+    }
+}
+
+/* ===============================
+   STUDENTS SIDEBAR ACTIVE STATE
+================================ */
+
+.sidebar-links button,
+.sidebar-links a {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    color: #ddd;
+    text-align: left;
+    padding: 0.6rem 0;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.sidebar-links button:hover {
+    color: var(--brand-gold);
+    padding-left: 6px;
+}
+
+/* ACTIVE ITEM */
+.sidebar-links button.active {
+    color: var(--brand-gold);
+    font-weight: 700;
+    padding-left: 10px;
+    border-left: 4px solid var(--brand-gold);
+    background: rgba(245, 180, 0, 0.08);
+}
+
+.students-image-wrapper {
+    width: 100%;
+    max-height: 420px;
+    /* 👈 controls height */
+    overflow: hidden;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    /* 👈 pulls text closer */
+}
+
+.students-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 👈 prevents stretching */
+    display: block;
+}
+
+.students-content {
+    max-width: 920px;
+}
+
+.students-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.students-image-wrapper {
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+}
+
+.students-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.students-menu li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.4rem;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #ddd;
+    transition: all 0.25s ease;
+}
+
+/* Arrow */
+.students-menu .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+/* Hover */
+.students-menu li:hover {
+    background: rgba(245, 180, 0, 0.08);
+    color: var(--brand-gold);
+    padding-left: 1.2rem;
+}
+
+/* Active */
+.students-menu li.active {
+    background: rgba(245, 180, 0, 0.15);
+    color: var(--brand-gold);
+    font-weight: 600;
+}
+
+/* Rotate arrow when active */
+.students-menu li.active .arrow {
+    transform: translateX(6px);
+}
+
+.students-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #b22222;
+    /* red tone like image */
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+.students-image-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+}
+
+.students-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    animation: imageFade 0.4s ease;
+}
+
+@keyframes imageFade {
+    from {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.students-caption {
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.6;
+}
+
+.hostel-list li,
+.documents-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.hostel-list li:hover,
+.documents-list li:hover {
+    background: rgba(245, 180, 0, 0.1);
+    transform: translateX(4px);
+}
+
+.students-hero h1 {
+    color: #d43f3f;
+    letter-spacing: 6px;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.students-default-image img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.students-header h2 {
+    color: var(--brand-gold);
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.header-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.divider-line {
+    width: 5%;
+    min-width: 50px;
+    max-width: 400px;
+    height: 1px;
+    background-color: #f4b400;
+    flex: none;
+    /* stop flex stretching */
+    /* gold */
+}
+
+.divider-icon-wrapper {
+    background: rgb(0, 0, 0);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divider-icon-wrapper img {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* ===============================
+   CONTENT FADE + SLIDE ANIMATION
+================================ */
+
+.students-content-animate {
+    animation: contentFade 0.35s ease;
+}
+
+.campus-slider {
+    position: relative;
+    /* IMPORTANT */
+}
+
+.students-image {
+    width: 100%;
+    display: block;
+}
+
+/* Make controls sit inside image */
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+/* Style arrows */
+.slide-arrow {
+    background: none;
+    border: none;
+    color: #080808;
+    /* gold */
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.slide-arrow:hover {
+    transform: scale(1.2);
+    transition: 0.2s ease;
+}
+
+@keyframes contentFade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===============================
+   STUDENTS SIDEBAR DESIGN
+================================ */
+
+.students-sidebar {
+    width: 100%;
+    max-width: 320px;
+    background: linear-gradient(180deg, #1c1c1c, #2a2a2a);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Top Block */
+.students-sidebar-header {
+    background: #2a2a2a;
+    color: #e6e6e6;
+    font-size: 1rem;
+    font-family: serif;
+    padding: 1.2rem 2rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* When STUDENTS is active */
+.students-sidebar-header.active {
+    background: var(--brand-gold);
+    color: #1a1a1a;
+}
+
+/* Menu */
+.students-menu {
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.students-menu li {
+    padding: 1.0rem 2rem;
+    color: #e6e6e6;
+    font-size: 0.8rem;
+    font-family: serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+/* Hover */
+.students-menu li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1px;
+}
+
+/* Active Sidebar Item */
+.students-menu li.active {
+    background: var(--brand-gold);
+    color: #1a1a1a;
+    border-radius: 1px;
+}
+
+/* Arrow Animation */
+.students-menu li.active .arrow {
+    transform: translateX(6px);
+}
+
+.students-menu .arrow {
+    opacity: 0.6;
+    transition: transform 0.3s ease;
+}
+
+/* ===============================
+   STUDENTS DEFAULT CONTENT POLISH
+================================ */
+
+.students-default-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.students-image-wrapper {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* ✨ TEXT IMPROVEMENT */
+.students-text-wrapper {
+    max-width: 720px;
+    /* prevents ugly full-width stretch */
+    margin: 0 auto;
+    /* center text block */
+    text-align: left;
+}
+
+.students-text-wrapper p {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: #d8d8d8;
+    letter-spacing: 0.3px;
+}
+
+.student-section {
+    width: 100%;
+    max-width: 900px;
+    /* adjust to your design */
+    margin: 0 auto;
+    /* center it */
+}
+
+.students-main-image {
+    width: 100%;
+    height: 450px;
+    display: block;
+}
+
+.students-caption {
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.graduate-documents-clean {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Remove default bullets */
+.documents-clean-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Each row */
+.document-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin-bottom: 18px;
+    background: linear-gradient(90deg, #1a1a1a, #222);
+    border-radius: 1px;
+    transition: 0.3s ease;
+}
+
+/* Subtle hover like hostel list */
+.document-row:hover {
+    background: linear-gradient(90deg, #222, #2a2a2a);
+}
+
+/* Document text */
+.document-name {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+/* Clean gold button */
+.download-clean-btn {
+    background: #f4b400;
+    color: #000;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.download-clean-btn:hover {
+    background: #ffcc33;
+    transform: translateY(-2px);
+}

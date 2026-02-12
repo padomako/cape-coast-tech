@@ -1,72 +1,67 @@
+import { useLocation } from "react-router-dom"
+
 export default function Footer() {
+    const location = useLocation()
+    const isContactPage = location.pathname === "/contact"
+
     return (
-        <footer className="bg-dark text-light mt-5">
+        <footer className="bg-dark text-light pt-5">
+            <div className="container">
 
-            {/* Main Footer */}
-            <div className="container py-5">
-                <div className="row g-4">
+                {/* Footer Content */}
+                <div className="row gy-4">
 
-                    {/* School Info */}
                     <div className="col-md-4">
-                        <h5 className="fw-bold">
-                            Cape Coast Technical Institute
-                        </h5>
-                        <p className="small text-secondary">
-                            A leading technical secondary institution committed to academic
-                            excellence, skills development, discipline, and character formation.
-                        </p>
-                        <p className="small text-secondary">
-                            📍 Abura, Cape Coast<br />
-                            Central Region, Ghana
+                        <h5 className="text-primary">Cape Coast Technical Institute</h5>
+                        <p className="text-muted">
+                            A leading technical secondary institution committed to
+                            academic excellence, discipline, and skills development.
                         </p>
                     </div>
 
-                    {/* Contact Info */}
                     <div className="col-md-4">
-                        <h5 className="fw-bold">
-                            Contact Us
-                        </h5>
-                        <p className="small text-secondary mb-2">
-                            📞 Phone: +233 XX XXX XXXX
-                        </p>
-                        <p className="small text-secondary mb-3">
-                            ✉️ Email: info@ccti.edu.gh
-                        </p>
-
-                        {/* WhatsApp Button */}
-                        <a
-                            href="https://wa.me/233XXXXXXXXX"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn btn-success btn-sm"
-                        >
-                            💬 Chat with us on WhatsApp
-                        </a>
+                        <h6 className="text-primary">Quick Links</h6>
+                        <ul className="list-unstyled">
+                            <li><a href="/" className="text-muted">Home</a></li>
+                            <li><a href="/academics" className="text-muted">Academics</a></li>
+                            <li><a href="/admissions" className="text-muted">Admissions</a></li>
+                            <li><a href="/students" className="text-muted">Students</a></li>
+                            <li><a href="/contact" className="text-muted">Contact</a></li>
+                        </ul>
                     </div>
 
-                    {/* Map */}
                     <div className="col-md-4">
-                        <h5 className="fw-bold">
-                            Our Location
-                        </h5>
-                        <div className="ratio ratio-16x9 rounded overflow-hidden">
-                            <iframe
-                                title="Cape Coast Technical Institute Map"
-                                src="https://www.google.com/maps?q=Abura,%20Cape%20Coast&output=embed"
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            ></iframe>
-                        </div>
+                        <h6 className="text-primary">Contact</h6>
+                        <p className="text-muted mb-1">Abura, Cape Coast</p>
+                        <p className="text-muted mb-1">📞 +233 XXX XXX XXX</p>
+                        <p className="text-muted">✉ info@ccti.edu.gh</p>
                     </div>
 
                 </div>
-            </div>
 
-            {/* Bottom Bar */}
-            <div className="bg-black text-center py-3 small text-secondary">
-                © {new Date().getFullYear()} Cape Coast Technical Institute. All Rights Reserved.
-            </div>
+                {/* MAP — ONLY ON CONTACT PAGE */}
+                {isContactPage && (
+                    <div className="mt-4">
+                        <iframe
+                            title="Cape Coast Technical Institute Location"
+                            src="https://www.google.com/maps?q=Abura%20Cape%20Coast&output=embed"
+                            width="100%"
+                            height="300"
+                            style={{ border: 0 }}
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
+                )}
 
+                <hr className="border-secondary my-4" />
+
+                <p className="text-center text-muted small mb-0">
+                    © {new Date().getFullYear()} Cape Coast Technical Institute. All Rights Reserved.
+                </p>
+
+            </div>
         </footer>
     )
 }
+

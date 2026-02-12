@@ -8,6 +8,7 @@ import Academics from "./pages/Academics"
 import Admissions from "./pages/Admissions"
 import Students from "./pages/Students"
 import Contact from "./pages/Contact"
+import StudentLogin from "./pages/StudentLogin"
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Navbar />
 
       {/* Space reserved for fixed navbar */}
-      <div style={{ paddingTop: "80px" }}>
+      <div className="app-content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -23,6 +24,7 @@ function App() {
           <Route path="/admissions" element={<Admissions />} />
           <Route path="/students" element={<Students />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/student-login" element={<StudentLogin />} />
         </Routes>
       </div>
 

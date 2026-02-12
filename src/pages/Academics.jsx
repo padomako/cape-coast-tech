@@ -3,124 +3,170 @@ import PageHeader from "../components/PageHeader"
 export default function Academics() {
     return (
         <>
-            {/* Standard Page Header */}
-            <PageHeader
-                title="Academics"
-                subtitle="Programmes, departments, and academic structure"
-            />
-
-            {/* Academic Overview */}
-            <section className="py-5">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Academic Overview
-                    </h2>
-                    <p>
-                        Cape Coast Technical Institute offers a broad range of technical and
-                        academic programmes designed to equip students with practical skills,
-                        theoretical knowledge, and strong moral values. Our curriculum follows
-                        the Ghana Education Service (GES) standards.
-                    </p>
-                    <p>
-                        Teaching and learning are structured to prepare students for higher
-                        education, technical careers, and meaningful contribution to society.
-                    </p>
+            {/* Page Header */}
+            <section className="page-header page-header-academics">
+                <div className="page-header-overlay">
+                    <div className="container text-center">
+                        <h1 className="fw-bold text-primary mb-3">
+                            Academics
+                        </h1>
+                        <p className="text-muted mx-auto" style={{ maxWidth: "720px" }}>
+                            Our academic programmes combine strong theoretical foundations
+                            with practical technical training to prepare students for industry
+                            and higher education.
+                        </p>
+                    </div>
                 </div>
             </section>
 
-            {/* Departments */}
-            <section className="py-5 bg-light border-top border-bottom">
+            { /* Academic Overview 
+            <section className="academics-hero">
+                <div className="academics-overlay">
+                    <div className="container text-center">
+                        <h1 className="text-primary fw-bold mb-3">
+                            Academics
+                        </h1>
+                        <p>
+                            Cape Coast Technical Institute offers a broad range of technical and
+                            academic programmes designed to equip students with practical skills,
+                            theoretical knowledge, and strong moral values. Our curriculum follows
+                            the Ghana Education Service (GES) standards.
+                        </p>
+                        <p>
+                            Teaching and learning are structured to prepare students for higher
+                            education, technical careers, and meaningful contribution to society.
+                        </p>
+                    </div>
+                </div>
+            </section>*/}
+
+            {/* Trade Areas */}
+            <section className="section-soft section-padding">
                 <div className="container">
-                    <h2 className="fw-bold text-primary mb-4">
-                        Departments
-                    </h2>
+
+                    <div className="text-center mb-5">
+                        <h2 className="fw-bold text-primary">Trade Areas</h2>
+                        <p className="text-muted">
+                            Explore our academic programmes organised by specialised trade areas.
+                        </p>
+                    </div>
 
                     <div className="row g-4">
-                        <div className="col-md-6">
-                            <div className="border rounded p-4 h-100">
-                                <h5 className="fw-bold">
-                                    General Arts Department
-                                </h5>
-                                <p className="mb-0">
-                                    Offers subjects that develop communication skills, critical
-                                    thinking, and social awareness.
+
+                        {/* ENGINEERING */}
+                        <div className="col-md-4">
+                            <div className="trade-area">
+                                <div className="trade-header">
+                                    <i className="bi bi-gear-fill me-2"></i>
+                                    ENGINEERING
+                                </div>
+
+                                <ul className="trade-list">
+                                    <li><a href="/academics/automobile-engineering-technology">Automobile Engineering Technology</a></li>
+                                    <li><a href="/academics/electrical-engineering-technology">Electrical Engineering Technology</a></li>
+                                    <li><a href="/academics/electronics-engineering">Electronics Engineering</a></li>
+                                    <li><a href="/academics/mechanical-engineering-technology">Mechanical Engineering Technology</a></li>
+                                    <li><a href="/academics/refrigeration-and-air-conditioning-technology">Refrigeration and Air-Conditioning Technology</a></li>
+                                    <li><a href="/academics/welding-and-fabrication-technology">Welding and Fabrication Technology</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* BUILDING / ART */}
+                        <div className="col-md-4">
+                            <div className="trade-area">
+                                <div className="trade-header">
+                                    <i className="bi bi-building me-2"></i>
+                                    BUILDING / ART
+                                </div>
+
+                                <ul className="trade-list">
+                                    <li><a href="/academics/architectural-drafting">Architectural Drafting</a></li>
+                                    <li><a href="/academics/building-construction-technology">Building Construction Technology</a></li>
+                                    <li><a href="/academics/creative-art-technology">Creative Art Technology</a></li>
+                                    <li><a href="/academics/furniture-design-and-construction">Furniture Design and Construction</a></li>
+                                    <li><a href="/academics/plumbing-and-gas-fitting-technology">Plumbing and Gas Fitting Technology</a></li>
+                                    <li><a href="/academics/wood-and-fabrication-technology">Wood and Fabrication Technology</a></li>
+                                </ul>
+                            </div >
+                        </div>
+
+                        {/* BUSINESS / FASH / CAT */}
+                        <div className="col-md-4">
+                            <div className="trade-area">
+                                <div className="trade-header">
+                                    <i className="bi bi-briefcase-fill me-2"></i>
+                                    BUSINESS / FASH / CAT
+                                </div>
+
+                                <ul className="trade-list">
+                                    <li><a href="/academics/fashion-designing-technology">Fashion Designing Technology</a></li>
+                                    <li><a href="/academics/hospitality-and-catering-management">Hospitality and Catering Management</a></li>
+                                    <li><a href="/academics/business-studies-accounting">Business Studies (Accounting Option)</a></li>
+                                    <li><a href="/academics/business-studies-information-technology">Business Studies (Information Technology Option)</a></li>
+                                    <li><a href="/academics/business-studies-keyboarding">Business Studies (Keyboarding Option)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div >
+            </section >
+
+
+            {/* Teaching & Learning Approach */}
+            <section className="section-soft section-padding section-separator">
+                <div className="container">
+
+                    {/* Section Header */}
+                    <div className="text-center mb-5">
+                        <h2 className="fw-bold text-primary">
+                            Teaching & Learning Approach
+                        </h2>
+                        <div className="gold-divider"></div>
+                        <p className="text-muted mx-auto" style={{ maxWidth: "760px" }}>
+                            At Cape Coast Technical Institute, teaching and learning are designed
+                            to combine strong academic foundations with hands-on technical training,
+                            discipline, and character development.
+                        </p>
+                    </div>
+
+                    {/* Content Grid */}
+                    <div className="row g-4">
+
+                        <div className="col-md-4">
+                            <div className="approach-card">
+                                <i className="bi bi-tools approach-icon"></i>
+                                <h5>Practical-Focused Training</h5>
+                                <p>
+                                    Students spend significant time in workshops, laboratories,
+                                    and studios where theory is translated into real technical skills.
                                 </p>
                             </div>
                         </div>
 
-                        <div className="col-md-6">
-                            <div className="border rounded p-4 h-100">
-                                <h5 className="fw-bold">
-                                    Technical Department
-                                </h5>
-                                <p className="mb-0">
-                                    Focuses on practical and vocational subjects to prepare students
-                                    for technical careers and entrepreneurship.
+                        <div className="col-md-4">
+                            <div className="approach-card">
+                                <i className="bi bi-journal-check approach-icon"></i>
+                                <h5>Structured Academic Instruction</h5>
+                                <p>
+                                    Well-planned lessons, continuous assessment, and national
+                                    curriculum standards ensure academic excellence and consistency.
                                 </p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            {/* Programmes Offered */}
-            <section className="py-5">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-4">
-                        Programmes Offered
-                    </h2>
-
-                    <div className="row">
-                        <div className="col-md-6">
-                            <ul>
-                                <li>General Arts</li>
-                                <li>Electrical Installation</li>
-                                <li>Building Construction</li>
-                            </ul>
+                        <div className="col-md-4">
+                            <div className="approach-card">
+                                <i className="bi bi-people-fill approach-icon"></i>
+                                <h5>Discipline & Character Development</h5>
+                                <p>
+                                    Beyond academics, students are guided to develop discipline,
+                                    teamwork, leadership, and responsibility for lifelong success.
+                                </p>
+                            </div>
                         </div>
-                        <div className="col-md-6">
-                            <ul>
-                                <li>Wood Technology</li>
-                                <li>Metal Technology</li>
-                                <li>Auto Mechanics</li>
-                            </ul>
-                        </div>
+
                     </div>
-                </div>
-            </section>
-
-            {/* Teaching & Learning */}
-            <section className="py-5 bg-light border-top border-bottom">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Teaching and Learning Approach
-                    </h2>
-                    <p>
-                        Teaching at Cape Coast Technical Institute combines classroom
-                        instruction with workshops, laboratories, and continuous practical
-                        assessment. This approach ensures that students gain both theoretical
-                        understanding and real-world skills.
-                    </p>
-                    <p>
-                        Our qualified teaching staff are committed to mentoring students and
-                        maintaining high academic standards.
-                    </p>
-                </div>
-            </section>
-
-            {/* Curriculum */}
-            <section className="py-5">
-                <div className="container text-center">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Curriculum and Syllabi
-                    </h2>
-                    <p className="mb-4">
-                        Detailed curriculum and subject syllabi are available for download.
-                    </p>
-
-                    <button className="btn btn-primary">
-                        Download Curriculum (PDF)
-                    </button>
                 </div>
             </section>
         </>

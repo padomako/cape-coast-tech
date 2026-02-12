@@ -66,7 +66,7 @@ export default function About() {
             </section>
 
             {/* Core Values */}
-            <section className="py-5">
+            <section className="section-dark section-padding py-5">
                 <div className="container">
                     <h2 className="fw-bold text-primary mb-4">
                         Our Core Values

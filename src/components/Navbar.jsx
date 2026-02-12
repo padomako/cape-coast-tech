@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { NavLink } from "react-router-dom"
-import logo from "../assets/images/logo.png"   // 👈 adjust filename if needed
+import logo from "../assets/images/logo.png"
 
 export default function Navbar() {
     const [open, setOpen] = useState(false)
@@ -15,8 +15,8 @@ export default function Navbar() {
                 top: 0,
                 width: "100%",
                 zIndex: 3000,
-                background: "#fff",
-                borderBottom: "1px solid #e5e7eb",
+                background: "#0b0b0b",
+                borderBottom: "1px solid #f5b400",
             }}
         >
             <nav className="container d-flex align-items-center justify-content-between py-2">
@@ -30,24 +30,39 @@ export default function Navbar() {
                     <img
                         src={logo}
                         alt="Cape Coast Technical Institute Logo"
-                        style={{
-                            height: "40px",
-                            width: "auto",
-                        }}
+                        style={{ height: "40px", width: "auto" }}
                     />
-                    <span className="fw-bold text-primary">
+                    <span style={{ color: "#f5b400", fontWeight: 700 }}>
                         Cape Coast Technical Institute
                     </span>
                 </NavLink>
 
                 {/* Desktop Menu */}
                 <ul className="d-none d-lg-flex list-unstyled mb-0 align-items-center">
-                    <li><NavLink to="/" className={linkClass}>Home</NavLink></li>
-                    <li><NavLink to="/about" className={linkClass}>About</NavLink></li>
-                    <li><NavLink to="/academics" className={linkClass}>Academics</NavLink></li>
-                    <li><NavLink to="/admissions" className={linkClass}>Admissions</NavLink></li>
-                    <li><NavLink to="/students" className={linkClass}>Students</NavLink></li>
-                    <li><NavLink to="/contact" className={linkClass}>Contact</NavLink></li>
+
+                    <li>
+                        <NavLink to="/" className={linkClass}>Home</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/Academics" className={linkClass}>Academics</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/admissions" className={linkClass}>Admissions</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/students" className={linkClass}>Students</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/about" className={linkClass}>About</NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink to="/contact" className={linkClass}>Contact</NavLink>
+                    </li>
                 </ul>
 
                 {/* Mobile Toggle */}
@@ -60,16 +75,28 @@ export default function Navbar() {
                 </button>
             </nav>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu (no dropdown yet – intentional) */}
             {open && (
                 <div className="d-lg-none bg-white border-top">
                     <ul className="list-unstyled mb-0 py-3 text-center">
-                        <li className="py-2"><NavLink to="/" onClick={() => setOpen(false)}>Home</NavLink></li>
-                        <li className="py-2"><NavLink to="/about" onClick={() => setOpen(false)}>About</NavLink></li>
-                        <li className="py-2"><NavLink to="/academics" onClick={() => setOpen(false)}>Academics</NavLink></li>
-                        <li className="py-2"><NavLink to="/admissions" onClick={() => setOpen(false)}>Admissions</NavLink></li>
-                        <li className="py-2"><NavLink to="/students" onClick={() => setOpen(false)}>Students</NavLink></li>
-                        <li className="py-2"><NavLink to="/contact" onClick={() => setOpen(false)}>Contact</NavLink></li>
+                        <li className="py-2">
+                            <NavLink to="/" onClick={() => setOpen(false)}>Home</NavLink>
+                        </li>
+                        <li className="py-2">
+                            <NavLink to="/academics" onClick={() => setOpen(false)}>Academics</NavLink>
+                        </li>
+                        <li className="py-2">
+                            <NavLink to="/admissions" onClick={() => setOpen(false)}>Admissions</NavLink>
+                        </li>
+                        <li className="py-2">
+                            <NavLink to="/students" onClick={() => setOpen(false)}>Students</NavLink>
+                        </li>
+                        <li className="py-2">
+                            <NavLink to="/about" onClick={() => setOpen(false)}>About</NavLink>
+                        </li>
+                        <li className="py-2">
+                            <NavLink to="/contact" onClick={() => setOpen(false)}>Contact</NavLink>
+                        </li>
                     </ul>
                 </div>
             )}
