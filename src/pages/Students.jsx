@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-import CampusLife from "../components/students/CampusLife"
-import Hostels from "../components/students/Hostels"
-import GraduateDocuments from "../components/students/GraduateDocuments"
+import CampusLife from "../components/Students/CampusLife"
+import Hostels from "../components/Students/Hostels"
+import GraduateDocuments from "../components/Students/GraduateDocuments"
 
 import defaultImage from "../assets/images/students-default.jpg"
 import gearIcon from "../assets/images/gear.png"
