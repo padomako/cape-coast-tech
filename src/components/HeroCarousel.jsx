@@ -1,8 +1,6 @@
 import Stats from "./Stats"
 
 export default function HeroCarousel() {
-    const slideHeight = "520px"
-
     return (
         <section className="hero-wrapper">
             {/* HERO / CAROUSEL */}
@@ -41,7 +39,7 @@ export default function HeroCarousel() {
                             <img
                                 src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
                                 className="d-block w-100"
-                                style={{ height: slideHeight, objectFit: "cover" }}
+                                className="d-block w-100 hero-image"
                                 alt="Campus"
                             />
                             <div className="hero-caption">
@@ -57,7 +55,7 @@ export default function HeroCarousel() {
                             <img
                                 src="https://images.unsplash.com/photo-1588072432836-e10032774350"
                                 className="d-block w-100"
-                                style={{ height: slideHeight, objectFit: "cover" }}
+                                className="d-block w-100 hero-image"
                                 alt="Classroom"
                             />
                             <div className="hero-caption">
@@ -73,7 +71,7 @@ export default function HeroCarousel() {
                             <img
                                 src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178"
                                 className="d-block w-100"
-                                style={{ height: slideHeight, objectFit: "cover" }}
+                                className="d-block w-100 hero-image"
                                 alt="Student Life"
                             />
                             <div className="hero-caption">

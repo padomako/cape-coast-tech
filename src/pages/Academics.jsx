@@ -55,11 +55,11 @@ export default function Academics() {
 
                         {/* ENGINEERING */}
                         <div className="col-md-4">
-                            <div className="trade-area">
-                                <div className="trade-header">
+                            <details className="trade-area">
+                                <summary className="trade-header">
                                     <i className="bi bi-gear-fill me-2"></i>
                                     ENGINEERING
-                                </div>
+                                </summary>
 
                                 <ul className="trade-list">
                                     <li><a href="/academics/automobile-engineering-technology">Automobile Engineering Technology</a></li>
@@ -69,16 +69,16 @@ export default function Academics() {
                                     <li><a href="/academics/refrigeration-and-air-conditioning-technology">Refrigeration and Air-Conditioning Technology</a></li>
                                     <li><a href="/academics/welding-and-fabrication-technology">Welding and Fabrication Technology</a></li>
                                 </ul>
-                            </div>
+                            </details>
                         </div>
 
                         {/* BUILDING / ART */}
                         <div className="col-md-4">
-                            <div className="trade-area">
-                                <div className="trade-header">
+                            <details className="trade-area">
+                                <summary className="trade-header">
                                     <i className="bi bi-building me-2"></i>
                                     BUILDING / ART
-                                </div>
+                                </summary>
 
                                 <ul className="trade-list">
                                     <li><a href="/academics/architectural-drafting">Architectural Drafting</a></li>
@@ -88,16 +88,16 @@ export default function Academics() {
                                     <li><a href="/academics/plumbing-and-gas-fitting-technology">Plumbing and Gas Fitting Technology</a></li>
                                     <li><a href="/academics/wood-and-fabrication-technology">Wood and Fabrication Technology</a></li>
                                 </ul>
-                            </div >
+                            </details >
                         </div>
 
                         {/* BUSINESS / FASH / CAT */}
                         <div className="col-md-4">
-                            <div className="trade-area">
-                                <div className="trade-header">
+                            <details className="trade-area">
+                                <summary className="trade-header">
                                     <i className="bi bi-briefcase-fill me-2"></i>
                                     BUSINESS / FASH / CAT
-                                </div>
+                                </summary>
 
                                 <ul className="trade-list">
                                     <li><a href="/academics/fashion-designing-technology">Fashion Designing Technology</a></li>
@@ -106,7 +106,7 @@ export default function Academics() {
                                     <li><a href="/academics/business-studies-information-technology">Business Studies (Information Technology Option)</a></li>
                                     <li><a href="/academics/business-studies-keyboarding">Business Studies (Keyboarding Option)</a></li>
                                 </ul>
-                            </div>
+                            </details>
                         </div>
                     </div>
                 </div >

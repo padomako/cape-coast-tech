@@ -111,7 +111,8 @@ body {
 ================================================== */
 .hero-carousel {
     position: relative;
-    height: 520px;
+    min-height: 65vh;
+    max-height: 650px;
     overflow: hidden;
 }
 
@@ -127,40 +128,71 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     background: rgba(0, 0, 0, 0.55);
     border-left: 5px solid var(--brand-gold);
-
     padding: 1.5rem 1.2rem;
-    /* 👈 REDUCED HEIGHT */
     max-width: 520px;
     width: 88%;
-
     text-align: left;
-    /* looks tighter than center */
 }
 
 .hero-caption h2 {
     color: var(--brand-gold);
     font-weight: 700;
     font-size: 2rem;
-    /* 👈 smaller */
-    line-height: 1.15;
-    /* 👈 tighter */
-    margin-bottom: 0.35rem;
-    /* 👈 less gap */
+    /* line-height: 1.15;*/
+    margin-bottom: 0.4rem;
 }
 
 .hero-caption p {
     color: #e0e0e0;
     font-size: 1rem;
-    line-height: 1.35;
+    /* line-height: 1.35;*/
     margin: 0;
 }
 
 .hero-wrapper {
     position: relative;
     background: var(--brand-dark);
+}
+
+.hero-image {
+    height: 65vh;
+    object-fit: cover;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero-image {
+        height: 45vh;
+    }
+
+    .hero-caption {
+        top: auto;
+        bottom: 20px;
+        transform: translateX(-50%);
+        padding: 1rem;
+        max-width: 90%;
+    }
+
+    .hero-caption h2 {
+        font-size: 1.4rem;
+    }
+
+    .hero-caption p {
+        font-size: 0.9rem;
+    }
+
+    .stats-float {
+        position: relative;
+        bottom: 0;
+        transform: none;
+        margin-top: -30px;
+    }
+
+    .stats-card {
+        padding: 1.5rem 1rem;
+    }
 }
 
 @keyframes fadeUp {
@@ -259,27 +291,6 @@ body {
 /* ==================================================
    RESPONSIVE TWEAKS
 ================================================== */
-@media (max-width: 768px) {
-    .hero-caption {
-        top: auto;
-        bottom: 80px;
-        transform: translateX(-50%);
-        padding: 0.65rem 1rem;
-        max-width: 92%;
-    }
-
-    .hero-caption h2 {
-        font-size: 1.4rem;
-    }
-
-    .hero-caption p {
-        font-size: 0.9rem;
-    }
-
-    .stats-overlap {
-        margin-top: -60px;
-    }
-}
 
 /* ===============================
    SUBTLE SECTION SEPARATORS
@@ -397,32 +408,61 @@ body {
 }
 
 /* ===============================
-   ACADEMICS OVERVIEW HERO
-================================ 
-.academics-hero {
-    position: relative;
-    background-image: url("https://images.unsplash.com/photo-1588072432836-e10032774350");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* filter: saturate(0.85);
+   MOBILE MENU
+================================ */
+
+.mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    background: #0b0b0b;
+    border-top: 1px solid #f5b400;
+
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 2000;
 }
 
-/* Dark overlay for readability 
-.academics-overlay {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 6rem 0;
+.mobile-menu.show {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
 }
 
-@media (max-width: 768px) {
-    .academics-overlay {
-        padding: 4.5rem 1rem;
-    }
+.mobile-menu ul {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    text-align: center;
+}
 
-    .academics-hero h1 {
-        font-size: 2.2rem;
-    }
-} */
+.mobile-menu li {
+    padding: 12px 0;
+}
+
+.mobile-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.2s ease;
+}
+
+.mobile-menu a:hover {
+    color: #f5b400;
+}
+
+.mobile-toggle {
+    background: transparent;
+    border: 1px solid #f5b400;
+    color: #f5b400;
+    padding: 6px 10px;
+    font-size: 18px;
+    border-radius: 6px;
+}
 
 /* ===============================
    PAGE HEADER (WITH BACKGROUND IMAGE)
@@ -541,14 +581,14 @@ body {
 /* ===============================
    DESKTOP ONLY: Hover controls expansion
 ================================ */
+
+/* Desktop hover enhancement */
 @media (hover: hover) and (pointer: fine) {
 
-    /* Hide content by default on desktop */
-    .trade-area ul {
+    .trade-area:not([open]) ul {
         display: none;
     }
 
-    /* Show on hover */
     .trade-area:hover ul {
         display: block;
     }
@@ -557,13 +597,17 @@ body {
     .trade-area:hover>summary {
         color: var(--brand-gold-soft);
     }
-
-    /* Prevent click-toggle behavior on desktop */
-    .trade-area[open] ul {
-        display: none;
-    }
 }
 
+@media (max-width: 768px) {
+    .trade-area {
+        margin-bottom: 1rem;
+    }
+
+    .trade-area summary {
+        font-size: 1rem;
+    }
+}
 
 /* ===============================
    TEACHING & LEARNING APPROACH
@@ -1119,82 +1163,65 @@ body {
     transform: translateY(-2px);
 }
 
-/* ==================================================
-   RESPONSIVE FIX PACK (SAFE ADDITIONS)
-   These override conflicts without removing design
-================================================== */
+/* =====================================
+   STUDENTS PAGE – MOBILE FIX
+===================================== */
 
-/* ===============================
-   2️⃣ FIX HERO HEIGHT ON MOBILE
-================================ */
 @media (max-width: 768px) {
 
-    .hero-carousel {
-        height: auto !important;
-        min-height: 60vh;
+    /* Make sidebar full width */
+    .students-sidebar {
+        max-width: 100%;
+        margin-bottom: 1.5rem;
     }
 
-    .hero-caption {
-        top: auto;
-        bottom: 40px;
-        transform: translateX(-50%);
-        max-width: 92%;
+    /* Reduce sidebar padding */
+    .students-menu li {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
     }
 
-    .hero-caption h2 {
+    /* Reduce header size */
+    .students-header h2 {
         font-size: 1.4rem;
     }
 
-    .hero-caption p {
-        font-size: 0.9rem;
-    }
-}
-
-
-/* ===============================
-   3️⃣ FIX STUDENTS PAGE MOBILE
-================================ */
-
-@media (max-width: 768px) {
-
-    .students-sidebar {
-        max-width: 100%;
-        margin-bottom: 2rem;
-    }
-
+    /* Fix image height */
     .students-main-image {
-        height: auto !important;
-        max-height: 350px;
+        height: auto;
+        max-height: 260px;
     }
 
-    .students-image-wrapper {
-        max-height: none !important;
+    /* Caption spacing */
+    .students-caption {
+        font-size: 0.95rem;
+        padding: 0 0.5rem;
     }
 
+    /* Default content spacing */
     .student-section {
-        padding: 0 15px;
+        padding: 0 0.75rem;
     }
 
-    .students-text-wrapper {
-        padding: 0 10px;
+    /* Document rows */
+    .document-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 15px;
     }
-}
 
+    .document-name {
+        font-size: 1rem;
+    }
 
-/* ===============================
-   4️⃣ FIX SLIDER ARROW VISIBILITY
-================================ */
+    .download-clean-btn {
+        width: 100%;
+        text-align: center;
+    }
 
-.slide-arrow {
-    color: var(--brand-gold) !important;
-}
-
-
-/* ===============================
-   5️⃣ PREVENT FIXED HEIGHT BREAKAGE
-================================ */
-
-img {
-    max-width: 100%;
-    height: auto;
+    /* Campus slider arrows smaller */
+    .slide-arrow {
+        font-size: 28px;
+    }
 }

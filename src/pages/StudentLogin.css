@@ -7,11 +7,13 @@
     align-items: center;
     background: linear-gradient(to right, #000, #000);
     font-family: Arial, sans-serif;
+    padding: 20px 0
 }
 
 /* MAIN CARD */
 .login-card {
-    width: 900px;
+    width: 95%;
+    max-width: 900px;
     display: flex;
     background: #ffffff;
     border-radius: 8px;
@@ -127,4 +129,59 @@
     margin-top: 40px;
     font-size: 12px;
     color: #0a6b36;
+}
+
+/* =====================================
+   STUDENT PORTAL – MOBILE RESPONSIVE
+===================================== */
+
+@media (max-width: 768px) {
+
+    /* Stack layout */
+    .login-card {
+        flex-direction: column;
+        width: 95%;
+    }
+
+    /* Reduce padding */
+    .login-left,
+    .login-right {
+        padding: 30px 20px;
+    }
+
+    /* Center left content */
+    .login-left {
+        text-align: center;
+    }
+
+    .aim-logo {
+        width: 110px;
+    }
+
+    /* Reduce title sizes */
+    .login-left h2 {
+        font-size: 1.2rem;
+    }
+
+    .login-right h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Make button full width */
+    .login-btn {
+        width: 100%;
+    }
+
+    /* Inputs full width */
+    .login-right input {
+        width: 100%;
+    }
+
+    /* Footer spacing */
+    .login-footer {
+        margin-top: 20px;
+        text-align: center;
+        padding: 0 15px;
+        font-size: 11px;
+    }
 }
