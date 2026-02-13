@@ -477,22 +477,49 @@ body {
 /* ===============================
    TRADE AREA DROPDOWNS
 ================================ */
-
 .trade-area {
     background: var(--brand-dark);
     border: 2px solid var(--brand-gold);
     border-radius: 14px;
     padding: 1.25rem 1.5rem;
+}
+
+/* ===============================
+   AUTO-OPEN TRADE AREAS ON HOVER (DESKTOP)
+================================ */
+
+/* Desktop only */
+@media (hover: hover) and (pointer: fine) {
+
+    /* Highlight header on hover */
+    .trade-area:hover>summary {
+        color: var(--brand-gold-soft);
+    }
+}
+
+/* Smooth dropdown animation */
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Subtle lift + depth on hover */
+.trade-area {
     transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-/* Lift effect */
 .trade-area:hover {
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
     transform: translateY(-3px);
 }
 
-/* Summary styling */
 .trade-area summary {
     list-style: none;
     cursor: pointer;
@@ -515,16 +542,12 @@ body {
     transition: transform 0.2s ease;
 }
 
-/* Rotate arrow when open (mobile click) */
+/* Rotate arrow when open */
 .trade-area[open] summary::after {
     transform: rotate(180deg);
 }
 
 /* Programme links */
-.trade-area ul {
-    margin-top: 1rem;
-}
-
 .trade-area ul li a {
     color: #ddd;
     text-decoration: none;
@@ -539,31 +562,38 @@ body {
 }
 
 /* ===============================
-   DESKTOP ONLY: Hover controls expansion
+   AUTO-OPEN ONE TRADE AREA AT A TIME (DESKTOP)
 ================================ */
+
+/* Collapse all lists by default */
+.trade-area ul {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+/* Desktop hover logic */
 @media (hover: hover) and (pointer: fine) {
 
-    /* Hide content by default on desktop */
-    .trade-area ul {
-        display: none;
-    }
-
-    /* Show on hover */
+    /* Open only hovered trade area */
     .trade-area:hover ul {
-        display: block;
+        max-height: 520px;
+        /* enough for longest list */
+        opacity: 1;
     }
 
-    /* Highlight header */
+    /* Ensure others stay closed */
+    .trade-area:not(:hover) ul {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    /* Header highlight */
     .trade-area:hover>summary {
         color: var(--brand-gold-soft);
     }
-
-    /* Prevent click-toggle behavior on desktop */
-    .trade-area[open] ul {
-        display: none;
-    }
 }
-
 
 /* ===============================
    TEACHING & LEARNING APPROACH
@@ -1117,84 +1147,4 @@ body {
 .download-clean-btn:hover {
     background: #ffcc33;
     transform: translateY(-2px);
-}
-
-/* ==================================================
-   RESPONSIVE FIX PACK (SAFE ADDITIONS)
-   These override conflicts without removing design
-================================================== */
-
-/* ===============================
-   2️⃣ FIX HERO HEIGHT ON MOBILE
-================================ */
-@media (max-width: 768px) {
-
-    .hero-carousel {
-        height: auto !important;
-        min-height: 60vh;
-    }
-
-    .hero-caption {
-        top: auto;
-        bottom: 40px;
-        transform: translateX(-50%);
-        max-width: 92%;
-    }
-
-    .hero-caption h2 {
-        font-size: 1.4rem;
-    }
-
-    .hero-caption p {
-        font-size: 0.9rem;
-    }
-}
-
-
-/* ===============================
-   3️⃣ FIX STUDENTS PAGE MOBILE
-================================ */
-
-@media (max-width: 768px) {
-
-    .students-sidebar {
-        max-width: 100%;
-        margin-bottom: 2rem;
-    }
-
-    .students-main-image {
-        height: auto !important;
-        max-height: 350px;
-    }
-
-    .students-image-wrapper {
-        max-height: none !important;
-    }
-
-    .student-section {
-        padding: 0 15px;
-    }
-
-    .students-text-wrapper {
-        padding: 0 10px;
-    }
-}
-
-
-/* ===============================
-   4️⃣ FIX SLIDER ARROW VISIBILITY
-================================ */
-
-.slide-arrow {
-    color: var(--brand-gold) !important;
-}
-
-
-/* ===============================
-   5️⃣ PREVENT FIXED HEIGHT BREAKAGE
-================================ */
-
-img {
-    max-width: 100%;
-    height: auto;
 }
