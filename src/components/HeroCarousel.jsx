@@ -38,7 +38,6 @@ export default function HeroCarousel() {
                         <div className="carousel-item active">
                             <img
                                 src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f"
-                                className="d-block w-100"
                                 className="d-block w-100 hero-image"
                                 alt="Campus"
                             />
@@ -54,7 +53,6 @@ export default function HeroCarousel() {
                         <div className="carousel-item">
                             <img
                                 src="https://images.unsplash.com/photo-1588072432836-e10032774350"
-                                className="d-block w-100"
                                 className="d-block w-100 hero-image"
                                 alt="Classroom"
                             />
@@ -70,7 +68,6 @@ export default function HeroCarousel() {
                         <div className="carousel-item">
                             <img
                                 src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178"
-                                className="d-block w-100"
                                 className="d-block w-100 hero-image"
                                 alt="Student Life"
                             />

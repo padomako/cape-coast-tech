@@ -106,150 +106,141 @@ body {
     margin: 1rem auto;
 }
 
-/* ==================================================
-   HERO / CAROUSEL
-================================================== */
-.hero-carousel {
+/* =========================================
+   HERO WRAPPER
+========================================= */
+.hero-wrapper {
     position: relative;
-    min-height: 65vh;
-    max-height: 650px;
-    overflow: hidden;
+    background: #000;
+}
+
+/* =========================================
+   HERO IMAGE
+========================================= */
+.hero-image {
+    height: 80vh;
+    object-fit: cover;
+}
+
+/* =========================================
+   DESKTOP CAPTION (Floating Card Left)
+========================================= */
+.hero-caption {
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    max-width: 520px;
+    border-radius: 6px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.hero-caption h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #b00000;
+    margin-bottom: 1rem;
+}
+
+.hero-caption p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1.2rem;
+}
+
+.hero-caption .btn-hero {
+    background: #b00000;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    font-weight: 600;
+}
+
+/* =========================================
+   CAROUSEL CONTROLS
+========================================= */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 60px;
+    opacity: 0.9;
+}
+
+.carousel-control-prev {
+    left: 20px;
+}
+
+.carousel-control-next {
+    right: 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-size: 30px 30px;
+}
+
+/* Indicators right side like example */
+.carousel-indicators {
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    left: auto;
+    bottom: auto;
+    transform: translateY(-50%);
+    flex-direction: column;
+    margin: 0;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.6;
+    margin: 6px 0;
+    border: none;
+}
+
+.carousel-indicators .active {
+    background-color: #b00000;
+    opacity: 1;
 }
 
 .carousel,
 .carousel-inner,
 .carousel-item {
-    height: 100%;
+    height: 520px;
+    /* FORCE HEIGHT */
 }
 
-/* HERO CAPTION */
-.hero-caption {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.55);
-    border-left: 5px solid var(--brand-gold);
-    padding: 1.5rem 1.2rem;
-    max-width: 520px;
-    width: 88%;
-    text-align: left;
-}
-
-.hero-caption h2 {
-    color: var(--brand-gold);
-    font-weight: 700;
-    font-size: 2rem;
-    /* line-height: 1.15;*/
-    margin-bottom: 0.4rem;
-}
-
-.hero-caption p {
-    color: #e0e0e0;
-    font-size: 1rem;
-    /* line-height: 1.35;*/
-    margin: 0;
-}
-
-.hero-wrapper {
+.carousel-item {
     position: relative;
-    background: var(--brand-dark);
 }
 
-.hero-image {
-    height: 65vh;
-    object-fit: cover;
-}
 
-/* Mobile */
-@media (max-width: 768px) {
-    .hero-image {
-        height: 45vh;
-    }
+/* =====================================
+   FLOATING STATS (OVERLAP HERO)
+===================================== */
 
-    .hero-caption {
-        top: auto;
-        bottom: 20px;
-        transform: translateX(-50%);
-        padding: 1rem;
-        max-width: 90%;
-    }
-
-    .hero-caption h2 {
-        font-size: 1.4rem;
-    }
-
-    .hero-caption p {
-        font-size: 0.9rem;
-    }
-
-    .stats-float {
-        position: relative;
-        bottom: 0;
-        transform: none;
-        margin-top: -30px;
-    }
-
-    .stats-card {
-        padding: 1.5rem 1rem;
-    }
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translate(-50%, 20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translate(-50%, 0);
-    }
-}
-
-/* ==================================================
-   CAROUSEL INDICATORS
-================================================== */
-.carousel-indicators {
-    bottom: 24px;
-    justify-content: center;
-}
-
-.carousel-indicators [data-bs-target] {
-    background-color: var(--brand-gold);
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    opacity: 0.6;
-}
-
-.carousel-indicators .active {
-    opacity: 1;
-}
-
-/* ==================================================
-   HERO → STATS OVERLAP (NO GAPS)
-================================================== */
-/* FLOATING STATS */
 .stats-float {
     position: absolute;
     bottom: -60px;
-    /* how much it hangs out */
+    /* controls how much it overlaps */
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
-    z-index: 20;
+    z-index: 30;
 }
 
 .stats-card {
     max-width: 1100px;
     margin: 0 auto;
-    background: linear-gradient(to bottom,
-            rgba(10, 10, 10, 0.96),
-            rgba(0, 0, 0, 0.96));
+    background: #000;
     border: 2px solid var(--brand-gold);
-    border-radius: 16px;
-    padding: 2rem 1.5rem;
+    border-radius: 18px;
+    padding: 1.8rem 2rem;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
 }
 
 /* ==================================================
@@ -265,6 +256,85 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* =========================================
+   MOBILE STACKED HERO FIX
+========================================= */
+@media (max-width: 768px) {
+
+    /* Stop hero from fixed height */
+    .hero-carousel {
+        height: auto;
+        overflow: visible;
+    }
+
+    .carousel,
+    .carousel-inner,
+    .carousel-item {
+        height: auto;
+    }
+
+    @media (max-width: 768px) {
+
+        .carousel-item.active {
+            display: block;
+            /* keep bootstrap behavior */
+        }
+
+        .carousel-item img {
+            display: block;
+        }
+
+        .hero-caption {
+            position: relative;
+            transform: none;
+            left: 0;
+            bottom: 0;
+            margin-top: 1rem;
+        }
+    }
+
+
+    /* Image */
+    .hero-image {
+        height: 50vh;
+        object-fit: cover;
+    }
+
+    /* 🔥 KEY FIX: Remove overlay completely */
+    .hero-caption {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 1.5rem 1.2rem;
+
+        background: #1a1a1a;
+        border-left: none;
+        z-index: 2;
+    }
+
+    /* Stats should follow below */
+    .stats-float {
+        position: relative !important;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 0;
+    }
+
+    .stats-card {
+        border-radius: 0;
+        margin: 0;
+    }
+}
+
+
 
 /* ==================================================
    WELCOME SECTION
@@ -583,21 +653,25 @@ body {
 ================================ */
 
 /* Desktop hover enhancement */
+/* Desktop only */
 @media (hover: hover) and (pointer: fine) {
 
-    .trade-area:not([open]) ul {
+    /* Hide content unless open */
+    .trade-area>ul {
         display: none;
     }
 
-    .trade-area:hover ul {
+    /* Show when hovered */
+    .trade-area:hover>ul {
         display: block;
     }
 
-    /* Highlight header */
-    .trade-area:hover>summary {
-        color: var(--brand-gold-soft);
+    /* Rotate arrow on hover */
+    .trade-area:hover summary::after {
+        transform: rotate(180deg);
     }
 }
+
 
 @media (max-width: 768px) {
     .trade-area {
