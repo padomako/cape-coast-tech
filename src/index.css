@@ -294,10 +294,9 @@ body {
         }
     }
 
-
     /* Image */
     .hero-image {
-        height: 50vh;
+        height: 30vh;
         object-fit: cover;
     }
 
