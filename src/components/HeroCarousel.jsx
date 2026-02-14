@@ -88,7 +88,6 @@ export default function HeroCarousel() {
                         data-bs-target="#heroCarousel"
                         data-bs-slide="prev"
                     >
-                        <span className="carousel-control-prev-icon" />
                     </button>
 
                     <button
@@ -97,7 +96,6 @@ export default function HeroCarousel() {
                         data-bs-target="#heroCarousel"
                         data-bs-slide="next"
                     >
-                        <span className="carousel-control-next-icon" />
                     </button>
                 </div>
             </div>

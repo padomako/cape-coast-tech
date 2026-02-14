@@ -1,91 +1,141 @@
-import PageHeader from "../components/PageHeader"
+import admissionHero from "../assets/images/admission-hero.jpg"
+import videoThumb from "../assets/images/admission-video.jpg"
 
 export default function Admissions() {
     return (
-        <>
-            {/* Standard Page Header */}
-            <PageHeader
-                title="Admissions"
-                subtitle="Guidelines for prospective students and parents"
-            />
+        <section className="admissions-page">
 
-            {/* Who Can Apply */}
-            <section className="py-5">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Who Can Apply
-                    </h2>
+            {/* ================= HERO SECTION ================= */}
+            <div className="admission-hero">
+                <img src={admissionHero} alt="Admission" className="hero-bg" />
+
+                <div className="hero-overlay">
+                    <h1>Welcome to CCTI Admission Portal</h1>
                     <p>
-                        Admission into Cape Coast Technical Institute is open to students who
-                        have successfully completed Junior High School (JHS) and are seeking
-                        quality technical and academic secondary education.
-                    </p>
-                </div>
-            </section>
-
-            {/* Entry Requirements */}
-            <section className="py-5 bg-light border-top border-bottom">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-4">
-                        Entry Requirements
-                    </h2>
-
-                    <ul>
-                        <li>Basic Education Certificate Examination (BECE)</li>
-                        <li>Aggregate as approved by the Ghana Education Service (GES)</li>
-                        <li>Passes in English Language and Mathematics</li>
-                        <li>Good conduct and discipline record</li>
-                    </ul>
-                </div>
-            </section>
-
-            {/* Application Process */}
-            <section className="py-5">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-4">
-                        Application Process
-                    </h2>
-
-                    <ol>
-                        <li>Obtain an admission form from the school or designated outlets.</li>
-                        <li>Complete the form with accurate personal and academic details.</li>
-                        <li>Attach required documents (BECE results slip, birth certificate, etc.).</li>
-                        <li>Submit the completed form to the school administration.</li>
-                        <li>Await notification of admission status.</li>
-                    </ol>
-                </div>
-            </section>
-
-            {/* Important Notes */}
-            <section className="py-5 bg-light border-top border-bottom">
-                <div className="container">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Important Notes
-                    </h2>
-                    <ul>
-                        <li>Admission is competitive and based on available space.</li>
-                        <li>Applicants must meet all stated entry requirements.</li>
-                        <li>Submission of false information may lead to disqualification.</li>
-                    </ul>
-                </div>
-            </section>
-
-            {/* Online Application */}
-            <section className="py-5">
-                <div className="container text-center">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Online Application
-                    </h2>
-                    <p className="mb-4">
-                        Online admission application will be available in a future update.
-                        Please contact the school for assistance.
+                        Begin your academic journey through our science and
+                        technical programmes.
                     </p>
 
-                    <button className="btn btn-secondary" disabled>
-                        Apply Online (Coming Soon)
+                    <button className="begin-btn">
+                        Click to Begin Registration
                     </button>
                 </div>
+            </div>
+
+            {/* ================= HOW TO USE SECTION ================= */}
+            <section className="admission-steps">
+                <div className="container">
+
+                    <h2 className="steps-title text-center">
+                        How to use the Admissions Portal
+                    </h2>
+
+                    <div className="steps-divider"></div>
+
+                    <div className="row g-4 mt-4">
+
+                        <div className="col-md-4">
+                            <div className="step-item text-center">
+                                <div className="step-icon">
+                                    <i className="bi bi-person-plus"></i>
+                                </div>
+                                <h5>Sign up and create Account</h5>
+                                <p>
+                                    Register with a valid and active email address.
+                                    A verification link will be sent to your email.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="col-md-4">
+                            <div className="step-item text-center">
+                                <div className="step-icon">
+                                    <i className="bi bi-mortarboard"></i>
+                                </div>
+                                <h5>Select your student category</h5>
+                                <p>
+                                    Ghanaian students: Purchase vouchers online.
+                                    International students: Proceed online.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="col-md-4">
+                            <div className="step-item text-center">
+                                <div className="step-icon">
+                                    <i className="bi bi-send-check"></i>
+                                </div>
+                                <h5>Complete and submit Application</h5>
+                                <p>
+                                    Fill in the required details and submit your application.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </section>
-        </>
+
+            {/* ================= WALKTHROUGH + ANNOUNCEMENT ================= */}
+
+            <div className="admission-info container">
+
+                <div className="row align-items-start">
+
+                    {/* VIDEO */}
+                    <div className="col-lg-6">
+                        <div className="video-card">
+                            <img src={videoThumb} alt="Walkthrough" />
+                            <div className="play-btn">▶</div>
+                        </div>
+                    </div>
+
+                    {/* WALKTHROUGH TEXT */}
+                    <div className="col-lg-6">
+                        <h3>Admission Portal Walkthrough</h3>
+                        <p>
+                            This video helps applicants navigate their way
+                            through the admissions system.
+                        </p>
+
+                        <button className="watch-btn">Watch</button>
+                    </div>
+
+                </div>
+
+                {/* ANNOUNCEMENTS */}
+                <div className="announcement-section">
+                    <h3>Announcement</h3>
+
+                    <div className="announcement-grid">
+
+                        <div className="announcement-card">
+                            <span className="pdf-icon">PDF</span>
+                            <p>
+                                Entry examination and interviews for
+                                2025/2026 academic year.
+                            </p>
+                        </div>
+
+                        <div className="announcement-card">
+                            <span className="pdf-icon">PDF</span>
+                            <p>
+                                Application form 2025/2026 academic year.
+                            </p>
+                        </div>
+
+                        <div className="announcement-card">
+                            <span className="pdf-icon">PDF</span>
+                            <p>
+                                Notice to shortlisted applicants.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
     )
 }

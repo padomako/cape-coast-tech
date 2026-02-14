@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 import CampusLife from "../components/Students/CampusLife"
@@ -10,8 +10,8 @@ import gearIcon from "../assets/images/gear.png"
 
 export default function Students() {
 
-    // ✅ FIXED DEFAULT STATE
     const [active, setActive] = useState("students")
+    const [menuOpen, setMenuOpen] = useState(false)
     const navigate = useNavigate()
 
     const menuItems = [
@@ -21,7 +21,14 @@ export default function Students() {
         { id: "documents", label: "GRADUATE DOCUMENTS" }
     ]
 
-    /* Redirect for portal */
+    const handleClick = (id) => {
+        if (id === "portal") {
+            navigate("/student-login")
+        } else {
+            setActive(id)
+        }
+        setMenuOpen(false) // auto close mobile menu after click
+    }
 
     const getHeader = () => {
         switch (active) {
@@ -31,7 +38,6 @@ export default function Students() {
                 return "RECOMMENDED HOSTELS"
             case "documents":
                 return "GRADUATE DOCUMENTS"
-            case "students":
             default:
                 return "STUDENTS"
         }
@@ -49,26 +55,21 @@ export default function Students() {
             case "documents":
                 return <GraduateDocuments />
 
-            // ✅ NEW EXPLICIT STUDENTS CASE
-            case "students":
             default:
                 return (
                     <div className="students-default-content">
-
                         <div className="student-section">
                             <img
                                 src={defaultImage}
                                 alt="Students"
                                 className="students-main-image"
                             />
-
                             <p className="students-caption">
                                 There can be no school without students.
                                 Cape Coast Technical Institute values its students as
                                 the heart of the institution.
                             </p>
                         </div>
-
                     </div>
                 )
         }
@@ -77,8 +78,8 @@ export default function Students() {
     return (
         <section className="students-page container py-5">
 
-            {/* CENTERED HEADER ABOVE SIDEBAR + CONTENT */}
-            <div className="students-header text-center mb-5">
+            {/* HEADER */}
+            <div className="students-header text-center mb-4">
                 <h2>{getHeader()}</h2>
                 <div className="header-divider">
                     <span className="divider-line"></span>
@@ -89,13 +90,43 @@ export default function Students() {
                 </div>
             </div>
 
+            {/* MOBILE MENU */}
+            <div className="students-mobile-menu d-md-none mb-4">
+
+                <button
+                    className="students-menu-toggle"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                >
+                    ☰ MENU
+                </button>
+
+                <ul className={`students-mobile-links ${menuOpen ? "open" : ""}`}>
+                    <li
+                        className={active === "students" ? "active" : ""}
+                        onClick={() => handleClick("students")}
+                    >
+                        STUDENTS
+                    </li>
+
+                    {menuItems.map(item => (
+                        <li
+                            key={item.id}
+                            className={active === item.id ? "active" : ""}
+                            onClick={() => handleClick(item.id)}
+                        >
+                            {item.label}
+                        </li>
+                    ))}
+                </ul>
+
+            </div>
+
             <div className="row">
 
-                {/* SIDEBAR */}
-                <div className="col-md-4 col-lg-3">
+                {/* DESKTOP SIDEBAR */}
+                <div className="col-lg-3 d-none d-lg-block">
                     <aside className="students-sidebar">
 
-                        {/* TOP STUDENTS BLOCK */}
                         <div
                             className={`students-sidebar-header ${active === "students" ? "active" : ""}`}
                             onClick={() => setActive("students")}
@@ -107,13 +138,7 @@ export default function Students() {
                             {menuItems.map(item => (
                                 <li
                                     key={item.id}
-                                    onClick={() => {
-                                        if (item.id === "portal") {
-                                            navigate("/student-login")
-                                        } else {
-                                            setActive(item.id)
-                                        }
-                                    }}
+                                    onClick={() => handleClick(item.id)}
                                     className={active === item.id ? "active" : ""}
                                 >
                                     <span>{item.label}</span>
@@ -121,11 +146,12 @@ export default function Students() {
                                 </li>
                             ))}
                         </ul>
+
                     </aside>
                 </div>
 
                 {/* CONTENT */}
-                <div className="col-md-8 col-lg-9">
+                <div className="col-lg-9">
                     <div key={active} className="students-content-animate">
                         {renderContent()}
                     </div>
