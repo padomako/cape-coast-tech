@@ -1,52 +1,85 @@
 import PageHeader from "../components/PageHeader"
+import { Link } from "react-router-dom"
 
 export default function Contact() {
     return (
         <>
-            {/* Standard Page Header */}
+            {/* Page Header */}
             <PageHeader
                 title="Contact Us"
                 subtitle="Get in touch with Cape Coast Technical Institute"
+                variant="contact"
             />
 
-            {/* Contact Details */}
-            <section className="py-5">
+            {/* ================= CONTACT SECTION ================= */}
+            <section className="contact-section py-5">
                 <div className="container">
-                    <h2 className="fw-bold text-primary mb-3">
-                        Contact Information
-                    </h2>
+                    <div className="row g-5">
 
-                    <p>
-                        For enquiries, admissions, and general information, please contact
-                        the school using the details below.
-                    </p>
+                        {/* Contact Info */}
+                        <div className="col-lg-6">
+                            <h2 className="section-title mb-4">
+                                Contact Information
+                            </h2>
 
-                    <ul>
-                        <li><strong>Location:</strong> Abura, Cape Coast, Central Region, Ghana</li>
-                        <li><strong>Phone:</strong> +233 XX XXX XXXX</li>
-                        <li><strong>Email:</strong> info@ccti.edu.gh</li>
-                    </ul>
-                </div>
-            </section>
+                            <div className="contact-card">
+                                <div className="contact-item">
+                                    <i className="bi bi-geo-alt-fill"></i>
+                                    <div>
+                                        <h6>Location</h6>
+                                        <p>Abura, Cape Coast, Central Region, Ghana</p>
+                                    </div>
+                                </div>
 
-            {/* WhatsApp */}
-            <section className="py-5">
-                <div className="container text-center">
-                    <h2 className="fw-bold text-primary mb-3">
-                        WhatsApp Enquiries
-                    </h2>
-                    <p className="mb-4">
-                        You may also reach us directly via WhatsApp for quick enquiries.
-                    </p>
+                                <div className="contact-item">
+                                    <i className="bi bi-telephone-fill"></i>
+                                    <div>
+                                        <h6>Phone</h6>
+                                        <p>+233 XX XXX XXXX</p>
+                                    </div>
+                                </div>
 
-                    <a
-                        href="https://wa.me/233XXXXXXXXX"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-success"
-                    >
-                        Chat with Us on WhatsApp
-                    </a>
+                                <div className="contact-item">
+                                    <i className="bi bi-envelope-fill"></i>
+                                    <div>
+                                        <h6>Email</h6>
+                                        <p>info@ccti.edu.gh</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* WhatsApp + CTA */}
+                        <div className="col-lg-6">
+                            <div className="contact-cta-box">
+                                <h3 className="mb-3">
+                                    WhatsApp Enquiries
+                                </h3>
+
+                                <p>
+                                    For quick responses and real-time assistance,
+                                    chat with us directly on WhatsApp.
+                                </p>
+
+                                <a
+                                    href="https://wa.me/233XXXXXXXXX"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="whatsapp-btn mt-3"
+                                >
+                                    <i className="bi bi-whatsapp me-2"></i>
+                                    Chat with Us
+                                </a>
+
+                                <hr className="my-4" />
+
+                                <p className="small text-muted">
+                                    Office Hours: Monday – Friday | 8:00 AM – 4:00 PM
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </section>
         </>

@@ -820,17 +820,28 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    align-items: center;
+    justify-content: center
 }
 
 /* Academics specific header image */
 .page-header-academics {
+    height: 40vh;
     background-image: url("https://images.unsplash.com/photo-1588072432836-e10032774350");
 }
 
 /* Overlay for readability */
 .page-header-overlay {
+    height: 40vh;
     background: rgba(0, 0, 0, 0.55);
     padding: 6rem 0;
+}
+
+/* Subtitle */
+.page-subtitle {
+    font-size: 1.1rem;
+    color: white;
+    max-width: 720px;
 }
 
 @media (max-width: 768px) {
@@ -1847,4 +1858,257 @@ body {
         grid-template-columns: 1fr;
     }
 
+}
+
+.programme-banner {
+    height: 55vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.programme-overlay {
+    background: rgba(0, 0, 0, 0.65);
+    padding: 2rem;
+    margin-left: 8%;
+    border-left: 5px solid var(--brand-gold);
+}
+
+.programme-overlay h1 {
+    color: white;
+    font-size: 2.5rem;
+}
+
+.programme-overlay p {
+    color: var(--brand-gold);
+}
+
+.breadcrumb-nav {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.breadcrumb-nav a {
+    text-decoration: none;
+    color: var(--brand-gold);
+}
+
+.breadcrumb-nav strong {
+    color: #000;
+}
+
+.apply-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.9rem 2rem;
+    background: var(--brand-gold);
+    color: #000;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background: #ffcc33;
+    transform: translateY(-2px);
+}
+
+.page-header-about {
+    background-image: url("/images/about-banner.jpg");
+}
+
+/* About header only */
+.page-header-about .container {
+    text-align: center;
+}
+
+.page-header-about .page-header-overlay {
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-header-about .page-title,
+.page-header-about .page-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    color: #f4b400;
+}
+
+.section-title {
+    font-weight: 700;
+    color: var(--brand-gold);
+}
+
+.about-history p {
+    line-height: 1.8;
+    color: white;
+}
+
+.about-image-wrapper img {
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+}
+
+.about-image-wrapper img:hover {
+    transform: scale(1.03);
+}
+
+/* Vision Cards */
+.about-vision-section {
+    background: #f4b400;
+}
+
+.vision-card {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Core Values */
+.value-card {
+    background: #1a1a1a;
+    color: #f4b400;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+}
+
+.value-card i {
+    font-size: 2rem;
+    color: var(--brand-gold);
+    margin-bottom: 1rem;
+}
+
+.value-card:hover {
+    transform: translateY(-6px);
+}
+
+.about-message {
+    background: #000;
+}
+
+.message-box {
+    margin-top: -10px;
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* Principal Image */
+.principal-image-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.principal-image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid #f5b400;
+    /* brand gold */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Name Styling */
+.principal-name {
+    font-weight: 600;
+}
+
+.principal-title {
+    font-size: 0.9rem;
+}
+
+/* ================= CONTACT PAGE ================= */
+
+.contact-section {
+    background: #f8f9fa;
+}
+
+/* Section Title */
+.section-title-contact {
+    font-weight: 700;
+    color: #1f6f4a;
+}
+
+/* Contact Card */
+.contact-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+}
+
+.contact-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-item i {
+    font-size: 1.4rem;
+    color: #f5b400;
+    margin-top: 4px;
+}
+
+.contact-item h6 {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.contact-item p {
+    margin: 0;
+    color: #555;
+}
+
+/* CTA Box */
+.contact-cta-box {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    display: inline-block;
+    background: #25d366;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    background: #1ebe5d;
+    transform: translateY(-3px);
+}
+
+.page-header-contact .container {
+    text-align: center;
+}
+
+.page-header-contact .page-header-overlay {
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-header-contact .page-title,
+.page-header-contact .page-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    color: #f4b400;
 }

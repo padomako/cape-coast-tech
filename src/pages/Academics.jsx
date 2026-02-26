@@ -1,44 +1,28 @@
 import PageHeader from "../components/PageHeader"
+import { Link } from "react-router-dom"
 
 export default function Academics() {
     return (
         <>
             {/* Page Header */}
             <section className="page-header page-header-academics">
-                <div className="page-header-overlay">
+                <div className="page-header-overlay d-flex align-items-center">
                     <div className="container text-center">
-                        <h1 className="fw-bold text-primary mb-3">
+                        <h1 className="page-title mb-3">
                             Academics
                         </h1>
-                        <p className="text-muted mx-auto" style={{ maxWidth: "720px" }}>
+
+                        <p className="page-subtitle mx-auto">
                             Our academic programmes combine strong theoretical foundations
                             with practical technical training to prepare students for industry
                             and higher education.
                         </p>
+
+                        <div className="header-divider mx-auto mt-4"></div>
                     </div>
                 </div>
             </section>
 
-            { /* Academic Overview 
-            <section className="academics-hero">
-                <div className="academics-overlay">
-                    <div className="container text-center">
-                        <h1 className="text-primary fw-bold mb-3">
-                            Academics
-                        </h1>
-                        <p>
-                            Cape Coast Technical Institute offers a broad range of technical and
-                            academic programmes designed to equip students with practical skills,
-                            theoretical knowledge, and strong moral values. Our curriculum follows
-                            the Ghana Education Service (GES) standards.
-                        </p>
-                        <p>
-                            Teaching and learning are structured to prepare students for higher
-                            education, technical careers, and meaningful contribution to society.
-                        </p>
-                    </div>
-                </div>
-            </section>*/}
 
             {/* Trade Areas */}
             <section className="section-soft section-padding">
@@ -62,12 +46,12 @@ export default function Academics() {
                                 </summary>
 
                                 <ul className="trade-list">
-                                    <li><a href="/academics/automobile-engineering-technology">Automobile Engineering Technology</a></li>
-                                    <li><a href="/academics/electrical-engineering-technology">Electrical Engineering Technology</a></li>
-                                    <li><a href="/academics/electronics-engineering">Electronics Engineering</a></li>
-                                    <li><a href="/academics/mechanical-engineering-technology">Mechanical Engineering Technology</a></li>
-                                    <li><a href="/academics/refrigeration-and-air-conditioning-technology">Refrigeration and Air-Conditioning Technology</a></li>
-                                    <li><a href="/academics/welding-and-fabrication-technology">Welding and Fabrication Technology</a></li>
+                                    <li><Link to="/academics/automotive-engineering-technology">Automotive Engineering Technology</Link></li>
+                                    <li><Link to="/academics/electrical-engineering-technology">Electrical Engineering Technology</Link></li>
+                                    <li><Link to="/academics/electronics-engineering">Electronics Engineering</Link></li>
+                                    <li><Link to="/academics/mechanical-engineering-technology">Mechanical Engineering Technology</Link></li>
+                                    <li><Link to="/academics/refrigeration-and-air-conditioning-technology">Refrigeration and Air-Conditioning Technology</Link></li>
+                                    <li><Link to="/academics/welding-and-fabrication-technology">Welding and Fabrication Technology</Link></li>
                                 </ul>
                             </details>
                         </div>
@@ -81,14 +65,14 @@ export default function Academics() {
                                 </summary>
 
                                 <ul className="trade-list">
-                                    <li><a href="/academics/architectural-drafting">Architectural Drafting</a></li>
-                                    <li><a href="/academics/building-construction-technology">Building Construction Technology</a></li>
-                                    <li><a href="/academics/creative-art-technology">Creative Art Technology</a></li>
-                                    <li><a href="/academics/furniture-design-and-construction">Furniture Design and Construction</a></li>
-                                    <li><a href="/academics/plumbing-and-gas-fitting-technology">Plumbing and Gas Fitting Technology</a></li>
-                                    <li><a href="/academics/wood-and-fabrication-technology">Wood and Fabrication Technology</a></li>
+                                    <li><Link to="/academics/architectural-drafting">Architectural Drafting</Link></li>
+                                    <li><Link to="/academics/building-construction-technology">Building Construction Technology</Link></li>
+                                    <li><Link to="/academics/creative-art-technology">Creative Art Technology</Link></li>
+                                    <li><Link to="/academics/furniture-design-and-construction">Furniture Design and Construction</Link></li>
+                                    <li><Link to="/academics/plumbing-and-gas-fitting-technology">Plumbing and Gas Fitting Technology</Link></li>
+                                    <li><Link to="/academics/wood-and-fabrication-technology">Wood and Fabrication Technology</Link></li>
                                 </ul>
-                            </details >
+                            </details>
                         </div>
 
                         {/* BUSINESS / FASH / CAT */}
@@ -100,21 +84,20 @@ export default function Academics() {
                                 </summary>
 
                                 <ul className="trade-list">
-                                    <li><a href="/academics/fashion-designing-technology">Fashion Designing Technology</a></li>
-                                    <li><a href="/academics/hospitality-and-catering-management">Hospitality and Catering Management</a></li>
-                                    <li><a href="/academics/business-studies-accounting">Business Studies (Accounting Option)</a></li>
-                                    <li><a href="/academics/business-studies-information-technology">Business Studies (Information Technology Option)</a></li>
-                                    <li><a href="/academics/business-studies-keyboarding">Business Studies (Keyboarding Option)</a></li>
+                                    <li><Link to="/academics/fashion-designing-technology">Fashion Designing Technology</Link></li>
+                                    <li><Link to="/academics/hospitality-and-catering-management">Hospitality and Catering Management</Link></li>
+                                    <li><Link to="/academics/business-studies-accounting">Business Studies (Accounting Option)</Link></li>
+                                    <li><Link to="/academics/business-studies-information-technology">Business Studies (Information Technology Option)</Link></li>
+                                    <li><Link to="/academics/business-studies-keyboarding">Business Studies (Keyboarding Option)</Link></li>
                                 </ul>
                             </details>
                         </div>
                     </div>
-                </div >
+                </div>
             </section >
 
-
             {/* Teaching & Learning Approach */}
-            <section className="section-soft section-padding section-separator">
+            < section className="section-soft section-padding section-separator" >
                 <div className="container">
 
                     {/* Section Header */}
@@ -165,10 +148,9 @@ export default function Academics() {
                                 </p>
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </section>
+            </section >
         </>
     )
 }

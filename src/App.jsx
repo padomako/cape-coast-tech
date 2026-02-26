@@ -9,6 +9,8 @@ import Admissions from "./pages/Admissions"
 import Students from "./pages/Students"
 import Contact from "./pages/Contact"
 import StudentLogin from "./pages/StudentLogin"
+import ProgrammePage from "./pages/programmes/ProgrammePage"
+
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
           <Route path="/students" element={<Students />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/student-login" element={<StudentLogin />} />
+          <Route path="/academics/:programmeSlug" element={<ProgrammePage />} />
         </Routes>
       </div>
 
