@@ -10,8 +10,8 @@ const highlights = [
         title: "Admissions",
         description: "Clear admission guidelines and support for prospective students and parents.",
         image: "/images/AFRICAN%20UNION%20PARADE/1.jpg",
-        link: "/admissions",
-        linkText: "View Admissions",
+        link: "/academics",
+        linkText: "Explore Programmes",
     },
     {
         title: "Student Life",

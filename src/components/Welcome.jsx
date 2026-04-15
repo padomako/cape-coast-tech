@@ -14,9 +14,10 @@ export default function Welcome() {
                         </h2>
 
                         <p className="text-light opacity-75 mb-3">
-                            Cape Coast Technical Institute is a reputable technical secondary
-                            institution located at Abura in Cape Coast. The school is committed
-                            to providing quality technical and academic education.
+                            Cape Coast Technical Institute is a reputable Technical and Vocational
+                            Education and Training (TVET) Institute located at Abura in Cape Coast.
+                            The school is committed to providing practical and technical skills for
+                            employment and professional development.
                         </p>
 
                         <p className="text-light opacity-75">
@@ -30,7 +31,7 @@ export default function Welcome() {
                                 Learn More About Us
                             </a>
                             <a href="/admissions" className="btn btn-outline-teal">
-                                Apply Now
+                                Begin Registration
                             </a>
                         </div>
                     </div>

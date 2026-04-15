@@ -1,14 +1,14 @@
 const newsItems = [
     {
         tag: "Announcement",
-        title: "Admission for New Students",
-        description: "Admission is open for qualified BECE graduates for the new academic year.",
+        title: "Registration of New Students",
+        description: "Registration of fresh students for 2025/2026 academic year is officially closed.",
         image: "/images/AFRICAN%20UNION%20PARADE/2.jpg",
     },
     {
         tag: "Academic",
-        title: "Mid-Semester Examinations",
-        description: "Students are reminded to prepare adequately for upcoming examinations.",
+        title: "2026 May/June NABPTEX Examination",
+        description: "The 2026 May/June NABPTEX examination is scheduled to begin on 18 May 2026. All students are advised to collect their index slips from their respective department heads.",
         image: "/images/PLUMBING%20PRACTICAL%20SESSION/1.jpg",
     },
     {
@@ -59,7 +59,7 @@ export default function News() {
                 </div>
 
                 <div className="text-center mt-5">
-                    <a href="/news" className="btn btn-primary">
+                    <a href="/announcements" className="btn btn-primary">
                         View All Announcements
                     </a>
                 </div>
