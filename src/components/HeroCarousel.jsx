@@ -2,9 +2,14 @@ import Stats from "./Stats"
 
 const slides = [
     {
-        image: "/images/ELECTRICALS%20PRACTICE%20SESSION/banner_bg.jpg",
+        image: "/images/DJI_20260414220331_0660_D.jpg",
         title: "Cape Coast Technical Institute",
-        subtitle: "Academic excellence, discipline, and skills development",
+        subtitle: "Academic excellence, discipline, and skills development since 1955",
+    },
+    {
+        image: "/images/DJI_20260414222226_0665_D.jpg",
+        title: "An Authentic CapeTech Experience",
+        subtitle: "A vibrant campus where you can feel supported and encouraged",
     },
     {
         image: "/images/ELECTRONICS%20PRACTICAL%20SESSION/5%20%281%29.jpg",
@@ -12,12 +17,7 @@ const slides = [
         subtitle: "Preparing students for industry and higher education",
     },
     {
-        image: "/images/CENTRAL%20REGION%20TVET%20INTER%20INSTITUTE%20SPORTS%20COMPETITION/1.jpg",
-        title: "Vibrant Student Life",
-        subtitle: "Clubs, sports, leadership, and growth",
-    },
-    {
-        image: "/images/CREATIVE%20ARTS%20PRACTICAL%20SESSION/1.jpg",
+        image: "/images/DJI_20260414220551_0662_D.jpg",
         title: "Hands-On Practical Training",
         subtitle: "Building real-world skills through creative and technical workshops",
     },

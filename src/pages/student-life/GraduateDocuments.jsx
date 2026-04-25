@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Link, useSearchParams } from "react-router-dom"
 
 const documentTypes = [
     {
@@ -33,7 +33,9 @@ const documentTypes = [
 ]
 
 export default function GraduateDocuments() {
+    const [searchParams, setSearchParams] = useSearchParams()
     const [submitted, setSubmitted] = useState(false)
+    const [popupOpen, setPopupOpen] = useState(false)
     const [form, setForm] = useState({
         fullName: "",
         indexNumber: "",
@@ -46,6 +48,32 @@ export default function GraduateDocuments() {
         destination: "",
         notes: "",
     })
+
+    // Open popup when ?open=request is present (linked from Student Life list)
+    useEffect(() => {
+        if (searchParams.get("open") === "request") {
+            setPopupOpen(true)
+        }
+    }, [searchParams])
+
+    // Lock body scroll when popup open
+    useEffect(() => {
+        document.body.style.overflow = popupOpen ? "hidden" : ""
+        return () => { document.body.style.overflow = "" }
+    }, [popupOpen])
+
+    const closePopup = () => {
+        setPopupOpen(false)
+        if (searchParams.get("open")) {
+            searchParams.delete("open")
+            setSearchParams(searchParams, { replace: true })
+        }
+    }
+
+    const openPopupFor = (docTitle) => {
+        setForm((f) => ({ ...f, documentType: docTitle }))
+        setPopupOpen(true)
+    }
 
     const update = (field) => (e) => setForm({ ...form, [field]: e.target.value })
 
@@ -109,6 +137,13 @@ export default function GraduateDocuments() {
                                         <span className="value">{doc.delivery}</span>
                                     </div>
                                 </div>
+                                <button
+                                    type="button"
+                                    className="btn-editorial btn-editorial-solid grad-doc-request-btn"
+                                    onClick={() => openPopupFor(doc.title)}
+                                >
+                                    Request Document
+                                </button>
                             </div>
                         ))}
                     </div>
@@ -148,16 +183,51 @@ export default function GraduateDocuments() {
                 </div>
             </section>
 
-            {/* REQUEST FORM */}
+            {/* REQUEST FORM — Inline trigger row */}
             <section className="grad-docs-form-section" id="request">
                 <div className="container-xl">
-                    <div className="grad-docs-form-card">
-                        <div className="student-life-section-header">
-                            <p className="eyebrow-line">Request a Document</p>
-                            <h2 className="section-serif-title">Online Request Form</h2>
+                    <div className="grad-docs-cta-row">
+                        <div>
+                            <h2 className="section-serif-title">Ready to request a document?</h2>
+                            <p>Open the secure online request form to get started.</p>
                         </div>
+                        <button
+                            type="button"
+                            className="btn-editorial btn-editorial-solid"
+                            onClick={() => setPopupOpen(true)}
+                        >
+                            Request Document
+                            <i className="bi bi-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
 
-                        {submitted ? (
+            {/* POPUP — Form modal */}
+            {popupOpen && (
+                <div className="grad-docs-modal-backdrop" onClick={closePopup}>
+                    <div
+                        className="grad-docs-modal"
+                        role="dialog"
+                        aria-modal="true"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button
+                            type="button"
+                            className="grad-docs-modal-close"
+                            onClick={closePopup}
+                            aria-label="Close"
+                        >
+                            <i className="bi bi-x-lg"></i>
+                        </button>
+
+                        <div className="grad-docs-form-card">
+                            <div className="student-life-section-header">
+                                <p className="eyebrow-line">Request a Document</p>
+                                <h2 className="section-serif-title">Online Request Form</h2>
+                            </div>
+
+                            {submitted ? (
                             <div className="grad-docs-success">
                                 <div className="success-icon">
                                     <i className="bi bi-check-circle-fill"></i>
@@ -261,10 +331,11 @@ export default function GraduateDocuments() {
                                     </div>
                                 </div>
                             </form>
-                        )}
+                            )}
+                        </div>
                     </div>
                 </div>
-            </section>
+            )}
         </div>
     )
 }

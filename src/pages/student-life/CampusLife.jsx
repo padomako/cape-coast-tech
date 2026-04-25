@@ -46,8 +46,8 @@ export default function CampusLife() {
             {/* HERO */}
             <section className="subpage-hero">
                 <img
-                    src="/images/CENTRAL%20REGION%20TVET%20INTER%20INSTITUTE%20SPORTS%20COMPETITION/2.jpg"
-                    alt="Campus Life"
+                    src="/images/DJI_20260414222305_0667_D.jpg"
+                    alt="Aerial view of CapeTech campus"
                     className="subpage-hero-image"
                 />
                 <div className="subpage-hero-overlay">

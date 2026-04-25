@@ -54,25 +54,23 @@ export default function Programmes() {
             {/* ============ SECTION 1 — HERO ============ */}
             <section className="programmes-hero">
                 <img
-                    src="/images/CENTRAL%20REGION%20TVET%20INTER%20INSTITUTE%20SPORTS%20COMPETITION/1.jpg"
-                    alt="CapeTech campus"
+                    src="/images/DJI_20260414220551_0662_D.jpg"
+                    alt="Aerial view of CapeTech campus"
                     className="programmes-hero-image"
                 />
                 <div className="programmes-hero-overlay">
                     <div className="container-xl">
                         <div className="programmes-hero-content">
-                            <p className="programmes-hero-eyebrow">Cape Coast<br />Technical Institute</p>
                             <h1 className="programmes-hero-title">
                                 Explore programs<br />available at CapeTech
                             </h1>
                             <p className="programmes-hero-desc">
-                                Browse all programmes and their respective subjects offered at
-                                Cape Coast Technical Institute and learn more about career
-                                opportunities for each programme. We also offer extensive
-                                hands-on weekend Competency-Based Training programs. Open to
-                                everyone, these sessions focus on practical skills designed to
-                                empower artisans and individuals ready to build real-world
-                                expertise.
+                                Browse all programmes and their respective subjects and learn more
+                                about career opportunities for each programme. We also offer
+                                extensive hands-on weekend Competency-Based Training programs.
+                                Open to everyone, these sessions focus on practical skills
+                                designed to empower artisans and individuals ready to build
+                                real-world expertise.
                             </p>
                         </div>
                     </div>

@@ -38,8 +38,8 @@ export default function About() {
                         <div className="col-lg-6">
                             <div className="about-image-wrapper">
                                 <img
-                                    src="/images/BUILDING%20AND%20CONSTRUCTION%20PRACTICAL%20SESSION/2.jpg"
-                                    alt="Campus"
+                                    src="/images/DJI_20260414220551_0662_D.jpg"
+                                    alt="Aerial view of Cape Coast Technical Institute campus"
                                     className="img-fluid rounded shadow"
                                 />
                             </div>

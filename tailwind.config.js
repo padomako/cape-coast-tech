@@ -11,9 +11,10 @@ export default {
                 heading: ["Poppins", "system-ui", "sans-serif"],
             },
             colors: {
-                primary: "#0a1628",
-                accent: "#d4a024",
-                teal: "#1a9e8f",
+                primary: "#0d0d0d",
+                accent: "#F5C400",
+                flame: "#CC2200",
+                teal: "#F5C400",
             },
         },
     },

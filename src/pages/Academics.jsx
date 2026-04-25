@@ -35,8 +35,8 @@ export default function Academics() {
             <section className="academics-hero">
                 <div className="academics-hero-image">
                     <img
-                        src="/images/ELECTRONICS%20PRACTICAL%20SESSION/5%20%285%29.jpg"
-                        alt="Academics at Cape Coast Technical Institute"
+                        src="/images/DJI_20260414220331_0660_D.jpg"
+                        alt="Aerial view of Cape Coast Technical Institute campus"
                     />
                 </div>
                 <div className="academics-hero-content">
@@ -68,10 +68,10 @@ export default function Academics() {
             <section className="academics-intro">
                 <div className="container-xl">
                     <div className="academics-intro-grid">
-                        <div className="academics-intro-image">
+                        <div className="academics-intro-image academics-intro-image-large">
                             <img
-                                src="/images/BUILDING%20AND%20CONSTRUCTION%20PRACTICAL%20SESSION/2.jpg"
-                                alt="CCTI students in practical session"
+                                src="/images/DJI_20260414220431_0661_D.jpg"
+                                alt="Aerial view of CCTI campus and surroundings"
                             />
                         </div>
 
@@ -109,12 +109,8 @@ export default function Academics() {
                             </ul>
 
                             <div className="academics-intro-actions">
-                                <Link to="/about" className="btn-editorial btn-editorial-outline">
-                                    Learn More
-                                </Link>
-                                <Link to="/admissions" className="btn-editorial btn-editorial-solid">
-                                    Click to Begin Registration
-                                    <i className="bi bi-arrow-right ms-2"></i>
+                                <Link to="/about" className="harvard-link">
+                                    Learn more about our school
                                 </Link>
                             </div>
                         </div>
@@ -122,36 +118,33 @@ export default function Academics() {
                 </div>
             </section>
 
-            {/* ================= SECTION 4 — TRADE AREAS ================= */}
+            {/* ================= SECTION 4 — TRADE AREAS (Harvard "We saved you a seat") ================= */}
             <section className="academics-trade-section">
                 <div className="container-xl">
 
-                    <div className="academics-section-header">
+                    <div className="trade-section-head">
+                        <p className="trade-eyebrow">We saved you a seat</p>
                         <h2 className="section-serif-title">Trade Areas</h2>
-                        <p>
-                            Cape Coast Technical Institute offers programmes across three
-                            dynamic trade areas, each designed to give you practical
-                            competencies and real industry exposure.
-                        </p>
                     </div>
 
-                    <div className="trade-area-grid">
+                    <div className="trade-area-grid trade-area-grid-harvard">
                         {tradeAreas.map((area) => (
-                            <article className="trade-area-card" key={area.title}>
-                                <div className="trade-area-image">
+                            <Link
+                                to={area.link}
+                                className="trade-card-harvard"
+                                key={area.title}
+                            >
+                                <div className="trade-card-harvard-image">
                                     <img src={area.image} alt={area.title} />
                                 </div>
-                                <div className="trade-area-body">
+                                <div className="trade-card-harvard-body">
                                     <h3>{area.title}</h3>
                                     <p>{area.description}</p>
-                                    <Link to={area.link} className="trade-area-link">
-                                        <span className="trade-area-arrow">
-                                            <i className="bi bi-arrow-right"></i>
-                                        </span>
+                                    <span className="harvard-link">
                                         {area.linkText}
-                                    </Link>
+                                    </span>
                                 </div>
-                            </article>
+                            </Link>
                         ))}
                     </div>
                 </div>
@@ -163,7 +156,7 @@ export default function Academics() {
 
                     <div className="academics-section-header">
                         <h2 className="section-serif-title">
-                            Our Weekend Industrial Training Programs
+                            Our Weekend Industrial Training
                         </h2>
                     </div>
 
@@ -176,7 +169,7 @@ export default function Academics() {
                         </div>
 
                         <div className="academics-weekend-body">
-                            <p>
+                            <p className="academics-weekend-text">
                                 Kickstart your journey in the industrial field with our short,
                                 hands-on weekend Competency-Based Training programs. Open to
                                 everyone, these sessions focus on practical skills designed to
@@ -186,9 +179,9 @@ export default function Academics() {
 
                             <Link
                                 to="/weekend-training#apply"
-                                className="btn-editorial btn-editorial-solid"
+                                className="btn-editorial btn-editorial-flame"
                             >
-                                Apply
+                                Apply Now
                                 <i className="bi bi-arrow-right ms-2"></i>
                             </Link>
                         </div>

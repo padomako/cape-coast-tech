@@ -26,12 +26,13 @@ export default function Welcome() {
                             development.
                         </p>
 
-                        <div className="mt-4 d-flex gap-3">
-                            <a href="/about" className="btn btn-primary">
-                                Learn More About Us
+                        <div className="mt-4 d-flex gap-3 flex-wrap">
+                            <a href="/about" className="btn-editorial btn-editorial-solid">
+                                Learn more about our school
                             </a>
-                            <a href="/admissions" className="btn btn-outline-teal">
-                                Begin Registration
+                            <a href="/admissions" className="btn-editorial btn-editorial-flame">
+                                Apply Now
+                                <i className="bi bi-arrow-right ms-2"></i>
                             </a>
                         </div>
                     </div>
@@ -41,20 +42,20 @@ export default function Welcome() {
                         <div className="welcome-image-grid">
                             <div className="welcome-img-main">
                                 <img
-                                    src="/images/BUILDING%20AND%20CONSTRUCTION%20PRACTICAL%20SESSION/1.jpg"
-                                    alt="Construction Practical"
+                                    src="/images/DJI_20260414220431_0661_D.jpg"
+                                    alt="Aerial view of Cape Coast Technical Institute"
                                     className="img-fluid rounded"
                                 />
                             </div>
                             <div className="welcome-img-secondary">
                                 <img
-                                    src="/images/CATERING/3.jpg"
-                                    alt="Catering Class"
+                                    src="/images/DJI_20260414222003_0663_D.jpg"
+                                    alt="CapeTech campus aerial"
                                     className="img-fluid rounded"
                                 />
                                 <img
-                                    src="/images/GREEN%20DAY%20CELEBRATION/1.jpg"
-                                    alt="Green Day"
+                                    src="/images/DJI_20260414222026_0664_D.jpg"
+                                    alt="CapeTech grounds"
                                     className="img-fluid rounded"
                                 />
                             </div>

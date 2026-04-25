@@ -1,53 +1,98 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, Link } from "react-router-dom"
+
+const SOCIAL_LINKS = [
+    {
+        label: "Facebook",
+        icon: "bi-facebook",
+        href: "https://www.facebook.com/profile.php?id=100090135336628&mibextid=wwXIfr",
+    },
+    {
+        label: "Instagram (capetech.live_)",
+        icon: "bi-instagram",
+        href: "https://www.instagram.com/capetech.live_?igsh=bGx6YWQ4Nml5NXBi",
+    },
+    {
+        label: "Instagram (capetech.ediboard)",
+        icon: "bi-instagram",
+        href: "https://www.instagram.com/capetech.ediboard?igsh=eTdsZ2J4dGszNWdp&utm_source=qr",
+    },
+    {
+        label: "TikTok",
+        icon: "bi-tiktok",
+        href: "https://www.tiktok.com/@capetech.live_?_r=1&_t=ZS-95C522zZgf6",
+    },
+    {
+        label: "WhatsApp Channel",
+        icon: "bi-whatsapp",
+        href: "https://whatsapp.com/channel/0029VaHhZA9CXC3DjxGAmu0o",
+    },
+]
 
 export default function Footer() {
     const location = useLocation()
     const isContactPage = location.pathname === "/contact"
 
     return (
-        <footer style={{ background: "var(--brand-dark)", borderTop: "1px solid rgba(212, 160, 36, 0.15)" }} className="text-light pt-5">
+        <footer className="site-footer">
             <div className="container">
 
-                {/* Footer Content */}
-                <div className="row gy-4">
+                <div className="row gy-5 footer-row">
 
-                    <div className="col-md-4">
-                        <h5 className="text-primary">Cape Coast Technical Institute</h5>
-                        <p className="text-muted">
-                            A leading technical secondary institution committed to
-                            academic excellence, discipline, and skills development.
+                    {/* About */}
+                    <div className="col-lg-4 col-md-6">
+                        <h5 className="footer-brand">Cape Coast Technical Institute</h5>
+                        <p className="footer-blurb">
+                            A leading technical institution committed to academic
+                            excellence, discipline, and skills development since 1955.
                         </p>
-                        <div className="d-flex gap-3 mt-3">
-                            <a href="#" className="footer-social"><i className="bi bi-facebook"></i></a>
-                            <a href="#" className="footer-social"><i className="bi bi-twitter-x"></i></a>
-                            <a href="#" className="footer-social"><i className="bi bi-instagram"></i></a>
+                        <div className="footer-socials">
+                            {SOCIAL_LINKS.map((s) => (
+                                <a
+                                    key={s.label + s.href}
+                                    href={s.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={s.label}
+                                    title={s.label}
+                                    className="footer-social"
+                                >
+                                    <i className={`bi ${s.icon}`}></i>
+                                </a>
+                            ))}
                         </div>
                     </div>
 
-                    <div className="col-md-4">
-                        <h6 className="text-primary">Quick Links</h6>
+                    {/* Quick Links */}
+                    <div className="col-lg-3 col-md-6">
+                        <h6 className="footer-heading">Quick Links</h6>
                         <ul className="list-unstyled footer-links">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/academics">Academics</a></li>
-                            <li><a href="/admissions">Admissions</a></li>
-                            <li><a href="/students">Students</a></li>
-                            <li><a href="/contact">Contact</a></li>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/academics">Academics</Link></li>
+                            <li><Link to="/programmes">Programmes</Link></li>
+                            <li><Link to="/admissions">Admissions</Link></li>
+                            <li><Link to="/announcements">News &amp; Announcements</Link></li>
+                            <li><Link to="/students">Student Life</Link></li>
+                            <li><Link to="/contact">Contact</Link></li>
                         </ul>
                     </div>
 
-                    <div className="col-md-4">
-                        <h6 className="text-primary">Contact</h6>
+                    {/* Contact */}
+                    <div className="col-lg-5 col-md-12">
+                        <h6 className="footer-heading">School&rsquo;s Contact Information</h6>
+                        <address className="footer-address">
+                            <div>Cape Coast Technical Institute</div>
+                            <div>P. O. Box DL155</div>
+                            <div>Digital Address: CC-118-5493</div>
+                            <div>Cape Coast, C/Region</div>
+                            <div>Ghana, West Africa</div>
+                        </address>
                         <div className="footer-contact-item">
-                            <i className="bi bi-geo-alt-fill"></i>
-                            <span>Abura, Cape Coast</span>
+                            <i className="bi bi-envelope-fill"></i>
+                            <a href="mailto:capetechedu@gmail.com">capetechedu@gmail.com</a>
                         </div>
                         <div className="footer-contact-item">
                             <i className="bi bi-telephone-fill"></i>
-                            <span>+233 XXX XXX XXX</span>
-                        </div>
-                        <div className="footer-contact-item">
-                            <i className="bi bi-envelope-fill"></i>
-                            <span>info@ccti.edu.gh</span>
+                            <a href="tel:+233332092170">+233 33 209 21708</a>
                         </div>
                     </div>
 
@@ -55,7 +100,7 @@ export default function Footer() {
 
                 {/* MAP — ONLY ON CONTACT PAGE */}
                 {isContactPage && (
-                    <div className="mt-4" style={{ borderRadius: "12px", overflow: "hidden" }}>
+                    <div className="footer-map">
                         <iframe
                             title="Cape Coast Technical Institute Location"
                             src="https://www.google.com/maps?q=Abura%20Cape%20Coast&output=embed"
@@ -68,9 +113,9 @@ export default function Footer() {
                     </div>
                 )}
 
-                <hr style={{ borderColor: "rgba(212, 160, 36, 0.15)" }} className="my-4" />
+                <hr className="footer-divider" />
 
-                <p className="text-center text-muted small pb-3 mb-0">
+                <p className="footer-copy">
                     &copy; {new Date().getFullYear()} Cape Coast Technical Institute. All Rights Reserved.
                 </p>
 

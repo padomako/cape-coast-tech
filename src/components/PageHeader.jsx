@@ -1,7 +1,7 @@
 const headerImages = {
-    about: "/images/AFRICAN%20UNION%20PARADE/5.jpg",
-    academics: "/images/ELECTRONICS%20PRACTICAL%20SESSION/5%20%285%29.jpg",
-    contact: "/images/GREEN%20DAY%20CELEBRATION/4.jpg",
+    about: "/images/DJI_20260414220331_0660_D.jpg",
+    academics: "/images/DJI_20260414220431_0661_D.jpg",
+    contact: "/images/DJI_20260414222003_0663_D.jpg",
 }
 
 export default function PageHeader({ title, subtitle, variant }) {

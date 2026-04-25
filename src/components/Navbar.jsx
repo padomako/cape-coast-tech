@@ -47,7 +47,7 @@ const academicsGroups = [
 ]
 
 const studentLinks = [
-    { to: "/students", label: "Student Life Overview" },
+    { to: "/students", label: "Student Life" },
     { to: "/student-life/campus", label: "Campus Life" },
     { to: "/student-life/hostels", label: "Recommended Hostels" },
     { to: "/student-login", label: "Student Portal" },
@@ -64,7 +64,7 @@ const pagesIndex = [
     { to: "/weekend-training", title: "Weekend Industrial Training", category: "Page", keywords: "weekend industrial training artisan cbt competency hands-on apply" },
     { to: "/admissions", title: "Admissions", category: "Page", keywords: "admissions register registration apply enroll" },
     { to: "/announcements", title: "News & Announcements", category: "Page", keywords: "announcements news nabptex registration event" },
-    { to: "/students", title: "Student Life", category: "Page", keywords: "student life students campus" },
+    { to: "/students", title: "Student Life", category: "Page", keywords: "student life students campus residential portal hostels graduate documents welcome home today" },
     { to: "/student-life/campus", title: "Campus Life", category: "Student Life", keywords: "campus sports cultural events workshops" },
     { to: "/student-life/hostels", title: "Recommended Hostels", category: "Student Life", keywords: "hostels accommodation male female hostel boarding" },
     { to: "/student-login", title: "Student Portal", category: "Student Life", keywords: "portal login dashboard records" },

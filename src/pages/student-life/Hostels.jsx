@@ -139,8 +139,8 @@ export default function Hostels() {
             {/* HERO */}
             <section className="subpage-hero">
                 <img
-                    src="/images/GREEN%20DAY%20CELEBRATION/1.jpg"
-                    alt="Recommended Hostels"
+                    src="/images/DJI_20260414222253_0666_D.jpg"
+                    alt="Recommended Hostels — aerial view of CapeTech surroundings"
                     className="subpage-hero-image"
                 />
                 <div className="subpage-hero-overlay">
