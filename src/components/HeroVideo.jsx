@@ -50,7 +50,7 @@ export default function HeroVideo() {
                             <i className="bi bi-arrow-right ms-2"></i>
                         </Link>
                         <Link to="/admissions" className="btn-editorial btn-editorial-flame">
-                            Apply Now
+                            Register Now
                         </Link>
                     </div>
                 </div>
