@@ -10,19 +10,19 @@
    Red:   flame — sparingly for CTAs only
 ================================================== */
 :root {
-    --brand-dark: #0d0d0d;          /* Crest Black — primary bg */
-    --brand-dark-2: #1A1A1A;        /* Slightly lifted black for sections */
-    --brand-dark-3: #232323;        /* Card surface */
-    --brand-gold: #F5C400;          /* Crest Gold — accents/headings */
-    --brand-gold-soft: #FFD93B;     /* Hover gold */
-    --brand-gold-deep: #C99C00;     /* Pressed/deep gold */
+    --brand-dark: #ffffff;          /* Light theme — primary bg */
+    --brand-dark-2: #f5f5f5;        /* Slightly off-white for sections */
+    --brand-dark-3: #eeeeee;        /* Card surface */
+    --brand-gold: #C99C00;          /* Crest Gold — deeper for light bg readability */
+    --brand-gold-soft: #F5C400;     /* Hover gold */
+    --brand-gold-deep: #a07a00;     /* Pressed/deep gold */
     --brand-red: #CC2200;           /* Flame red — CTA only */
     --brand-red-soft: #E13B1F;      /* Hover red */
-    --brand-text: #FFFFFF;          /* Pure white text/icons */
-    --brand-text-muted: #BDBDBD;    /* Soft white for body */
-    --brand-text-dim: #8A8A8A;      /* Captions/labels */
-    --brand-teal: #F5C400;          /* Legacy alias → gold */
-    --brand-teal-soft: #FFD93B;     /* Legacy alias → gold soft */
+    --brand-text: #0d0d0d;          /* Near-black text */
+    --brand-text-muted: #444444;    /* Soft dark for body */
+    --brand-text-dim: #777777;      /* Captions/labels */
+    --brand-teal: #C99C00;          /* Legacy alias → gold */
+    --brand-teal-soft: #F5C400;     /* Legacy alias → gold soft */
 }
 
 /* ===============================
@@ -158,7 +158,7 @@ body {
     border: 1px solid rgba(245, 196, 0, 0.3);
     padding: 1.5rem;
     border-radius: 14px;
-    background: rgba(13, 13, 13, 0.6);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .gold-divider {
@@ -192,13 +192,13 @@ body {
     top: 50%;
     left: 8%;
     transform: translateY(-50%);
-    background: rgba(13, 13, 13, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
     padding: 2.5rem;
     max-width: 540px;
     border-radius: 16px;
     border-left: 4px solid var(--brand-gold);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
 }
 
 .hero-caption h2 {
@@ -405,7 +405,7 @@ body {
 .stats-card {
     max-width: 1100px;
     margin: 0 auto;
-    background: linear-gradient(135deg, #0d0d0d 0%, #1A1A1A 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
     border: 1px solid rgba(245, 196, 0, 0.3);
     border-radius: 18px;
     padding: 1.5rem 1.5rem;
@@ -517,7 +517,7 @@ body {
         margin: 0;
         padding: 1.5rem 1.2rem;
 
-        background: var(--brand-dark);
+        background: #ffffff;
         border-left: none;
         border-radius: 0;
         z-index: 2;
@@ -535,7 +535,7 @@ body {
     .stats-card {
         max-width: 950px;
         margin: 0 20px;
-        background: #000;
+        background: #ffffff;
         border: 1px solid var(--brand-gold);
         border-radius: 8px;
         padding: 1.4rem 1rem;
@@ -569,8 +569,8 @@ body {
 
 .students-menu-toggle {
     width: 100%;
-    background: #1A1A1A;
-    color: #fff;
+    background: #eeeeee;
+    color: #0d0d0d;
     border: none;
     padding: 0.9rem;
     font-weight: 600;
@@ -582,7 +582,7 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-    background: var(--brand-dark-2);
+    background: #f5f5f5;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
@@ -594,8 +594,8 @@ body {
 
 .students-mobile-links li {
     padding: 0.9rem 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    color: #ddd;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    color: #333;
     cursor: pointer;
     transition: 0.3s ease;
 }
@@ -620,7 +620,7 @@ body {
     padding-top: 8rem;
     /* space for floating stats */
     padding-bottom: 5rem;
-    background: linear-gradient(180deg, var(--brand-dark-2) 0%, var(--brand-dark) 100%);
+    background: linear-gradient(180deg, #f5f5f5 0%, #ffffff 100%);
 }
 
 /* ==================================================
@@ -629,8 +629,8 @@ body {
 .highlight-card {
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     border-radius: 14px;
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(26, 26, 26, 0.95) 100%);
-    border: 1px solid rgba(245, 196, 0, 0.15);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.98) 100%);
+    border: 1px solid rgba(201, 156, 0, 0.25);
     overflow: hidden;
 }
 
@@ -711,8 +711,8 @@ body {
     width: 100%;
     height: 40px;
     background: linear-gradient(to bottom,
-            rgba(0, 0, 0, 0),
-            rgba(0, 0, 0, 0.35));
+            rgba(255, 255, 255, 0),
+            rgba(245, 245, 245, 0.35));
     pointer-events: none;
 }
 
@@ -753,14 +753,14 @@ body {
     transform: translateX(-50%) translateY(8px);
     min-width: 280px;
 
-    background: rgba(13, 13, 13, 0.98);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(245, 196, 0, 0.2);
+    border: 1px solid rgba(201, 156, 0, 0.25);
     border-radius: 14px;
 
     padding: 0.6rem 0;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65),
-        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(0, 0, 0, 0.04) inset;
 
     opacity: 0;
     pointer-events: none;
@@ -789,8 +789,8 @@ body {
 }
 
 .nav-dropdown a:hover {
-    background: linear-gradient(90deg, rgba(245, 196, 0, 0.1), transparent);
-    color: #fff;
+    background: linear-gradient(90deg, rgba(201, 156, 0, 0.1), transparent);
+    color: #0d0d0d;
     padding-left: 1.75rem;
 }
 
@@ -841,7 +841,7 @@ body {
 }
 
 .mega-column a:hover {
-    color: #fff !important;
+    color: #0d0d0d !important;
     padding-left: 8px !important;
     background: none !important;
 }
@@ -901,7 +901,7 @@ body {
 }
 
 .mobile-accordion-panel {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.04);
     padding: 0.5rem 1rem 1rem;
 }
 
@@ -934,7 +934,7 @@ body {
 
 .mobile-accordion-panel a {
     display: block;
-    color: var(--brand-text-muted);
+    color: #333;
     text-decoration: none;
     font-size: 0.9rem;
     padding: 0.4rem 0 0.4rem 0.5rem;
@@ -1185,8 +1185,8 @@ body {
 ================================ */
 
 .approach-card {
-    background: rgba(13, 13, 13, 0.7);
-    border: 1px solid rgba(245, 196, 0, 0.18);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(201, 156, 0, 0.25);
     border-radius: 14px;
     padding: 2rem 1.75rem;
     height: 100%;
@@ -1233,10 +1233,7 @@ body {
 /* Sidebar */
 .students-sidebar {
     width: 100%;
-    background: linear-gradient(180deg, var(--brand-dark-2), #1A1A1A);
-    border: 2px solid var(--brand-gold);
-    border-radius: 12px;
-    padding: 1.25rem;
+    background: linear-gradient(180deg, #f5f5f5, #eeeeee);
 }
 
 .students-page .row {
@@ -1244,8 +1241,8 @@ body {
 }
 
 .sidebar-title {
-    color: #fff;
-    background: #1A1A1A;
+    color: #0d0d0d;
+    background: #eeeeee;
     padding: 0.6rem 1rem;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -1265,7 +1262,7 @@ body {
 .sidebar-links a {
     display: block;
     padding: 0.75rem 0;
-    color: #ddd;
+    color: #333;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s ease;
@@ -1282,7 +1279,7 @@ body {
 }
 
 .students-text p {
-    color: #ddd;
+    color: #333;
     line-height: 1.7;
     margin-bottom: 1rem;
 }
@@ -1304,7 +1301,7 @@ body {
     width: 100%;
     background: none;
     border: none;
-    color: #ddd;
+    color: #333;
     text-align: left;
     padding: 0.6rem 0;
     font-weight: 500;
@@ -1350,7 +1347,7 @@ body {
 .students-text {
     font-size: 1.05rem;
     line-height: 1.6;
-    color: #e0e0e0;
+    color: #333;
 }
 
 .students-image-wrapper {
@@ -1371,7 +1368,7 @@ body {
     margin-bottom: 0.4rem;
     border-radius: 10px;
     cursor: pointer;
-    color: #ddd;
+    color: #333;
     transition: all 0.25s ease;
 }
 
@@ -1436,7 +1433,7 @@ body {
 
 .students-caption {
     font-size: 1rem;
-    color: #ddd;
+    color: #444;
     line-height: 1.6;
 }
 
@@ -1444,7 +1441,7 @@ body {
 .documents-list li {
     padding: 0.75rem 1rem;
     margin-bottom: 0.5rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.04);
     border-radius: 8px;
     transition: all 0.2s ease;
 }
@@ -1494,7 +1491,7 @@ body {
 }
 
 .divider-icon-wrapper {
-    background: rgb(0, 0, 0);
+    background: rgb(255, 255, 255);
     padding: 5px;
     display: flex;
     align-items: center;
@@ -1571,15 +1568,15 @@ body {
 .students-sidebar {
     width: 100%;
     max-width: 320px;
-    background: linear-gradient(180deg, var(--brand-dark-2), #1A1A1A);
+    background: linear-gradient(180deg, #f5f5f5, #eeeeee);
     border-radius: 4px;
     overflow: hidden;
 }
 
 /* Top Block */
 .students-sidebar-header {
-    background: #1A1A1A;
-    color: #e6e6e6;
+    background: #eeeeee;
+    color: #0d0d0d;
     font-size: 1rem;
     font-family: serif;
     padding: 1.2rem 2rem;
