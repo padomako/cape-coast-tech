@@ -30,10 +30,6 @@ export default function Welcome() {
                             <a href="/about" className="btn-editorial btn-editorial-solid">
                                 Learn more about our school
                             </a>
-                            <a href="/admissions" className="btn-editorial btn-editorial-flame">
-                                Apply Now
-                                <i className="bi bi-arrow-right ms-2"></i>
-                            </a>
                         </div>
                     </div>
 
