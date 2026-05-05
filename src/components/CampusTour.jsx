@@ -30,7 +30,7 @@ export default function CampusTour() {
                     </p>
                 </div>
 
-                <div className="campus-tour-frame">
+                <div className="campus-tour-frame" onClick={togglePlay}>
                     <video
                         ref={videoRef}
                         src="/video/DJI_20260414222659_0669_D.mp4"
@@ -43,21 +43,22 @@ export default function CampusTour() {
 
                     {!started && <div className="campus-tour-poster-fade" />}
 
-                    <button
-                        type="button"
-                        className={`campus-tour-play ${playing ? "playing" : ""}`}
-                        onClick={togglePlay}
-                        aria-label={playing ? "Pause tour" : "Play tour"}
-                    >
-                        <i className={`bi ${playing ? "bi-pause-fill" : "bi-play-fill"}`}></i>
-                    </button>
-
                     {!started && (
                         <span className="campus-tour-watch">
                             Watch the tour
                             <i className="bi bi-arrow-right ms-2"></i>
                         </span>
                     )}
+
+                    {/* Small bottom-right control — exact replica of image 2 */}
+                    <button
+                        type="button"
+                        className="campus-tour-play"
+                        onClick={(e) => { e.stopPropagation(); togglePlay(); }}
+                        aria-label={playing ? "Pause tour" : "Play tour"}
+                    >
+                        <i className={`bi ${playing ? "bi-pause-fill" : "bi-play-fill"}`}></i>
+                    </button>
                 </div>
             </div>
         </section>
