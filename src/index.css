@@ -10,19 +10,32 @@
    Red:   flame — sparingly for CTAs only
 ================================================== */
 :root {
-    --brand-dark: #ffffff;          /* Light theme — primary bg */
-    --brand-dark-2: #f5f5f5;        /* Slightly off-white for sections */
-    --brand-dark-3: #eeeeee;        /* Card surface */
-    --brand-gold: #C99C00;          /* Crest Gold — deeper for light bg readability */
-    --brand-gold-soft: #F5C400;     /* Hover gold */
-    --brand-gold-deep: #a07a00;     /* Pressed/deep gold */
-    --brand-red: #CC2200;           /* Flame red — CTA only */
-    --brand-red-soft: #E13B1F;      /* Hover red */
-    --brand-text: #0d0d0d;          /* Near-black text */
-    --brand-text-muted: #444444;    /* Soft dark for body */
-    --brand-text-dim: #777777;      /* Captions/labels */
-    --brand-teal: #C99C00;          /* Legacy alias → gold */
-    --brand-teal-soft: #F5C400;     /* Legacy alias → gold soft */
+    --brand-dark: #ffffff;
+    /* Light theme — primary bg */
+    --brand-dark-2: #f5f5f5;
+    /* Slightly off-white for sections */
+    --brand-dark-3: #eeeeee;
+    /* Card surface */
+    --brand-gold: #C99C00;
+    /* Crest Gold — deeper for light bg readability */
+    --brand-gold-soft: #F5C400;
+    /* Hover gold */
+    --brand-gold-deep: #a07a00;
+    /* Pressed/deep gold */
+    --brand-red: #CC2200;
+    /* Flame red — CTA only */
+    --brand-red-soft: #E13B1F;
+    /* Hover red */
+    --brand-text: #0d0d0d;
+    /* Near-black text */
+    --brand-text-muted: #444444;
+    /* Soft dark for body */
+    --brand-text-dim: #777777;
+    /* Captions/labels */
+    --brand-teal: #C99C00;
+    /* Legacy alias → gold */
+    --brand-teal-soft: #F5C400;
+    /* Legacy alias → gold soft */
 }
 
 /* ===============================
@@ -1908,7 +1921,7 @@ body {
 .admissions-video-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.75) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.55) 70%, rgba(0, 0, 0, 0.75) 100%);
     z-index: 1;
 }
 
@@ -2253,14 +2266,17 @@ body {
     .admissions-step-card {
         grid-template-columns: 1fr;
     }
+
     .admissions-step-side {
         border-right: none;
         border-bottom: 1px solid rgba(245, 196, 0, 0.18);
     }
+
     .admissions-guide-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+
     .admissions-downloads-grid {
         grid-template-columns: 1fr;
     }
@@ -2271,6 +2287,7 @@ body {
         height: 65vh;
         min-height: 420px;
     }
+
     .admissions-step-body,
     .admissions-step-side {
         padding: 1.75rem 1.5rem;
@@ -3549,15 +3566,19 @@ textarea.form-input-custom {
     .announcement-list-item {
         grid-template-columns: 1fr;
     }
+
     .announcement-list-item .body {
         padding: 1.5rem;
     }
+
     .announcement-list-item .thumb {
         height: 220px;
     }
+
     .weekend-hero-overlay h1 {
         font-size: 2rem;
     }
+
     .weekend-apply-card {
         padding: 2rem 1.5rem;
     }
@@ -3904,29 +3925,37 @@ textarea.form-input-custom {
     .topbar-inner {
         padding: 0.85rem 1rem;
     }
+
     .brand-line-1 {
         font-size: 1.05rem;
     }
+
     .brand-line-2 {
         font-size: 0.6rem;
         letter-spacing: 1.8px;
     }
+
     .topbar-btn-label {
         display: none;
     }
+
     .topbar-btn {
         padding: 0.6rem 0.75rem;
     }
+
     .menu-overlay-inner {
         padding: 100px 0 40px;
     }
+
     .menu-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+
     .menu-big-links a {
         font-size: 1.6rem;
     }
+
     .menu-footer {
         flex-direction: column;
         align-items: flex-start;
@@ -3934,13 +3963,20 @@ textarea.form-input-custom {
 }
 
 /* ============ TYPOGRAPHY REFINEMENT ============ */
-h1, h2, h3, .section-title, .page-title, .hero-title {
+h1,
+h2,
+h3,
+.section-title,
+.page-title,
+.hero-title {
     font-family: "Cormorant Garamond", Georgia, serif !important;
     font-weight: 600;
     letter-spacing: -0.3px;
 }
 
-h1, .page-title, .hero-title {
+h1,
+.page-title,
+.hero-title {
     font-weight: 700;
 }
 
@@ -3986,12 +4022,10 @@ h1, .page-title, .hero-title {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        90deg,
-        rgba(13, 13, 13, 0.85) 0%,
-        rgba(13, 13, 13, 0.55) 50%,
-        rgba(13, 13, 13, 0.35) 100%
-    );
+    background: linear-gradient(90deg,
+            rgba(13, 13, 13, 0.85) 0%,
+            rgba(13, 13, 13, 0.55) 50%,
+            rgba(13, 13, 13, 0.35) 100%);
 }
 
 .academics-hero-content {
@@ -4580,16 +4614,19 @@ h1, .page-title, .hero-title {
 
 /* ---- Responsive ---- */
 @media (max-width: 992px) {
+
     .academics-intro-grid,
     .academics-weekend-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
     }
+
     .trade-area-grid,
     .approach-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+
     .academics-intro-image img,
     .academics-weekend-image img {
         height: 360px;
@@ -4940,8 +4977,13 @@ h1, .page-title, .hero-title {
 }
 
 @keyframes panelFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .programme-panel {
@@ -4956,8 +4998,13 @@ h1, .page-title, .hero-title {
 }
 
 @keyframes panelSlideIn {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 .programme-panel-close {
@@ -5188,31 +5235,39 @@ h1, .page-title, .hero-title {
     .programmes-hero-overlay {
         padding: 6rem 0 4rem;
     }
+
     .filter-bar-inner {
         gap: 0.5rem;
     }
+
     .search-pill {
         order: 3;
         min-width: 100%;
     }
+
     .programmes-table-head,
     .programme-row {
         grid-template-columns: 1fr;
         gap: 0.5rem;
     }
+
     .programmes-table-head .col-cert {
         display: none;
     }
+
     .panel-meta-row {
         grid-template-columns: 1fr;
         gap: 0.75rem;
     }
+
     .panel-split {
         grid-template-columns: 1fr;
     }
+
     .programme-panel {
         max-width: 100%;
     }
+
     .programme-panel-body,
     .programme-panel-hero-overlay {
         padding: 1.5rem;
@@ -5251,12 +5306,10 @@ h1, .page-title, .hero-title {
     z-index: 2;
     width: 100%;
     padding: 8rem 0 6rem;
-    background: linear-gradient(
-        100deg,
-        rgba(13, 13, 13, 0.92) 0%,
-        rgba(13, 13, 13, 0.7) 50%,
-        rgba(13, 13, 13, 0.3) 100%
-    );
+    background: linear-gradient(100deg,
+            rgba(13, 13, 13, 0.92) 0%,
+            rgba(13, 13, 13, 0.7) 50%,
+            rgba(13, 13, 13, 0.3) 100%);
 }
 
 .student-life-hero-overlay .eyebrow {
@@ -5442,12 +5495,10 @@ h1, .page-title, .hero-title {
     z-index: 2;
     width: 100%;
     padding: 8rem 0 5rem;
-    background: linear-gradient(
-        100deg,
-        rgba(13, 13, 13, 0.92) 0%,
-        rgba(13, 13, 13, 0.7) 55%,
-        rgba(13, 13, 13, 0.4) 100%
-    );
+    background: linear-gradient(100deg,
+            rgba(13, 13, 13, 0.92) 0%,
+            rgba(13, 13, 13, 0.7) 55%,
+            rgba(13, 13, 13, 0.4) 100%);
 }
 
 .subpage-breadcrumb {
@@ -5830,7 +5881,7 @@ h1, .page-title, .hero-title {
     margin: 0 0 0.75rem;
 }
 
-.grad-doc-card > p {
+.grad-doc-card>p {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.92rem;
     line-height: 1.65;
@@ -5981,34 +6032,42 @@ h1, .page-title, .hero-title {
    RESPONSIVE
 =============================================== */
 @media (max-width: 992px) {
+
     .student-life-grid,
     .grad-docs-grid {
         grid-template-columns: 1fr;
     }
+
     .hostels-grid,
     .campus-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .steps-timeline {
         grid-template-columns: repeat(2, 1fr);
         gap: 2.5rem;
     }
+
     .steps-timeline::before {
         display: none;
     }
 }
 
 @media (max-width: 640px) {
+
     .hostels-grid,
     .campus-grid {
         grid-template-columns: 1fr;
     }
+
     .steps-timeline {
         grid-template-columns: 1fr;
     }
+
     .grad-docs-form-card {
         padding: 1.75rem;
     }
+
     .hostels-group-header {
         flex-direction: column;
         align-items: flex-start;
@@ -6108,7 +6167,7 @@ h1, .page-title, .hero-title {
     box-shadow: 0 0 0 4px rgba(245, 196, 0, 0.1);
 }
 
-.search-input-wrap > i {
+.search-input-wrap>i {
     color: rgba(255, 255, 255, 0.5);
     font-size: 1.1rem;
     margin-right: 0.85rem;
@@ -6172,7 +6231,7 @@ h1, .page-title, .hero-title {
     margin: 0;
 }
 
-.search-results li + li {
+.search-results li+li {
     margin-top: 0.35rem;
 }
 
@@ -6224,15 +6283,15 @@ h1, .page-title, .hero-title {
     text-overflow: ellipsis;
 }
 
-.search-result-item > i {
+.search-result-item>i {
     color: rgba(255, 255, 255, 0.4);
     font-size: 0.95rem;
     flex-shrink: 0;
     transition: all 0.25s ease;
 }
 
-.search-result-item.active > i,
-.search-result-item:hover > i {
+.search-result-item.active>i,
+.search-result-item:hover>i {
     color: var(--brand-gold);
     transform: translateX(3px);
 }
@@ -6352,9 +6411,11 @@ h1, .page-title, .hero-title {
     .search-overlay {
         padding: 5rem 1rem 2rem;
     }
+
     .search-overlay-inner {
         padding: 2rem 1.25rem 1.5rem;
     }
+
     .search-input {
         font-size: 0.98rem;
     }
@@ -6501,7 +6562,7 @@ h1, .page-title, .hero-title {
     flex-direction: column;
 }
 
-.news-headline-list li + li {
+.news-headline-list li+li {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -6702,15 +6763,18 @@ h1, .page-title, .hero-title {
 }
 
 @media (max-width: 992px) {
+
     .institute-news-feature-grid,
     .around-campus-feature {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+
     .around-campus-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+
     .institute-news-tabs {
         gap: 1rem 1.5rem;
     }
@@ -6746,7 +6810,7 @@ h1, .page-title, .hero-title {
 .sl-video-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.75) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.55) 70%, rgba(0, 0, 0, 0.75) 100%);
     z-index: 1;
 }
 
@@ -7123,6 +7187,7 @@ h1, .page-title, .hero-title {
 }
 
 @media (max-width: 992px) {
+
     .sl-welcome-grid,
     .sl-today-grid,
     .sl-residential-grid,
@@ -7130,6 +7195,7 @@ h1, .page-title, .hero-title {
         grid-template-columns: 1fr;
         gap: 2.5rem;
     }
+
     .sl-residential-collage {
         grid-template-rows: 160px 160px;
     }
@@ -7187,8 +7253,13 @@ h1, .page-title, .hero-title {
 }
 
 @keyframes gradModalFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .grad-docs-modal {
@@ -7206,8 +7277,15 @@ h1, .page-title, .hero-title {
 }
 
 @keyframes gradModalSlide {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .grad-docs-modal-close {
@@ -7247,6 +7325,7 @@ h1, .page-title, .hero-title {
         align-items: flex-start;
         padding: 1.5rem;
     }
+
     .grad-docs-modal {
         padding: 2rem 1.25rem;
     }
@@ -7365,10 +7444,12 @@ h1, .page-title, .hero-title {
     .home-video-hero {
         height: 80vh;
     }
+
     .home-video-hero-caption {
         left: 6%;
         bottom: 8rem;
     }
+
     .home-video-hero-controls {
         bottom: 6rem;
         right: 1rem;
@@ -7380,12 +7461,14 @@ h1, .page-title, .hero-title {
         height: 75vh;
         min-height: 460px;
     }
+
     .home-video-hero-caption {
         left: 5%;
         right: 5%;
         bottom: 7rem;
         padding-right: 0;
     }
+
     .home-video-hero-actions .btn-editorial {
         padding: 0.85rem 1.25rem;
         font-size: 0.78rem;
@@ -7508,6 +7591,7 @@ h1, .page-title, .hero-title {
     .campus-tour-section {
         padding: 4rem 0;
     }
+
     .campus-tour-play {
         width: 72px;
         height: 72px;
