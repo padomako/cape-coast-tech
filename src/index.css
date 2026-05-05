@@ -7438,9 +7438,7 @@ h1,
 }
 
 .home-video-hero-btn:hover {
-    background: var(--brand-gold);
-    border-color: var(--brand-gold);
-    color: #0d0d0d;
+    background: rgba(0, 0, 0, 0.7);
 }
 
 @media (max-width: 992px) {
