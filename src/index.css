@@ -644,6 +644,10 @@ body {
     color: #fff !important;
 }
 
+.section-dark-section .text-primary {
+    color: #fff !important;
+}
+
 /* ==================================================
    HIGHLIGHTS
 ================================================== */
