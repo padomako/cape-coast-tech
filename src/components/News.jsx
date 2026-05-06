@@ -32,7 +32,7 @@ export default function News() {
                         News & Announcements
                     </h2>
                     <div className="gold-divider"></div>
-                    <p className="text-light opacity-75">
+                    <p className="text-light opacity-75 mx-auto" style={{ maxWidth: "600px" }}>
                         Stay informed with the latest updates from the Institute
                     </p>
                 </div>
