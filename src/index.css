@@ -636,6 +636,10 @@ body {
     background: linear-gradient(180deg, var(--brand-dark-2) 0%, var(--brand-dark) 100%);
 }
 
+.welcome-section .text-primary {
+    color: #fff !important;
+}
+
 /* ==================================================
    HIGHLIGHTS
 ================================================== */
