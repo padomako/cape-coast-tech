@@ -4690,7 +4690,9 @@ h1,
 }
 
 .programmes-hero-content {
-    max-width: 760px;
+    position: relative;
+    z-index: 3;
+    padding: 8rem 0 6rem;
 }
 
 .programmes-hero-eyebrow {
