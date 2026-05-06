@@ -4681,12 +4681,9 @@ h1,
 }
 
 .programmes-hero-overlay {
-    position: relative;
+    position: absolute;
+    inset: 0;
     z-index: 2;
-    width: 100%;
-    padding: 8rem 0 6rem;
-    /* Corrected overlay: vignette + bottom-weighted gradient so the image
-       reads clearly while keeping headline contrast on the left */
     background:
         linear-gradient(180deg, rgba(13, 13, 13, 0.35) 0%, rgba(13, 13, 13, 0.7) 100%),
         linear-gradient(90deg, rgba(13, 13, 13, 0.7) 0%, rgba(13, 13, 13, 0.25) 60%, rgba(13, 13, 13, 0) 100%);
