@@ -156,6 +156,10 @@ body {
    SECTION UTILITIES
 ================================================== */
 .section-dark {
+    background-color: var(--brand-dark);
+}
+
+.section-dark .text-primary {
     color: #fff !important;
 }
 
@@ -643,6 +647,7 @@ body {
 .weekend-training-section .text-primary {
     color: #fff !important;
 }
+
 
 /* ==================================================
    HIGHLIGHTS
