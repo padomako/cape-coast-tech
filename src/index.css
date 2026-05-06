@@ -167,6 +167,10 @@ body {
     background-color: var(--brand-dark-2);
 }
 
+.section-soft .text-primary {
+    color: #fff !important;
+}
+
 .section-padding {
     padding: 3rem 0;
 }
