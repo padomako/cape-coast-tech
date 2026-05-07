@@ -1880,8 +1880,8 @@ body {
     left: 0;
     right: 0;
     z-index: 2;
-    text-align: right;
-    padding-right: 2rem;
+    text-align: left;
+    padding-right: 0;
     /* add this */
 }
 
@@ -1893,8 +1893,8 @@ body {
     margin: 0;
     letter-spacing: -1px;
     line-height: 1;
-    text-align: right;
-    padding-right: 2rem;
+    text-align: left;
+    padding-right: 0;
     /* add this */
 }
 
