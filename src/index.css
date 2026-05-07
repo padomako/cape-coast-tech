@@ -1880,10 +1880,8 @@ body {
     left: 0;
     right: 0;
     z-index: 2;
-    text-align: left;
-    padding: 0 0 1.5rem 2.5rem;
-    /* bottom and left padding only */
-    /* add this */
+    padding-left: 1.75rem;
+    /* matches breadcrumb exactly */
 }
 
 .admissions-image-hero-title {
@@ -1894,8 +1892,6 @@ body {
     margin: 0;
     letter-spacing: -1px;
     line-height: 1;
-    text-align: left;
-    padding-right: 0;
     /* add this */
 }
 
