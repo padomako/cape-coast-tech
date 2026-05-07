@@ -1876,12 +1876,13 @@ body {
 
 .admissions-image-hero-content {
     position: absolute;
-    bottom: 4rem;
+    bottom: 0;
     left: 0;
     right: 0;
     z-index: 2;
     text-align: left;
-    padding-right: 0;
+    padding: 0 0 1.5rem 2.5rem;
+    /* bottom and left padding only */
     /* add this */
 }
 
