@@ -1881,6 +1881,8 @@ body {
     right: 0;
     z-index: 2;
     text-align: right;
+    padding-right: 2rem;
+    /* add this */
 }
 
 .admissions-image-hero-title {
@@ -1892,6 +1894,8 @@ body {
     letter-spacing: -1px;
     line-height: 1;
     text-align: right;
+    padding-right: 2rem;
+    /* add this */
 }
 
 @media (max-width: 768px) {
