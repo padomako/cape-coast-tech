@@ -6458,11 +6458,11 @@ h1,
     margin: 0 0.35rem;
 }
 
-.topbar-btn.is-open {
+/*.topbar-btn.is-open {
     background: var(--brand-gold);
     border-color: var(--brand-gold);
     color: #0d0d0d;
-}
+}*/
 
 @media (max-width: 640px) {
     .search-overlay {
