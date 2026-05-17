@@ -3712,6 +3712,39 @@ textarea.form-input-custom {
     color: #0d0d0d;
 }
 
+/* ADD everything below */
+.topbar-menu-btn.is-open .bi-x-lg {
+    display: inline-block;
+    animation: spin-in 0.3s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.topbar-menu-btn.is-open:hover .bi-x-lg {
+    animation: none;
+    transform: rotate(90deg) scale(1.15);
+    transition: transform 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+@keyframes spin-in {
+    from {
+        transform: rotate(-90deg) scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+/* ADD hover micro-interaction on closed state */
+.topbar-menu-btn:not(.is-open):hover .menu-icon-lines span:first-child {
+    transform: translateY(-2px);
+}
+
+.topbar-menu-btn:not(.is-open):hover .menu-icon-lines span:last-child {
+    transform: translateY(2px);
+}
+
 /* Hamburger lines */
 .menu-icon-lines {
     display: inline-flex;
@@ -3727,6 +3760,7 @@ textarea.form-input-custom {
     width: 100%;
     background: currentColor;
     border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.7, 0, 0.3, 1), opacity 0.2s ease;
 }
 
 /* ============ OVERLAY MENU ============ */
