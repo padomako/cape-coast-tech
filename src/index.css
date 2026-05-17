@@ -3707,9 +3707,9 @@ textarea.form-input-custom {
 }
 
 .topbar-menu-btn.is-open {
-    background: var(--brand-gold);
-    border-color: var(--brand-gold);
-    color: #0d0d0d;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
 }
 
 /* ADD everything below */
