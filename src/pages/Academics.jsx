@@ -138,7 +138,7 @@ export default function Academics() {
                                     <img src={area.image} alt={area.title} />
                                 </div>
                                 <div className="trade-card-harvard-body">
-                                    <h3>{area.title}</h3>
+                                    <h3><span>{area.title}</span></h3>
                                     <p>{area.description}</p>
                                     <span className="harvard-link">
                                         <span>{area.linkText}</span>
@@ -147,96 +147,94 @@ export default function Academics() {
                             </Link>
                         ))}
                     </div>
-                </div>
-            </section>
 
-            {/* ================= SECTION 5 — WEEKEND TRAINING ================= */}
-            <section className="academics-weekend">
-                <div className="container-xl">
+                    {/* ================= SECTION 5 — WEEKEND TRAINING ================= */}
+                    <section className="academics-weekend">
+                        <div className="container-xl">
 
-                    <div className="academics-section-header">
-                        <h2 className="section-serif-title">
-                            Our Weekend Industrial Training
-                        </h2>
-                    </div>
-
-                    <div className="academics-weekend-grid">
-                        <div className="academics-weekend-image">
-                            <img
-                                src="/images/ELECTRICALS%20PRACTICE%20SESSION/banner_bg1.jpg"
-                                alt="Weekend Industrial Training"
-                            />
-                        </div>
-
-                        <div className="academics-weekend-body">
-                            <p className="academics-weekend-text">
-                                Kickstart your journey in the industrial field with our short,
-                                hands-on weekend Competency-Based Training programs. Open to
-                                everyone, these sessions focus on practical skills designed to
-                                empower artisans and individuals ready to build real-world
-                                expertise.
-                            </p>
-
-                            <Link
-                                to="/weekend-training#apply"
-                                className="btn-editorial btn-editorial-flame"
-                            >
-                                Apply Now
-                                <i className="bi bi-arrow-right ms-2"></i>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ================= SECTION 6 — TEACHING & LEARNING ================= */}
-            <section className="academics-approach">
-                <div className="container-xl">
-                    <div className="academics-section-header">
-                        <h2 className="section-serif-title">Teaching &amp; Learning Approach</h2>
-                        <p>
-                            At Cape Coast Technical Institute, teaching and learning are
-                            designed to combine strong academic foundations with hands-on
-                            technical training, discipline, and character development.
-                        </p>
-                    </div>
-
-                    <div className="approach-grid">
-                        <div className="approach-card-editorial">
-                            <div className="approach-icon">
-                                <i className="bi bi-tools"></i>
+                            <div className="academics-section-header">
+                                <h2 className="section-serif-title">
+                                    Our Weekend Industrial Training
+                                </h2>
                             </div>
-                            <h4>Practical-Focused Training</h4>
-                            <p>
-                                Students spend significant time in workshops, laboratories, and
-                                studios where theory is translated into real technical skills.
-                            </p>
-                        </div>
 
-                        <div className="approach-card-editorial">
-                            <div className="approach-icon">
-                                <i className="bi bi-journal-check"></i>
-                            </div>
-                            <h4>Structured Academic Instruction</h4>
-                            <p>
-                                Well-planned lessons, continuous assessment, and national
-                                curriculum standards ensure academic excellence and consistency.
-                            </p>
-                        </div>
+                            <div className="academics-weekend-grid">
+                                <div className="academics-weekend-image">
+                                    <img
+                                        src="/images/ELECTRICALS%20PRACTICE%20SESSION/banner_bg1.jpg"
+                                        alt="Weekend Industrial Training"
+                                    />
+                                </div>
 
-                        <div className="approach-card-editorial">
-                            <div className="approach-icon">
-                                <i className="bi bi-people-fill"></i>
+                                <div className="academics-weekend-body">
+                                    <p className="academics-weekend-text">
+                                        Kickstart your journey in the industrial field with our short,
+                                        hands-on weekend Competency-Based Training programs. Open to
+                                        everyone, these sessions focus on practical skills designed to
+                                        empower artisans and individuals ready to build real-world
+                                        expertise.
+                                    </p>
+
+                                    <Link
+                                        to="/weekend-training#apply"
+                                        className="btn-editorial btn-editorial-flame"
+                                    >
+                                        Apply Now
+                                        <i className="bi bi-arrow-right ms-2"></i>
+                                    </Link>
+                                </div>
                             </div>
-                            <h4>Discipline &amp; Character Development</h4>
-                            <p>
-                                Beyond academics, students are guided to develop discipline,
-                                teamwork, leadership, and responsibility for lifelong success.
-                            </p>
                         </div>
-                    </div>
+                    </section>
+
+                    {/* ================= SECTION 6 — TEACHING & LEARNING ================= */}
+                    <section className="academics-approach">
+                        <div className="container-xl">
+                            <div className="academics-section-header">
+                                <h2 className="section-serif-title">Teaching &amp; Learning Approach</h2>
+                                <p>
+                                    At Cape Coast Technical Institute, teaching and learning are
+                                    designed to combine strong academic foundations with hands-on
+                                    technical training, discipline, and character development.
+                                </p>
+                            </div>
+
+                            <div className="approach-grid">
+                                <div className="approach-card-editorial">
+                                    <div className="approach-icon">
+                                        <i className="bi bi-tools"></i>
+                                    </div>
+                                    <h4>Practical-Focused Training</h4>
+                                    <p>
+                                        Students spend significant time in workshops, laboratories, and
+                                        studios where theory is translated into real technical skills.
+                                    </p>
+                                </div>
+
+                                <div className="approach-card-editorial">
+                                    <div className="approach-icon">
+                                        <i className="bi bi-journal-check"></i>
+                                    </div>
+                                    <h4>Structured Academic Instruction</h4>
+                                    <p>
+                                        Well-planned lessons, continuous assessment, and national
+                                        curriculum standards ensure academic excellence and consistency.
+                                    </p>
+                                </div>
+
+                                <div className="approach-card-editorial">
+                                    <div className="approach-icon">
+                                        <i className="bi bi-people-fill"></i>
+                                    </div>
+                                    <h4>Discipline &amp; Character Development</h4>
+                                    <p>
+                                        Beyond academics, students are guided to develop discipline,
+                                        teamwork, leadership, and responsibility for lifelong success.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-            </section>
-        </div>
-    )
+                )
 }
