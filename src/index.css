@@ -4354,8 +4354,8 @@ h1,
     justify-content: center;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.08);
     font-size: 1.1rem;
     flex-shrink: 0;
     transition: background 0.3s ease, transform 0.3s ease;
@@ -4457,6 +4457,12 @@ h1,
     flex-direction: column;
     gap: 1rem;
     background: #fff;
+    flex: 1;
+}
+
+.trade-card-harvard-body .harvard-link {
+    margin-top: auto;
+    /* add this — pushes arrow to bottom */
 }
 
 /* Heading — background-image trick for exact text-width underline */
