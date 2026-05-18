@@ -4352,10 +4352,10 @@ h1,
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
+    width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.15);
     font-size: 1.1rem;
     flex-shrink: 0;
     transition: background 0.3s ease, transform 0.3s ease;
@@ -4369,12 +4369,12 @@ h1,
     bottom: -2px;
     width: 0%;
     height: 1.5px;
-    background: var(--brand-gold);
+    background: #0d0d0d;
     transition: width 0.45s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .harvard-link:hover {
-    color: var(--brand-gold);
+    color: #0d0d0d;
 }
 
 .harvard-link:hover::after {
@@ -4477,35 +4477,20 @@ h1,
     /* draws to exact text width */
 }
 
-.trade-card-harvard-body h3::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1.5px;
-    background: var(--brand-gold);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-.trade-card-harvard:hover .trade-card-harvard-body h3::after {
-    transform: scaleX(1);
-}
-
 /* Description */
 .trade-card-harvard-body p {
-    color: rgba(255, 255, 255, 0.78);
+    color: #0d0d0d;
+    background: #fff;
     font-size: 1.05rem;
     line-height: 1.75;
     margin: 0;
+    padding: 0.75rem 1rem;
     max-width: 42ch;
 }
 
 .trade-card-harvard:hover .harvard-link::before {
-    background: var(--brand-gold);
-    color: #0d0d0d;
+    background: #0d0d0d;
+    color: #fff;
     transform: translateX(5px);
 }
 

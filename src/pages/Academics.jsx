@@ -141,7 +141,7 @@ export default function Academics() {
                                     <h3>{area.title}</h3>
                                     <p>{area.description}</p>
                                     <span className="harvard-link">
-                                        <span> {area.linkText} </span>
+                                        <span>{area.linkText}</span>
                                     </span>
                                 </div>
                             </Link>
