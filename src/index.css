@@ -4355,7 +4355,7 @@ h1,
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.25);
     font-size: 1.1rem;
     flex-shrink: 0;
     transition: background 0.3s ease, transform 0.3s ease;
@@ -4462,7 +4462,7 @@ h1,
 /* Heading — background-image trick for exact text-width underline */
 .trade-card-harvard-body h3 {
     font-family: "Cormorant Garamond", Georgia, serif !important;
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: 600;
     color: #0d0d0d;
     margin: 0;
@@ -4476,7 +4476,7 @@ h1,
     font-size: 1.05rem;
     line-height: 1.75;
     margin: 0;
-    padding: 0.75rem 1rem;
+    padding: 0;
 }
 
 .trade-card-harvard-body h3 span {
