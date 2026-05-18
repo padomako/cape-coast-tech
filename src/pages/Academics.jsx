@@ -147,6 +147,7 @@ export default function Academics() {
                             </Link>
                         ))}
                     </div>
+                </div>
             </section>
             {/* ================= SECTION 5 — WEEKEND TRAINING ================= */}
             <section className="academics-weekend">
