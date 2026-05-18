@@ -23,7 +23,7 @@ const tradeAreas = [
         description:
             "This trade area offers a blend of entrepreneurial, digital, and creative skills. Students gain knowledge in business management, fashion design, and Computerized Accounting Technology (CAT), preparing them for careers in business operations, the fashion industry, and modern office environments.",
         link: "/programmes?trade=business",
-        linkText: "View programs under Business / Fashion / CAT",
+        linkText: "View programs under BUS / FASH / CAT",
     },
 ]
 
