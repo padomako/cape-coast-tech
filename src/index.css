@@ -4354,7 +4354,7 @@ h1,
     justify-content: center;
     width: 40px;
     height: 40px;
-    border: 50%;
+    border-radius: 50%;
     color: #fff;
     background: #1a1a1a;
     font-size: 1.1rem;
@@ -4405,7 +4405,9 @@ h1,
 
 /* Harvard "We saved you a seat" cards — image-led, hover-lift, gold underline link */
 .trade-area-grid-harvard {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 0;
 }
 
 .trade-card-harvard {
@@ -4426,12 +4428,17 @@ h1,
 }
 
 .trade-card-harvard-image {
+    margin-bottom: 1.5rem;
+    /* creates dark gap between image and white card body */
+}
+
+/*.trade-card-harvard-image {
     aspect-ratio: 3 / 2;
     overflow: hidden;
     margin-bottom: 1.5rem;
     position: relative;
 }
-
+*/
 .trade-card-harvard-image::after {
     content: "";
     position: absolute;
