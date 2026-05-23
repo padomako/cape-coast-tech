@@ -4374,9 +4374,9 @@ h1,
     transition: width 0.45s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/*.harvard-link:hover {
+.harvard-link:hover {
     color: #0d0d0d;
-}*/
+}
 
 .harvard-link:hover::after {
     transform: scaleX(1);
@@ -4435,14 +4435,14 @@ h1,
     position: relative;
 }
 
-/*.trade-card-harvard-image::after {
+.trade-card-harvard-image::after {
     content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, transparent 60%, rgba(13, 13, 13, 0.35));
     pointer-events: none;
     transition: opacity 0.4s ease;
-} */
+}
 
 .trade-card-harvard-image img {
     width: 100%;
@@ -4510,10 +4510,9 @@ h1,
     transform: translateX(5px);
 }
 
-.trade-card-harvard:hover .harvard-link::after {
+/*.trade-card-harvard:hover .harvard-link::after {
     width: calc(100% - 49px);
-    /* underline only under the text */
-}
+}*/
 
 .trade-card-harvard:hover .harvard-link {
     color: #1a1a1a;
