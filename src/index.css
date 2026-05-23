@@ -4506,7 +4506,10 @@ h1,
 }
 
 .trade-card-harvard:hover .harvard-link::before {
-    color: #000;
+    background: #0d0d0d;
+    /* deep dark */
+    color: #fff;
+    /* white arrow */
     transform: translateX(5px);
 }
 
