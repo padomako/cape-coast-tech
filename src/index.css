@@ -4407,7 +4407,7 @@ h1,
 .trade-area-grid-harvard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    gap: 2rem;
 }
 
 .trade-card-harvard {
@@ -4542,6 +4542,11 @@ h1,
     background: #1A1A1A;
     padding: 6rem 0;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.academics-trade-section .container-xl {
+    max-width: 1440px;
+    padding: 0 1rem;
 }
 
 .trade-area-grid {
