@@ -4374,9 +4374,9 @@ h1,
     transition: width 0.45s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.harvard-link:hover {
+/*.harvard-link:hover {
     color: #0d0d0d;
-}
+}*/
 
 .harvard-link:hover::after {
     transform: scaleX(1);
