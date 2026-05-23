@@ -4519,7 +4519,8 @@ h1,
 }
 
 .trade-card-harvard:hover .harvard-link span {
-    background-size: 100% 1.5px;
+    background-size: 100% 2px;
+    color: var(--brand-gold);
 }
 
 @media (max-width: 992px) {
