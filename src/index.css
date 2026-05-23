@@ -4435,14 +4435,14 @@ h1,
     position: relative;
 }
 
-.trade-card-harvard-image::after {
+/*.trade-card-harvard-image::after {
     content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, transparent 60%, rgba(13, 13, 13, 0.35));
     pointer-events: none;
     transition: opacity 0.4s ease;
-}
+} */
 
 .trade-card-harvard-image img {
     width: 100%;
