@@ -4427,18 +4427,14 @@ h1,
     transform: none;
 }
 
-.trade-card-harvard-image {
-    margin-bottom: 1.5rem;
-    /* creates dark gap between image and white card body */
-}
 
-/*.trade-card-harvard-image {
+.trade-card-harvard-image {
     aspect-ratio: 3 / 2;
     overflow: hidden;
     margin-bottom: 1.5rem;
     position: relative;
 }
-*/
+
 .trade-card-harvard-image::after {
     content: "";
     position: absolute;
