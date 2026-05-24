@@ -4727,9 +4727,9 @@ h1,
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: #fff;
+    background: var(--brand-red);
     /* white circle by default */
-    color: #0d0d0d;
+    color: #fff;
     /* black arrow by default */
     font-size: 1.1rem;
     flex-shrink: 0;
