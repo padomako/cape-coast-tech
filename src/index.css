@@ -4711,7 +4711,7 @@ h1,
     position: relative;
     padding-bottom: 2px;
     background-image: linear-gradient(#fff, #fff);
-    background-size: 0% 1.5px;
+    background-size: 100% 1.5px !important;
     background-repeat: no-repeat;
     background-position: left bottom;
     transition: background-size 0.45s cubic-bezier(0.65, 0, 0.35, 1);
@@ -4738,7 +4738,7 @@ h1,
 }
 
 .academics-apply-btn:hover span {
-    background-size: 100% 1.5px;
+    background-size: 0% 1.5px !important;
 }
 
 .academics-apply-btn:hover {
