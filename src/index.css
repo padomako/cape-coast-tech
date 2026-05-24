@@ -4703,6 +4703,7 @@ h1,
     gap: 1rem;
     position: relative;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
 .academics-apply-btn span {
@@ -4714,6 +4715,8 @@ h1,
     background-position: left bottom;
     transition: background-size 0.45s cubic-bezier(0.65, 0, 0.35, 1);
     color: var(--brand-red);
+    text-decoration: none !important;
+
     /* red text by default */
 }
 
@@ -4732,6 +4735,7 @@ h1,
     font-size: 1.1rem;
     flex-shrink: 0;
     transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+    text-decoration: none;
 }
 
 .academics-apply-btn::after {
