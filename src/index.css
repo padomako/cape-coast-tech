@@ -4737,6 +4737,10 @@ h1,
     transform: translateX(5px);
 }
 
+.academics-apply-btn::after {
+    display: none;
+}
+
 .academics-apply-btn:hover span {
     background-size: 0% 1.5px !important;
 }
