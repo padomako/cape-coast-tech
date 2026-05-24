@@ -4490,6 +4490,8 @@ h1,
     padding: 0;
 }
 
+/* Trade Area Body Header (h3) */
+
 .trade-card-harvard-body h3 span {
     display: inline;
     background-image: linear-gradient(var(--brand-gold), var(--brand-gold));
@@ -4502,7 +4504,7 @@ h1,
 
 .trade-card-harvard:hover .trade-card-harvard-body h3 span {
     background-size: 100% 2px;
-    color: var(--brand-gold);
+    color: #1A1A1A;
 }
 
 .trade-card-harvard:hover .harvard-link::before {
