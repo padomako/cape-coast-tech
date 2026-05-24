@@ -178,10 +178,9 @@ export default function Academics() {
 
                             <Link
                                 to="/weekend-training#apply"
-                                className="btn-editorial btn-editorial-flame"
+                                className="academics-apply-btn"
                             >
-                                Apply Now
-                                <i className="bi bi-arrow-right ms-2"></i>
+                                <span>Apply Now</span>
                             </Link>
                         </div>
                     </div>
