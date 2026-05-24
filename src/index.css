@@ -4710,7 +4710,7 @@ h1,
 .academics-apply-btn span {
     position: relative;
     padding-bottom: 2px;
-    background-image: linear-gradient(#fff, #fff);
+    /*background-image: linear-gradient(#fff, #fff);*/
     background-size: 0% 1.5px;
     /* invisible by default */
     background-repeat: no-repeat;
@@ -4726,8 +4726,8 @@ h1,
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: #1a1a1a;
-    color: #fff;
+    background: #fff;
+    color: #1A1A1A;
     font-size: 1.1rem;
     flex-shrink: 0;
     transition: background 0.3s ease, transform 0.3s ease;
