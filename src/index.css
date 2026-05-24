@@ -4303,17 +4303,20 @@ h1,
 
 /* ---- Flame red CTA — used SPARINGLY for high-priority actions ---- */
 .btn-editorial-flame {
-    background: var(--brand-red);
-    color: #fff;
-    border-color: var(--brand-red);
+    background: none;
+    border: none;
+    color: var(--brand-red);
+    padding: 0;
+    font-size: 0.82rem;
+    border-bottom: 1.5px solid var(--brand-red);
+    border-radius: 0;
 }
 
 .btn-editorial-flame:hover {
-    background: var(--brand-red-soft);
-    border-color: var(--brand-red-soft);
     color: #fff;
+    border-color: #fff;
     transform: translateX(4px);
-    box-shadow: 0 10px 30px rgba(204, 34, 0, 0.35);
+    box-shadow: none;
 }
 
 /* ---- Harvard-style underline link (slow draw on hover) ---- */
