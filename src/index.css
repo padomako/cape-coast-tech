@@ -4741,9 +4741,9 @@ h1,
 }
 
 .academics-apply-btn:hover::before {
-    background: #0d0d0d;
+    background: #fff;
     /* dark circle on hover */
-    color: #fff;
+    color: #0d0d0d;
     /* white arrow on hover */
     transform: translateX(5px);
 }
