@@ -4710,12 +4710,13 @@ h1,
 .academics-apply-btn span {
     position: relative;
     padding-bottom: 2px;
-    /*background-image: linear-gradient(#fff, #fff);*/
+    background-image: linear-gradient(var(--brand-red), var(--brand-red));
     background-size: 0% 1.5px;
-    /* invisible by default */
     background-repeat: no-repeat;
     background-position: left bottom;
     transition: background-size 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+    color: var(--brand-red);
+    /* red text by default */
 }
 
 .academics-apply-btn::before {
@@ -4727,28 +4728,33 @@ h1,
     height: 44px;
     border-radius: 50%;
     background: #fff;
-    color: #1A1A1A;
+    /* white circle by default */
+    color: #0d0d0d;
+    /* black arrow by default */
     font-size: 1.1rem;
     flex-shrink: 0;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.academics-apply-btn:hover::before {
-    background: #0d0d0d;
-    transform: translateX(5px);
+    transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
 .academics-apply-btn::after {
     display: none;
 }
 
+.academics-apply-btn:hover::before {
+    background: #0d0d0d;
+    /* dark circle on hover */
+    color: #fff;
+    /* white arrow on hover */
+    transform: translateX(5px);
+}
+
 .academics-apply-btn:hover span {
     background-size: 100% 1.5px;
-    /* draws on hover */
+    color: #fff;
+    /* white text on hover */
 }
 
 .academics-apply-btn:hover {
-    color: #fff;
     transform: none;
     box-shadow: none;
 }
