@@ -4431,7 +4431,7 @@ h1,
 .trade-card-harvard-image {
     aspect-ratio: 3 / 2;
     overflow: hidden;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem;*/
     position: relative;
 }
 
