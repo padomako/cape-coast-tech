@@ -2039,14 +2039,14 @@ body {
 /* Remove the card chrome entirely */
 .admissions-step-card {
     display: grid;
-    grid-template-columns: 500px 1fr;
+    grid-template-columns: 350px 1fr;
     gap: 0 6rem;
     /* was 4rem */
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     overflow: hidden;
-    padding: 3.5rem;
+    padding: 4rem;
     /* internal breathing room */
 }
 
