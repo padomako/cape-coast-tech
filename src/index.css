@@ -2025,25 +2025,29 @@ body {
 
 /* ---- Step layout (Sections 2 & 3) ---- */
 .admissions-step-section {
-    padding: 4.5rem 0;
+    padding: 2.5rem 0;
     background: #fafaf8;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+    /* card border replaces this */
 }
 
 .admissions-step-section-alt {
     background: #fafaf8;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
 }
 
 /* Remove the card chrome entirely */
 .admissions-step-card {
     display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 0 4rem;
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    overflow: visible;
+    grid-template-columns: 300px 1fr;
+    gap: 0 6rem;
+    /* was 4rem */
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    overflow: hidden;
+    padding: 3.5rem;
+    /* internal breathing room */
 }
 
 .admissions-step-side {
