@@ -2065,6 +2065,8 @@ body {
     /* cap the content width */
     margin: 0 auto;
     /* center it within the wider container */
+    align-items: start;
+    /* add this */
 }
 
 .admissions-step-side {
