@@ -2029,6 +2029,11 @@ body {
     background: #fafaf8;
 }
 
+.admissions-steps-outer .container-xl {
+    max-width: 1400px;
+    /* Bootstrap default is 1320px — increase as needed */
+}
+
 .admissions-steps-wrapper {
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
