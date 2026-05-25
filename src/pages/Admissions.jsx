@@ -43,99 +43,102 @@ export default function Admissions() {
                     <span className="current">Register</span>
                 </nav>
             </section>
-
-            {/* ============ SECTION 2 — STARTING REGISTRATION ============ */}
-            <section className="admissions-step-section">
+            {/* ============ SECTIONS 2 & 3 — SHARED CARD WRAPPER ============ */}
+            <div className="admissions-steps-outer">
                 <div className="container-xl">
-                    <div className="admissions-step-card">
-                        <aside className="admissions-step-side">
-                            <h2>Starting Registration</h2>
-                        </aside>
+                    <div className="admissions-steps-wrapper">
 
-                        <div className="admissions-step-body">
-                            <p>
-                                For all freshers, your first step is to enter your 10-digit BECE
-                                index number followed by the last two digits of your examination
-                                year (e.g., XXXXXXXXXX25).
-                            </p>
-                            <p>
-                                The next step is to click on the check button to view your
-                                placement status. You will be greeted with a welcome message,
-                                otherwise &ldquo;Index number not found&rdquo; if you were not placed
-                                in Cape Coast Technical School.
-                            </p>
-                            <p>
-                                Next, pay an admission fee of <strong>GHS 30</strong> using
-                                Paystack via MTN or Telecel MoMo to proceed to filling registration
-                                forms.
-                            </p>
-                            <p>
-                                <strong>Complete forms:</strong> Fill out the online biodata and
-                                required forms, including the Personal Record Form.
-                            </p>
-                            <p>
-                                <strong>Download Documents:</strong> After submission, download and
-                                print your Admission Letter and Prospectus. Your admission is
-                                considered incomplete without these downloads.
-                            </p>
+                        {/* SECTION 2 — STARTING REGISTRATION */}
+                        <section className="admissions-step-section">
+                            <div className="admissions-step-card">
+                                <aside className="admissions-step-side">
+                                    <h2>Starting Registration</h2>
+                                </aside>
 
-                            <a href="#" className="admissions-step-cta">
-                                Click to Begin Registration
-                                <i className="bi bi-arrow-right ms-2"></i>
-                            </a>
-                        </div>
+                                <div className="admissions-step-body">
+                                    <p>
+                                        For all freshers, your first step is to enter your 10-digit BECE
+                                        index number followed by the last two digits of your examination
+                                        year (e.g., XXXXXXXXXX25).
+                                    </p>
+                                    <p>
+                                        The next step is to click on the check button to view your
+                                        placement status. You will be greeted with a welcome message,
+                                        otherwise &ldquo;Index number not found&rdquo; if you were not placed
+                                        in Cape Coast Technical School.
+                                    </p>
+                                    <p>
+                                        Next, pay an admission fee of <strong>GHS 30</strong> using
+                                        Paystack via MTN or Telecel MoMo to proceed to filling registration
+                                        forms.
+                                    </p>
+                                    <p>
+                                        <strong>Complete forms:</strong> Fill out the online biodata and
+                                        required forms, including the Personal Record Form.
+                                    </p>
+                                    <p>
+                                        <strong>Download Documents:</strong> After submission, download and
+                                        print your Admission Letter and Prospectus. Your admission is
+                                        considered incomplete without these downloads.
+                                    </p>
+
+                                    <a href="#" className="admissions-step-cta">
+                                        Click to Begin Registration
+                                        <i className="bi bi-arrow-right ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* SECTION 3 — REPORTING TO SCHOOL */}
+                        <section className="admissions-step-section admissions-step-section-alt">
+                            <div className="admissions-step-card">
+                                <aside className="admissions-step-side">
+                                    <h2>Reporting to School</h2>
+                                </aside>
+
+                                <div className="admissions-step-body">
+                                    <h3 className="admissions-substep-title">Reporting Details</h3>
+                                    <p>
+                                        <strong>Date &amp; Time:</strong> Fresh students are expected to
+                                        report to school on <strong>October 18th</strong> for the
+                                        2026/2027 academic year between <strong>8:00 am and 5:00 pm</strong>.
+                                    </p>
+                                    <p>
+                                        <strong>Parental Attendance:</strong> A parent or guardian{" "}
+                                        <strong>must</strong> accompany the student on the reporting day.
+                                    </p>
+                                    <p>
+                                        <strong>Special Meeting:</strong> School management will hold a
+                                        mandatory meeting with new parents on the reporting day.
+                                    </p>
+
+                                    <h3 className="admissions-substep-title">
+                                        Essential Documents &amp; Requirements
+                                    </h3>
+                                    <p>
+                                        When you eventually report to school, you must submit physical
+                                        copies of your admission documents:
+                                    </p>
+                                    <ul className="admissions-doc-list">
+                                        <li><strong>Admission Letter</strong> and <strong>Acceptance Form</strong>.</li>
+                                        <li><strong>Placement</strong> and <strong>Enrolment Form</strong>.</li>
+                                        <li><strong>Valid NHIS Card</strong> or <strong>Ghana Card</strong> (must be linked to NHIS card).</li>
+                                        <li><strong>BECE Result Slip</strong>.</li>
+                                    </ul>
+
+                                    <p className="admissions-help">
+                                        For further assistance, you can contact the school via WhatsApp
+                                        at <strong>0246775194</strong> or email{" "}
+                                        <a href="mailto:capetechedu@gmail.com">capetechedu@gmail.com</a>.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
                     </div>
                 </div>
-            </section>
-
-            {/* ============ SECTION 3 — REPORTING TO SCHOOL ============ */}
-            <section className="admissions-step-section admissions-step-section-alt">
-                <div className="container-xl">
-                    <div className="admissions-step-card">
-                        <aside className="admissions-step-side">
-                            <h2>Reporting to School</h2>
-                        </aside>
-
-                        <div className="admissions-step-body">
-                            <h3 className="admissions-substep-title">Reporting Details</h3>
-                            <p>
-                                <strong>Date &amp; Time:</strong> Fresh students are expected to
-                                report to school on <strong>October 18th</strong> for the
-                                2026/2027 academic year between <strong>8:00 am and 5:00 pm</strong>.
-                            </p>
-                            <p>
-                                <strong>Parental Attendance:</strong> A parent or guardian{" "}
-                                <strong>must</strong> accompany the student on the reporting day.
-                            </p>
-                            <p>
-                                <strong>Special Meeting:</strong> School management will hold a
-                                mandatory meeting with new parents on the reporting day.
-                            </p>
-
-                            <h3 className="admissions-substep-title">
-                                Essential Documents &amp; Requirements
-                            </h3>
-                            <p>
-                                When you eventually report to school, you must submit physical
-                                copies of your admission documents:
-                            </p>
-                            <ul className="admissions-doc-list">
-                                <li><strong>Admission Letter</strong> and <strong>Acceptance Form</strong>.</li>
-                                <li><strong>Placement</strong> and <strong>Enrolment Form</strong>.</li>
-                                <li><strong>Valid NHIS Card</strong> or <strong>Ghana Card</strong> (must be linked to NHIS card).</li>
-                                <li><strong>BECE Result Slip</strong>.</li>
-                            </ul>
-
-                            <p className="admissions-help">
-                                For further assistance, you can contact the school via WhatsApp
-                                at <strong>0246775194</strong> or email{" "}
-                                <a href="mailto:capetechedu@gmail.com">capetechedu@gmail.com</a>.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            </div>
             {/* ============ SECTION 4 — ADMISSION PORTAL GUIDE ============ */}
             <section className="admissions-guide-section">
                 <div className="container-xl">

@@ -2024,30 +2024,38 @@ body {
 }
 
 /* ---- Step layout (Sections 2 & 3) ---- */
-.admissions-step-section {
-    padding: 2.5rem 0;
+.admissions-steps-outer {
+    padding: 4.5rem 0;
     background: #fafaf8;
+}
+
+.admissions-steps-wrapper {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.admissions-step-section {
+    padding: 3.5rem;
+    background: transparent;
     border-top: none;
-    /* card border replaces this */
 }
 
 .admissions-step-section-alt {
-    background: #fafaf8;
-    border-top: none;
+    background: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* Remove the card chrome entirely */
 .admissions-step-card {
     display: grid;
-    grid-template-columns: 350px 1fr;
+    grid-template-columns: 300px 1fr;
     gap: 0 6rem;
-    /* was 4rem */
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    overflow: hidden;
-    padding: 4rem;
-    /* internal breathing room */
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    padding: 0;
 }
 
 .admissions-step-side {
@@ -2064,6 +2072,7 @@ body {
     margin: 0;
     line-height: 1.2;
     letter-spacing: -0.3px;
+    white-space: nowrap;
 }
 
 .admissions-step-body {
@@ -2136,8 +2145,8 @@ body {
     align-items: center;
     gap: 0.5rem;
     margin-top: 1.5rem;
-    background: var(--brand-navy, #0a1628);
-    color: #fff !important;
+    background: var(--brand-gold, #F5C400);
+    color: #0a1628 !important;
     font-size: 0.9rem;
     font-weight: 700;
     padding: 0.75rem 1.4rem;
