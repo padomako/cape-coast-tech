@@ -2040,7 +2040,7 @@ body {
     border: 1px solid rgba(245, 196, 0, 0.2);
     border-radius: 6px;
     overflow: hidden;
-    background: var(--brand-dark);
+    background: var(--brand-dark-2);
 }
 
 .admissions-step-section-alt .admissions-step-card {
