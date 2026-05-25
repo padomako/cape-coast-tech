@@ -2026,7 +2026,7 @@ body {
 /* ---- Step layout (Sections 2 & 3) ---- */
 .admissions-step-section {
     padding: 5rem 0;
-    background: var(--brand-dark);
+    background: var(--brand-dark-2);
 }
 
 .admissions-step-section-alt {
