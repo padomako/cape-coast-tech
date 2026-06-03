@@ -7491,7 +7491,7 @@ h1,
 }
 
 .sl-list-section-alt .sl-list li {
-    border-bottom: none;
+    border-bottom: none !important;
 }
 
 /* Section 6: Student Portal */
@@ -7635,7 +7635,7 @@ h1,
 /*GRADUATE DOCUMENT LIST ON STUDENTS PAGE*/
 .doc-card {
     background: #242424;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
     border-radius: 6px;
     padding: 1.1rem 1.25rem;
     display: flex;
@@ -7648,7 +7648,7 @@ h1,
 }
 
 .doc-card:hover {
-    border-color: rgba(245, 196, 0, 0.4);
+    border-color: rgba(245, 196, 0, 0.4) !important;
     transform: translateY(-2px);
 }
 
