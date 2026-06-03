@@ -2054,7 +2054,7 @@ body {
 
 .admissions-step-card {
     display: grid;
-    grid-template-columns: 26px 1fr;
+    grid-template-columns: 260px 1fr;
     gap: 0 15rem;
     background: transparent;
     border: none;
