@@ -40,17 +40,17 @@ const RESIDENTIAL_IMAGES = [
     "/images/DJI_20260414222026_0664_D.jpg",
 ]
 
-const [residentialSlide, setResidentialSlide] = useState(0)
-
-// Auto-advance
-useEffect(() => {
-    const t = setInterval(() => setResidentialSlide(s => (s + 1) % 4), 4000)
-    return () => clearInterval(t)
-}, [])
-
 export default function Students() {
     const heroVideoRef = useRef(null)
     const [heroPlaying, setHeroPlaying] = useState(true)
+    const [residentialSlide, setResidentialSlide] = useState(0)
+
+
+    // Auto-advance residential carousel
+    useEffect(() => {
+        const t = setInterval(() => setResidentialSlide(s => (s + 1) % 4), 4000)
+        return () => clearInterval(t)
+    }, [])
 
     const toggleHero = () => {
         const v = heroVideoRef.current
