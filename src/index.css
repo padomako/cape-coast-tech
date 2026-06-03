@@ -2039,6 +2039,10 @@ body {
     border-radius: 4px;
     background: #fff;
     overflow: hidden;
+    max-width: 1400px;
+    /* match this to your card's max-width */
+    margin: 0 auto;
+    /* add this */
 }
 
 .admissions-step-section {
