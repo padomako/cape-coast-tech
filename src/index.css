@@ -5283,7 +5283,7 @@ h1,
 .programme-panel-close:hover {
     background: #fff;
     color: #0d0d0d;
-    border-color: var(--brand-gold);
+    border-color: #0d0d0d;
 }
 
 .programme-panel-hero {
