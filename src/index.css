@@ -5158,6 +5158,41 @@ h1,
     transition: background 0.3s ease;
 }
 
+.programme-row::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 1.5px;
+    background: #fff;
+    transition: width 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.programme-row:hover {
+    background: transparent;
+}
+
+.programme-row:hover::after {
+    width: 100%;
+}
+
+/*.programme-row {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 1.75rem 1rem;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
 .programme-row::before {
     content: "";
     position: absolute;
@@ -5177,7 +5212,7 @@ h1,
 
 .programme-row:hover::before {
     transform: scaleY(1);
-}
+}*/
 
 .programme-name {
     font-family: "Cormorant Garamond", Georgia, serif;
@@ -5302,51 +5337,7 @@ h1,
     object-fit: cover;
 }
 
-.programme-panel-hero-overlay .eyebrow {
-    font-family: "Inter", sans-serif;
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #fff;
-    margin: 0 0 0.75rem;
-    display: inline-block;
-    position: relative;
-    padding-bottom: 4px;
-}
-
-.programme-panel-hero-overlay .eyebrow::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1.5px;
-    background: var(--brand-gold);
-}
-
-.programme-panel-hero-overlay .eyebrow::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0%;
-    height: 1.5px;
-    background: var(--brand-gold);
-    animation: drawLine 0.6s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
-}
-
-@keyframes drawLine {
-    from {
-        width: 0%;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-/*.programme-panel-hero-overlay {
+.programme-panel-hero-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(13, 13, 13, 0.2) 0%, rgba(13, 13, 13, 0.95) 100%);
@@ -5364,7 +5355,7 @@ h1,
     letter-spacing: 2px;
     color: var(--brand-gold);
     margin: 0 0 0.75rem;
-}*/
+}
 
 .programme-panel-hero-overlay h2 {
     font-family: "Cormorant Garamond", Georgia, serif !important;
