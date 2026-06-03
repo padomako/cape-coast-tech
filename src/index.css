@@ -5281,7 +5281,7 @@ h1,
 }
 
 .programme-panel-close:hover {
-    background: var(--brand-gold);
+    background: #fff;
     color: #0d0d0d;
     border-color: var(--brand-gold);
 }
