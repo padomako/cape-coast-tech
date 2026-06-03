@@ -5241,7 +5241,7 @@ h1,
 
 .programme-panel {
     width: 100%;
-    max-width: 900px;
+    max-width: 1020px;
     height: 100vh;
     background: #0d0d0d;
     overflow-y: auto;
@@ -5252,11 +5252,13 @@ h1,
 
 @keyframes panelSlideIn {
     from {
-        transform: translateX(100%);
+        transform: translateX(40px) scale(0.96);
+        opacity: 0;
     }
 
     to {
-        transform: translateX(0);
+        transform: translateX(0) scale(1);
+        opacity: 1;
     }
 }
 
