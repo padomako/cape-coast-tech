@@ -7398,42 +7398,6 @@ h1,
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.sl-residential-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.sl-residential-eyebrow {
-    font-family: "Cormorant Garamond", Georgia, serif !important;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    color: var(--brand-gold);
-    margin: 0 0 1.25rem;
-    letter-spacing: -0.5px;
-}
-
-.sl-residential-blurb {
-    color: rgba(255, 255, 255, 0.82);
-    font-size: 1.02rem;
-    line-height: 1.75;
-    margin: 0 0 2rem;
-    max-width: 60ch;
-}
-
-.sl-residential-collage {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 200px 200px;
-    gap: 0.85rem;
-}
-
-.sl-collage-tile {
-    overflow: hidden;
-    border-radius: 4px;
-}
-
 .sl-collage-tile img {
     width: 100%;
     height: 100%;
@@ -7443,6 +7407,228 @@ h1,
 
 .sl-collage-tile:hover img {
     transform: scale(1.05);
+}
+
+/* ---- Section 4: Residential Life hero carousel ---- */
+.sl-residential-section {
+    position: relative;
+    height: 580px;
+    overflow: hidden;
+    background: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sl-residential-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand-gold), transparent);
+    z-index: 5;
+}
+
+.sl-residential-label {
+    position: absolute;
+    top: 2rem;
+    left: 3.5rem;
+    z-index: 3;
+}
+
+.sl-residential-label h2 {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+/* Slides */
+.sl-res-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+
+.sl-res-slide.active {
+    opacity: 1;
+}
+
+.sl-res-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.sl-res-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.75) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+}
+
+/* Caption content */
+.sl-res-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem 3.5rem;
+    z-index: 2;
+}
+
+.sl-res-tag {
+    font-family: "Inter", sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--brand-gold);
+    margin-bottom: 0.5rem;
+    display: block;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.5s ease 0.2s;
+}
+
+.sl-res-title {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+    white-space: pre-line;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.55s ease 0.35s;
+}
+
+.sl-res-desc {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.6;
+    max-width: 48ch;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.55s ease 0.5s;
+}
+
+.sl-res-slide.active .sl-res-tag,
+.sl-res-slide.active .sl-res-title,
+.sl-res-slide.active .sl-res-desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dots */
+.sl-res-dots {
+    position: absolute;
+    bottom: 1.75rem;
+    right: 3.5rem;
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+    align-items: center;
+}
+
+.sl-res-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    border: none;
+    transition: all 0.35s ease;
+    padding: 0;
+}
+
+.sl-res-dot.active {
+    background: var(--brand-gold);
+    width: 20px;
+    border-radius: 3px;
+}
+
+/* Arrows */
+.sl-res-arrows {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 3.5rem;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.sl-res-arr {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(4px);
+}
+
+.sl-res-arr:hover {
+    background: var(--brand-gold);
+    border-color: var(--brand-gold);
+    color: #0d0d0d;
+}
+
+/* Progress bar */
+.sl-res-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: var(--brand-gold);
+    z-index: 10;
+    animation: resProgress 4s linear forwards;
+}
+
+@keyframes resProgress {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .sl-residential-section {
+        height: 420px;
+    }
+
+    .sl-res-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .sl-residential-label {
+        left: 1.5rem;
+    }
+
+    .sl-res-dots {
+        right: 1.5rem;
+    }
+
+    .sl-res-arrows {
+        left: 1.5rem;
+    }
 }
 
 /* Section 5 + 7: List sections */

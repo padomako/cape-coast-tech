@@ -40,6 +40,14 @@ const RESIDENTIAL_IMAGES = [
     "/images/DJI_20260414222026_0664_D.jpg",
 ]
 
+const [residentialSlide, setResidentialSlide] = useState(0)
+
+// Auto-advance
+useEffect(() => {
+    const t = setInterval(() => setResidentialSlide(s => (s + 1) % 4), 4000)
+    return () => clearInterval(t)
+}, [])
+
 export default function Students() {
     const heroVideoRef = useRef(null)
     const [heroPlaying, setHeroPlaying] = useState(true)
@@ -161,33 +169,72 @@ export default function Students() {
             </section >
 
             {/* ============ SECTION 4 — RESIDENTIAL LIFE ============ */}
-            < section className="sl-residential-section" id="residential-life" >
-                <div className="container-xl">
+            <section className="sl-residential-section" id="residential-life">
+                <div className="sl-residential-label">
+                    <h2>Residential Life</h2>
+                </div>
 
-                    <div className="sl-residential-grid">
-                        <div className="sl-residential-text">
-                            <p className="sl-residential-eyebrow">Residential Life</p>
-                            <p className="sl-residential-blurb">
-                                A dynamic campus experience that blends academic focus with social
-                                interaction, fostering personal growth, responsibility, and a
-                                strong sense of community. Your House is where you eat, sleep —
-                                and lay the groundwork for lifelong friendships.
-                            </p>
-                            <Link to="/student-life/campus" className="harvard-link">
-                                Learn more about residential life at CapeTech
-                            </Link>
-                        </div>
-
-                        <div className="sl-residential-collage">
-                            {RESIDENTIAL_IMAGES.map((src, i) => (
-                                <div className={`sl-collage-tile sl-collage-tile-${i + 1}`} key={src}>
-                                    <img src={src} alt={`CapeTech campus view ${i + 1}`} />
-                                </div>
-                            ))}
+                {/* Slides */}
+                {[
+                    {
+                        tag: "Campus Grounds",
+                        title: "Lush open spaces for study,\nrecreation and community",
+                        desc: "Wide green corridors and communal zones designed to bring students together outside the classroom.",
+                        img: "/images/DJI_20260414220431_0661_D.jpg"
+                    },
+                    {
+                        tag: "Academic Block",
+                        title: "State-of-the-art facilities\nsupporting technical learning",
+                        desc: "Purpose-built workshops and labs where hands-on skills meet modern theory.",
+                        img: "/images/DJI_20260414220551_0662_D.jpg"
+                    },
+                    {
+                        tag: "Student Life",
+                        title: "A vibrant community where\nfriendships are forged",
+                        desc: "From study groups to weekend activities, CapeTech is a home away from home.",
+                        img: "/images/DJI_20260414222003_0663_D.jpg"
+                    },
+                    {
+                        tag: "The Courtyard",
+                        title: "The heart of campus — where\nstudents gather between sessions",
+                        desc: "A central meeting point that pulses with energy from morning assembly to evening relaxation.",
+                        img: "/images/DJI_20260414222026_0664_D.jpg"
+                    },
+                ].map((slide, i) => (
+                    <div
+                        key={i}
+                        className={`sl-res-slide ${residentialSlide === i ? "active" : ""}`}
+                    >
+                        <img src={slide.img} alt={slide.tag} />
+                        <div className="sl-res-overlay" />
+                        <div className="sl-res-content">
+                            <span className="sl-res-tag">{slide.tag}</span>
+                            <h3 className="sl-res-title">{slide.title}</h3>
+                            <p className="sl-res-desc">{slide.desc}</p>
                         </div>
                     </div>
+                ))}
+
+                {/* Dots */}
+                <div className="sl-res-dots">
+                    {[0, 1, 2, 3].map(i => (
+                        <button
+                            key={i}
+                            className={`sl-res-dot ${residentialSlide === i ? "active" : ""}`}
+                            onClick={() => setResidentialSlide(i)}
+                        />
+                    ))}
                 </div>
-            </section >
+
+                {/* Arrows */}
+                <div className="sl-res-arrows">
+                    <button className="sl-res-arr" onClick={() => setResidentialSlide(s => (s - 1 + 4) % 4)}>←</button>
+                    <button className="sl-res-arr" onClick={() => setResidentialSlide(s => (s + 1) % 4)}>→</button>
+                </div>
+
+                {/* Progress bar */}
+                <div className="sl-res-progress" key={residentialSlide} />
+            </section>
 
             {/* ============ SECTION 5 — RECOMMENDED HOSTELS ============ */}
             < section className="sl-list-section" id="recommended-hostels" >
