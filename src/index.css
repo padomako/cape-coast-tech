@@ -7625,6 +7625,15 @@ h1,
     color: #ff8fd1;
 }
 
+.sl-list-section-alt .sl-list li.doc-card {
+    border-bottom: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.sl-list-section-alt .sl-list li.doc-card:hover {
+    border-color: rgba(245, 196, 0, 0.4) !important;
+}
+
 @media (max-width: 768px) {
     .sl-quick-links {
         flex-direction: column;
