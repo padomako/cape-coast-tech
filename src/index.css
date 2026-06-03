@@ -2035,7 +2035,7 @@ body {
 }
 
 .admissions-steps-wrapper {
-    border: 1px solid var(--brand-red);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     background: var(--brand-dark-2);
     overflow: hidden;
@@ -2126,7 +2126,7 @@ body {
 }
 
 .admissions-doc-list li {
-    color: #2c2c2a;
+    color: rgba(255, 255, 255, 0.82);
     font-size: 0.95rem;
     line-height: 1.75;
     padding: 0.3rem 0 0.3rem 1.4rem;
