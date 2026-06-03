@@ -5131,7 +5131,7 @@ h1,
 .programmes-table-head {
     display: grid;
     grid-template-columns: 1.6fr 1fr;
-    gap: 2rem;
+    gap: 10rem;
     padding: 1.25rem 1rem;
     font-family: "Inter", sans-serif;
     font-size: 0.72rem;
@@ -5145,7 +5145,7 @@ h1,
 .programme-row {
     display: grid;
     grid-template-columns: 1.6fr 1fr;
-    gap: 6rem;
+    gap: 10rem;
     align-items: center;
     width: 100%;
     background: transparent;
@@ -5205,6 +5205,21 @@ h1,
     width: 100%;
 }
 
+.programme-name {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 500;
+    color: #fff;
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.programme-row:hover .programme-name {
+    color: #fff;
+    transform: translateX(8px);
+}
+
 /*.programme-row {
     display: grid;
     grid-template-columns: 1.6fr 1fr;
@@ -5242,20 +5257,6 @@ h1,
     transform: scaleY(1);
 }*/
 
-.programme-name {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-    font-weight: 500;
-    color: #fff;
-    display: inline-block;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.programme-row:hover .programme-name {
-    color: #fff;
-    transform: translateX(8px);
-}
 
 .programme-cert {
     font-family: "Inter", sans-serif;
