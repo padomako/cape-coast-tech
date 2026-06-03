@@ -2197,7 +2197,7 @@ body {
 }
 
 .admissions-step-cta:hover {
-    background: var(--brand-gold-soft);
+    background: #fff;
     border-color: var(--brand-gold-soft);
     color: #0d0d0d;
     transform: translateX(4px);
