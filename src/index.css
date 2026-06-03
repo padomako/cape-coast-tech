@@ -7480,46 +7480,18 @@ h1,
     list-style: none;
     padding: 0;
     margin: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sl-list li {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.sl-list-link {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    padding: 1.25rem 0.5rem !important;
-    font-family: "Cormorant Garamond", Georgia, serif !important;
-    font-size: 1.4rem !important;
-    font-weight: 500 !important;
-    text-transform: none !important;
-    letter-spacing: 0 !important;
-    color: #fff !important;
-    width: 100%;
+.sl-list-section-alt .sl-list {
+    border-top: none;
 }
 
-.sl-list-link::after {
-    display: none;
-}
-
-.sl-list-link:hover {
-    color: var(--brand-gold) !important;
-    padding-left: 1rem !important;
-    background: rgba(245, 196, 0, 0.04);
-}
-
-.sl-list-link i {
-    color: rgba(255, 255, 255, 0.4);
-    transition: all 0.3s ease;
-}
-
-.sl-list-link:hover i {
-    color: var(--brand-gold);
-    transform: translateX(4px);
+.sl-list-section-alt .sl-list li {
+    border-bottom: none;
 }
 
 /* Section 6: Student Portal */
@@ -7658,6 +7630,63 @@ h1,
         flex-direction: column;
         gap: 1rem;
     }
+}
+
+/*GRADUATE DOCUMENT LIST ON STUDENTS PAGE*/
+.doc-card {
+    background: #242424;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-bottom: 0.6rem;
+    list-style: none;
+}
+
+.doc-card:hover {
+    border-color: rgba(245, 196, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.doc-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: rgba(245, 196, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+    color: var(--brand-gold);
+    transition: background 0.25s ease;
+}
+
+.doc-card:hover .doc-icon {
+    background: rgba(245, 196, 0, 0.2);
+}
+
+.doc-name {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.05rem;
+    color: #fff;
+    flex: 1;
+}
+
+.doc-action {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.doc-card:hover .doc-action {
+    color: var(--brand-gold);
 }
 
 /* ===============================================

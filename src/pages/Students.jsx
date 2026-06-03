@@ -257,13 +257,16 @@ export default function Students() {
 
                         <ul className="sl-list">
                             {GRAD_DOC_PREVIEW.map((d) => (
-                                <li key={d}>
+                                <li key={d} className="doc-card">
+                                    <div className="doc-icon">
+                                        <i className="bi bi-file-earmark-text"></i>
+                                    </div>
+                                    <span className="doc-name">{d}</span>
                                     <Link
                                         to="/student-life/graduate-documents?open=request"
-                                        className="harvard-link sl-list-link"
+                                        className="doc-action"
                                     >
-                                        {d}
-                                        <i className="bi bi-arrow-right"></i>
+                                        →
                                     </Link>
                                 </li>
                             ))}
