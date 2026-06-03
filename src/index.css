@@ -7512,19 +7512,6 @@ h1,
     background: rgba(245, 196, 0, 0.04);
 }
 
-.sl-list-tag {
-    font-family: "Inter", sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--brand-gold);
-    background: rgba(245, 196, 0, 0.1);
-    padding: 0.3rem 0.7rem;
-    border-radius: 999px;
-    flex-shrink: 0;
-}
-
 .sl-list-link i {
     color: rgba(255, 255, 255, 0.4);
     transition: all 0.3s ease;
@@ -7593,6 +7580,77 @@ h1,
     .sl-residential-collage {
         grid-template-rows: 160px 160px;
     }
+}
+
+.num-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.85rem 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    list-style: none;
+}
+
+.num-item:hover {
+    padding-left: 6px;
+}
+
+.num-item:hover .num-idx {
+    background: var(--brand-gold);
+    color: #0d0d0d;
+    border-color: var(--brand-gold);
+}
+
+.num-item:hover .num-label {
+    color: #fff;
+}
+
+.num-idx {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.num-label {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    flex: 1;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.num-tag {
+    font-family: "Inter", sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
+.tag-male {
+    background: rgba(59, 130, 246, 0.15);
+    color: #6fb8ff;
+}
+
+.tag-female {
+    background: rgba(244, 114, 182, 0.15);
+    color: #ff8fd1;
 }
 
 @media (max-width: 768px) {

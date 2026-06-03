@@ -204,12 +204,15 @@ export default function Students() {
                         </div>
 
                         <ul className="sl-list">
-                            {HOSTEL_PREVIEW.map((h) => (
-                                <li key={h.name}>
-                                    <Link to="/student-life/hostels" className="harvard-link sl-list-link">
+                            {HOSTEL_PREVIEW.map((h, i) => (
+                                <li key={h.name} className="num-item">
+                                    <span className="num-idx">{String(i + 1).padStart(2, '0')}</span>
+                                    <Link to="/student-life/hostels" className="num-label">
                                         {h.name}
-                                        <span className="sl-list-tag">{h.gender}</span>
                                     </Link>
+                                    <span className={`num-tag ${h.gender === "Male" ? "tag-male" : "tag-female"}`}>
+                                        {h.gender}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
