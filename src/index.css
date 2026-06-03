@@ -5286,6 +5286,10 @@ h1,
     border-color: #0d0d0d;
 }
 
+.programme-panel-close:hover .bi-x-lg {
+    color: #0d0d0d;
+}
+
 .programme-panel-hero {
     position: relative;
     height: 320px;
