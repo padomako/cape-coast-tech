@@ -7635,7 +7635,7 @@ h1,
 .sl-list-section {
     padding: 5rem 0;
     background: var(--brand-dark-2);
-    /* border-top: 1px solid rgba(255, 255, 255, 0.05);*/
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .sl-list-section-alt {
@@ -7688,6 +7688,12 @@ h1,
     overflow: hidden;
     background: #000;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#recommended-hostels .sl-list-side,
+#graduate-documents .sl-list-side {
+    border-top: none;
+    padding-top: 0;
 }
 
 .sl-portal-image {
