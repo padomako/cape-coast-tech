@@ -5253,7 +5253,7 @@ h1,
 }
 
 .programme-row:hover .programme-name {
-    color: var(--brand-gold);
+    color: #fff;
     transform: translateX(8px);
 }
 
