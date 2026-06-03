@@ -2026,7 +2026,7 @@ body {
 /* ---- Step layout (Sections 2 & 3) ---- */
 .admissions-steps-outer {
     padding: 4.5rem 0;
-    background: #fafaf8;
+    background: var(--brand-dark-2);
 }
 
 .admissions-steps-outer .container-xl {
@@ -2035,7 +2035,7 @@ body {
 }
 
 .admissions-steps-wrapper {
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid var(--brand-red);
     border-radius: 4px;
     background: var(--brand-dark-2);
     overflow: hidden;
@@ -2055,7 +2055,7 @@ body {
 
 .admissions-step-section-alt {
     background: transparent;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .admissions-step-card {
@@ -2083,7 +2083,7 @@ body {
 
 .admissions-step-side h2 {
     font-family: "Cormorant Garamond", Georgia, serif !important;
-    color: var(--brand-navy, #0a1628);
+    color: #fff;
     font-size: 2.5rem;
     font-weight: 700;
     margin: 0;
@@ -2097,7 +2097,7 @@ body {
 }
 
 .admissions-step-body p {
-    color: #2c2c2a;
+    color: rgba(255, 255, 255, 0.82);
     font-size: 0.97rem;
     line-height: 1.8;
     margin: 0;
@@ -2105,14 +2105,14 @@ body {
 }
 
 .admissions-step-body strong {
-    color: #0a1628;
+    color: #fff;
     font-weight: 700;
 }
 
 .admissions-substep-title {
     font-family: "Inter", sans-serif !important;
     font-weight: 700;
-    color: #5f5e5a;
+    color: var(--brand-gold);
     font-size: 0.76rem;
     text-transform: uppercase;
     letter-spacing: 1.8px;
@@ -2147,13 +2147,13 @@ body {
 .admissions-help {
     margin-top: 1.5rem !important;
     padding-top: 1.25rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.92rem !important;
-    color: #5f5e5a;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .admissions-help a {
-    color: #0a1628;
+    color: var(--brand-gold);
     text-decoration: underline;
 }
 
