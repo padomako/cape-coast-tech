@@ -30,9 +30,7 @@ export default function Admissions() {
                 <div className="admissions-image-hero-overlay" />
 
                 <div className="admissions-image-hero-content">
-                    <div className="container-xl">
-                        <h1 className="admissions-image-hero-title">Register</h1>
-                    </div>
+                    <h1 className="admissions-image-hero-title">Register</h1>
                 </div>
 
                 <nav className="admissions-video-breadcrumb">
