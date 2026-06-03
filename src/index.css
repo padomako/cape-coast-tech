@@ -2054,14 +2054,14 @@ body {
 
 .admissions-step-card {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 26px 1fr;
     gap: 0 15rem;
     background: transparent;
     border: none;
     border-radius: 0;
     overflow: visible;
     padding: 0;
-    max-width: 1000px;
+    max-width: 1400px;
     /* cap the content width */
     margin: 0 auto;
     /* center it within the wider container */
