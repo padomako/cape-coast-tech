@@ -8,20 +8,20 @@ const documentTypes = [
         title: "Official Transcript",
         description: "A detailed academic record showing all programmes, subjects, grades, and final results.",
         fee: "GHS XX",
-        delivery: "3–5 working days",
+        delivery: "1–3 working days",
     },
     {
         icon: "bi-award-fill",
         emoji: "🏅",
-        title: "Certificate Replacement",
+        title: "Certificate",
         description: "Replacement for a lost or damaged NABPTEX Certificate II.",
         fee: "GHS XX",
-        delivery: "7–14 working days",
+        delivery: "1–2 working days",
     },
     {
         icon: "bi-file-earmark-check-fill",
         emoji: "✅",
-        title: "Letter of Attestation",
+        title: "Testimonial",
         description: "A signed letter confirming your studies at CCTI — useful for employment or further education.",
         fee: "GHS XX",
         delivery: "2–3 working days",
@@ -29,10 +29,26 @@ const documentTypes = [
     {
         icon: "bi-file-earmark-pdf-fill",
         emoji: "📋",
-        title: "Course Outline",
+        title: "Letter of Attestation",
         description: "Official course outline for the programme you completed, stamped and signed.",
         fee: "GHS XX",
-        delivery: "3–5 working days",
+        delivery: "1–2 working days",
+    },
+    {
+        icon: "bi-file-earmark-pdf-fill",
+        emoji: "📋",
+        title: "English Profeciency",
+        description: "Official course outline for the programme you completed, stamped and signed.",
+        fee: "GHS XX",
+        delivery: "2–3 working days",
+    },
+    {
+        icon: "bi-file-earmark-pdf-fill",
+        emoji: "📋",
+        title: "Letter of Recommendation",
+        description: "Official course outline for the programme you completed, stamped and signed.",
+        fee: "GHS XX",
+        delivery: "2–3 working days",
     },
 ]
 
@@ -47,7 +63,7 @@ export default function GraduateDocuments() {
         phone: "",
         programme: "",
         yearCompleted: "",
-        documentType: "",
+        documentType: [],
         deliveryMethod: "pickup",
         destination: "",
         notes: "",
@@ -71,14 +87,30 @@ export default function GraduateDocuments() {
     }
 
     const openPopupFor = (docTitle) => {
-        setForm((f) => ({ ...f, documentType: docTitle }))
+        setForm((f) => ({ ...f, documentType: [docTitle] }))
         setPopupOpen(true)
+    }
+
+    const toggleDocument = (docTitle) => {
+        setForm(f => {
+            const already = f.documentType.includes(docTitle)
+            return {
+                ...f,
+                documentType: already
+                    ? f.documentType.filter(t => t !== docTitle)
+                    : [...f.documentType, docTitle]
+            }
+        })
     }
 
     const update = (field) => (e) => setForm({ ...form, [field]: e.target.value })
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (form.documentType.length === 0) {
+            alert("Please select at least one document type.")
+            return
+        }
         setSubmitted(true)
     }
 
@@ -87,7 +119,6 @@ export default function GraduateDocuments() {
 
             {/* ============ HERO ============ */}
             <div className="ds-hero-wrap">
-                {/* Floating nav */}
                 <nav className="ds-nav">
                     <div className="ds-nav-brand">
                         <div className="ds-nav-logo">CC</div>
@@ -99,7 +130,6 @@ export default function GraduateDocuments() {
                     </div>
                 </nav>
 
-                {/* Hero */}
                 <section className="ds-hero">
                     <div className="ds-hero-bg" />
                     <div className="ds-hero-overlay" />
@@ -145,11 +175,11 @@ export default function GraduateDocuments() {
             {/* ============ STATS ============ */}
             <div className="ds-stats">
                 <div className="ds-stat">
-                    <span className="ds-stat-val">4</span>
+                    <span className="ds-stat-val">6</span>
                     <span className="ds-stat-lbl">Document Types</span>
                 </div>
                 <div className="ds-stat">
-                    <span className="ds-stat-val">2–5</span>
+                    <span className="ds-stat-val">1–3</span>
                     <span className="ds-stat-lbl">Working Days</span>
                 </div>
                 <div className="ds-stat">
@@ -253,20 +283,7 @@ export default function GraduateDocuments() {
                 </div>
             </section>
 
-            {/* ============ FOOTER ============ */}
-            <footer className="ds-footer">
-                <div className="container-xl">
-                    <p className="ds-footer-text">
-                        © 2024 – 2026 <span>Cape Coast Technical Institute</span>. All rights reserved. CCTI DocSwift — Online Document Request System.
-                    </p>
-                    <div className="ds-footer-links">
-                        <a href="#" className="ds-footer-link">Privacy Policy</a>
-                        <a href="#" className="ds-footer-link">Terms of Use</a>
-                        <a href="mailto:capetechedu@gmail.com" className="ds-footer-link">Help</a>
-                    </div>
-                </div>
-            </footer>
-
+            {/* ============ POPUP FORM ============ */}
             {popupOpen && (
                 <div className="grad-docs-modal-backdrop" onClick={closePopup}>
                     <div
@@ -302,7 +319,7 @@ export default function GraduateDocuments() {
                                         setSubmitted(false)
                                         setForm({
                                             fullName: "", indexNumber: "", email: "", phone: "",
-                                            programme: "", yearCompleted: "", documentType: "",
+                                            programme: "", yearCompleted: "", documentType: [],
                                             deliveryMethod: "pickup", destination: "", notes: "",
                                         })
                                     }}
@@ -324,15 +341,22 @@ export default function GraduateDocuments() {
                                         <p className="ds-form-subtitle">Fill out the form to request your official academic documents. We'll contact you with payment instructions.</p>
                                     </div>
 
-                                    {/* Document selector */}
+                                    {/* Document selector — multi-select */}
                                     <div className="ds-doc-selector">
-                                        <p className="ds-doc-selector-label">Select Document(s)</p>
+                                        <p className="ds-doc-selector-label">
+                                            Select Document(s)
+                                            {form.documentType.length > 0 && (
+                                                <span className="ds-doc-selected-count">
+                                                    {form.documentType.length} selected
+                                                </span>
+                                            )}
+                                        </p>
                                         <div className="ds-doc-options">
                                             {documentTypes.map((doc) => (
                                                 <div
                                                     key={doc.title}
-                                                    className={`ds-doc-option ${form.documentType === doc.title ? "selected" : ""}`}
-                                                    onClick={() => setForm(f => ({ ...f, documentType: doc.title }))}
+                                                    className={`ds-doc-option ${form.documentType.includes(doc.title) ? "selected" : ""}`}
+                                                    onClick={() => toggleDocument(doc.title)}
                                                 >
                                                     <span className="ds-doc-option-emoji">{doc.emoji}</span>
                                                     <div className="ds-doc-option-info">
@@ -340,7 +364,7 @@ export default function GraduateDocuments() {
                                                         <span className="ds-doc-option-fee">{doc.fee} · {doc.delivery}</span>
                                                     </div>
                                                     <span className="ds-doc-option-check">
-                                                        {form.documentType === doc.title ? "✓" : ""}
+                                                        {form.documentType.includes(doc.title) ? "✓" : ""}
                                                     </span>
                                                 </div>
                                             ))}
@@ -358,7 +382,7 @@ export default function GraduateDocuments() {
                                     </div>
                                 </div>
 
-                                {/* Right panel — form */}
+                                {/* Right panel */}
                                 <div className="ds-form-right">
                                     <form onSubmit={handleSubmit}>
 
@@ -433,6 +457,11 @@ export default function GraduateDocuments() {
                                         <button type="submit" className="ds-submit-btn">
                                             <i className="bi bi-send-fill"></i>
                                             Submit Request
+                                            {form.documentType.length > 0 && (
+                                                <span className="ds-submit-count">
+                                                    ({form.documentType.length} doc{form.documentType.length > 1 ? "s" : ""})
+                                                </span>
+                                            )}
                                         </button>
                                     </form>
                                 </div>

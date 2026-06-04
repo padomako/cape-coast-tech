@@ -6825,8 +6825,8 @@ h1,
     font-size: 0.82rem;
     color: rgba(255, 255, 255, 0.5);
     margin-bottom: 1.5rem;
-    text-align: center;
-    /* add this */
+    text-align: center !important;
+    max-width: 100% !important;
 }
 
 .ds-cta-btns {
@@ -6875,6 +6875,23 @@ h1,
 
 .ds-footer-link:hover {
     color: var(--brand-gold);
+}
+
+.ds-doc-selected-count {
+    margin-left: 0.5rem;
+    background: var(--brand-gold);
+    color: #0d0d0d;
+    font-size: 0.55rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 999px;
+    vertical-align: middle;
+}
+
+.ds-submit-count {
+    font-size: 0.68rem;
+    opacity: 0.7;
+    margin-left: 0.25rem;
 }
 
 /* Responsive */
