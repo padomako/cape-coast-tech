@@ -7231,6 +7231,11 @@ h1,
     color: var(--brand-gold);
 }
 
+.ds-input option {
+    background: #1a1a1a;
+    color: #fff;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .ds-payment-wrap {
