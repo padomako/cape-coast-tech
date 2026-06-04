@@ -599,39 +599,37 @@ export default function GraduateDocuments() {
                                         <i className="bi bi-check-circle-fill"></i>
                                         I Have Completed Payment
                                     </button>
-                                </div>
-                </div>
-            )}
+                        )}
 
-            {/* ---- STEP: SUCCESS ---- */}
-            {step === "success" && (
-                <div className="ds-form-success">
-                    <div className="ds-success-icon">
-                        <i className="bi bi-check-circle-fill"></i>
+                        {/* ---- STEP: SUCCESS ---- */}
+                        {step === "success" && (
+                            <div className="ds-form-success">
+                                <div className="ds-success-icon">
+                                    <i className="bi bi-check-circle-fill"></i>
+                                </div>
+                                <h3>Request Submitted!</h3>
+                                <p>
+                                    Thank you, <strong>{form.fullName || "graduate"}</strong>. Your document request
+                                    has been received. We will verify your payment and contact you at{" "}
+                                    <strong>{form.email || "your email"}</strong> with updates on your request.
+                                </p>
+                                <div className="ds-success-docs">
+                                    {form.documentType.map(t => (
+                                        <span key={t} className="ds-success-doc-tag">{t}</span>
+                                    ))}
+                                </div>
+                                <div className="ds-success-total">
+                                    Total Paid: <strong>GHS {totalAmount}</strong>
+                                </div>
+                                <button type="button" className="ds-btn ds-btn-primary" onClick={resetForm}>
+                                    Submit Another Request
+                                </button>
+                            </div>
+                        )}
                     </div>
-                    <h3>Request Submitted!</h3>
-                    <p>
-                        Thank you, <strong>{form.fullName || "graduate"}</strong>. Your document request
-                        has been received. We will verify your payment and contact you at{" "}
-                        <strong>{form.email || "your email"}</strong> with updates on your request.
-                    </p>
-                    <div className="ds-success-docs">
-                        {form.documentType.map(t => (
-                            <span key={t} className="ds-success-doc-tag">{t}</span>
-                        ))}
-                    </div>
-                    <div className="ds-success-total">
-                        Total Paid: <strong>GHS {totalAmount}</strong>
-                    </div>
-                    <button type="button" className="ds-btn ds-btn-primary" onClick={resetForm}>
-                        Submit Another Request
-                    </button>
-                </div>
-            )}
-        </div>
                 </div >
             )
-}
+            }
 
         </div >
     )
