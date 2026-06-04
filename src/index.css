@@ -7047,61 +7047,101 @@ h1,
     color: var(--brand-gold);
 }
 
-.ds-pay-options {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.ds-paystack-info {
+    background: rgba(0, 115, 230, 0.06);
+    border: 1px solid rgba(0, 115, 230, 0.2);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin: 1.25rem 0;
 }
 
-.ds-pay-opt {
+.ds-paystack-logo {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 0.85rem 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 6px;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
-.ds-pay-opt-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
+.ds-paystack-badge {
+    font-family: "Inter", sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.ds-paystack-name {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #00b3e6;
+    letter-spacing: -0.3px;
+}
+
+.ds-paystack-desc {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+    font-family: "Inter", sans-serif;
+}
+
+.ds-paystack-methods {
     display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.ds-pay-method {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 4px 10px;
+    border-radius: 4px;
     font-family: "Inter", sans-serif;
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     font-weight: 800;
-    flex-shrink: 0;
     letter-spacing: 0.5px;
 }
 
-.ds-pay-opt-name {
-    display: block;
+.ds-paystack-btn {
+    width: 100%;
+    background: #00b3e6;
+    color: #fff;
     font-family: "Inter", sans-serif;
     font-size: 0.82rem;
-    font-weight: 600;
-    color: #fff;
-}
-
-.ds-pay-opt-num {
-    display: block;
-    font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.5);
-    font-family: "Inter", sans-serif;
-}
-
-.ds-pay-opt-ref {
-    margin-left: auto;
-    font-size: 0.65rem;
     font-weight: 700;
-    color: var(--brand-gold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    transition: all 0.25s ease;
+    margin-bottom: 0.75rem;
+}
+
+.ds-paystack-btn:hover {
+    background: #0099cc;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 179, 230, 0.3);
+}
+
+.ds-pay-terms {
+    text-align: center;
+    font-size: 0.62rem;
+    color: rgba(255, 255, 255, 0.3);
     font-family: "Inter", sans-serif;
-    background: rgba(245, 196, 0, 0.1);
-    padding: 3px 8px;
-    border-radius: 4px;
-    flex-shrink: 0;
+    margin: 0;
+}
+
+.ds-pay-order {
+    margin-bottom: 0;
 }
 
 /* Bank details */

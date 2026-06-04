@@ -522,64 +522,70 @@ export default function GraduateDocuments() {
                                     </button>
                                 </div>
 
-                                <div className="ds-payment-right">
-                                    <p className="ds-form-section-title" style={{ marginTop: 0 }}>Choose Payment Method</p>
+                                        <div className="ds-payment-right">
+                                            <p className="ds-form-section-title" style={{ marginTop: 0 }}>Complete Payment</p>
 
-                                    {/* Mobile Money */}
-                                    <div className="ds-pay-section">
-                                        <p className="ds-pay-section-label">
-                                            <i className="bi bi-phone-fill"></i> Mobile Money
-                                        </p>
-                                        <div className="ds-pay-options">
-                                            <div className="ds-pay-opt">
-                                                <div className="ds-pay-opt-icon" style={{ background: "#FFCB00", color: "#000" }}>MTN</div>
-                                                <div>
-                                                    <span className="ds-pay-opt-name">MTN MoMo</span>
-                                                    <span className="ds-pay-opt-num">0XX XXX XXXX</span>
+                                            {/* Order summary */}
+                                            <div className="ds-pay-order">
+                                                <p className="ds-pay-section-label">
+                                                    <i className="bi bi-receipt"></i> Order Summary
+                                                </p>
+                                                <div className="ds-bank-details">
+                                                    {form.documentType.map(title => {
+                                                        const doc = documentTypes.find(d => d.title === title)
+                                                        return (
+                                                            <div className="ds-bank-row" key={title}>
+                                                                <span className="ds-bank-label">{title}</span>
+                                                                <span className="ds-bank-value">GHS {doc?.fee}</span>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                    {form.deliveryMethod === "courier" && (
+                                                        <div className="ds-bank-row">
+                                                            <span className="ds-bank-label">Courier Delivery Fee</span>
+                                                            <span className="ds-bank-value">GHS {COURIER_FEE}</span>
+                                                        </div>
+                                                    )}
+                                                    <div className="ds-bank-row" style={{ borderTop: "1px solid rgba(245,196,0,0.2)" }}>
+                                                        <span className="ds-bank-label" style={{ color: "var(--brand-gold)" }}>Total Amount</span>
+                                                        <span className="ds-bank-value" style={{ color: "var(--brand-gold)", fontSize: "1.1rem", fontFamily: "Cormorant Garamond, serif" }}>
+                                                            GHS {totalAmount}
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <span className="ds-pay-opt-ref">Ref: CCTI-DOCS</span>
                                             </div>
-                                            <div className="ds-pay-opt">
-                                                <div className="ds-pay-opt-icon" style={{ background: "#E2001A", color: "#fff" }}>TEL</div>
-                                                <div>
-                                                    <span className="ds-pay-opt-name">Telecel Cash</span>
-                                                    <span className="ds-pay-opt-num">0XX XXX XXXX</span>
-                                                </div>
-                                                <span className="ds-pay-opt-ref">Ref: CCTI-DOCS</span>
-                                            </div>
-                                            <div className="ds-pay-opt">
-                                                <div className="ds-pay-opt-icon" style={{ background: "#CC0000", color: "#fff" }}>AT</div>
-                                                <div>
-                                                    <span className="ds-pay-opt-name">AirtelTigo Money</span>
-                                                    <span className="ds-pay-opt-num">0XX XXX XXXX</span>
-                                                </div>
-                                                <span className="ds-pay-opt-ref">Ref: CCTI-DOCS</span>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    {/* Bank */}
-                                    <div className="ds-pay-section">
-                                        <p className="ds-pay-section-label">
-                                            <i className="bi bi-bank2"></i> Bank Transfer
-                                        </p>
-                                        <div className="ds-bank-details">
-                                            <div className="ds-bank-row">
-                                                <span className="ds-bank-label">Bank</span>
-                                                <span className="ds-bank-value">GCB Bank</span>
+                                            {/* Paystack info */}
+                                            <div className="ds-paystack-info">
+                                                <div className="ds-paystack-logo">
+                                                    <span className="ds-paystack-badge">Secured by</span>
+                                                    <span className="ds-paystack-name">Paystack</span>
+                                                </div>
+                                                <p className="ds-paystack-desc">
+                                                    You will be redirected to Paystack's secure payment page to complete your payment. We accept MTN MoMo, Telecel Cash, AirtelTigo Money, and major debit/credit cards.
+                                                </p>
+                                                <div className="ds-paystack-methods">
+                                                    <span className="ds-pay-method" style={{ background: "#FFCB00", color: "#000" }}>MTN</span>
+                                                    <span className="ds-pay-method" style={{ background: "#E2001A", color: "#fff" }}>TEL</span>
+                                                    <span className="ds-pay-method" style={{ background: "#CC0000", color: "#fff" }}>AT</span>
+                                                    <span className="ds-pay-method" style={{ background: "#1A1A2E", color: "#fff", border: "1px solid rgba(255,255,255,0.2)" }}>VISA</span>
+                                                    <span className="ds-pay-method" style={{ background: "#EB001B", color: "#fff" }}>MC</span>
+                                                </div>
                                             </div>
-                                            <div className="ds-bank-row">
-                                                <span className="ds-bank-label">Account Name</span>
-                                                <span className="ds-bank-value">Cape Coast Technical Institute</span>
+
+                                            <div className="ds-pay-note">
+                                                <i className="bi bi-shield-lock-fill"></i>
+                                                Your payment is secured and encrypted by Paystack. CCTI does not store your card or mobile money details.
                                             </div>
-                                            <div className="ds-bank-row">
-                                                <span className="ds-bank-label">Account Number</span>
-                                                <span className="ds-bank-value">XXXX-XXXX-XXXX</span>
-                                            </div>
-                                            <div className="ds-bank-row">
-                                                <span className="ds-bank-label">Reference</span>
-                                                <span className="ds-bank-value" style={{ color: "var(--brand-gold)" }}>CCTI-DOCS-{form.indexNumber || "XXXXXX"}</span>
-                                            </div>
+
+                                            <button className="ds-paystack-btn" onClick={handlePaymentDone}>
+                                                <i className="bi bi-lock-fill"></i>
+                                                Pay GHS {totalAmount} with Paystack
+                                            </button>
+
+                                            <p className="ds-pay-terms">
+                                                By completing payment you agree to CCTI's document request terms and conditions.
+                                            </p>
                                         </div>
                                     </div>
 
@@ -593,38 +599,39 @@ export default function GraduateDocuments() {
                                         I Have Completed Payment
                                     </button>
                                 </div>
-                            </div>
-                        )}
-
-                        {/* ---- STEP: SUCCESS ---- */}
-                        {step === "success" && (
-                            <div className="ds-form-success">
-                                <div className="ds-success-icon">
-                                    <i className="bi bi-check-circle-fill"></i>
-                                </div>
-                                <h3>Request Submitted!</h3>
-                                <p>
-                                    Thank you, <strong>{form.fullName || "graduate"}</strong>. Your document request
-                                    has been received. We will verify your payment and contact you at{" "}
-                                    <strong>{form.email || "your email"}</strong> with updates on your request.
-                                </p>
-                                <div className="ds-success-docs">
-                                    {form.documentType.map(t => (
-                                        <span key={t} className="ds-success-doc-tag">{t}</span>
-                                    ))}
-                                </div>
-                                <div className="ds-success-total">
-                                    Total Paid: <strong>GHS {totalAmount}</strong>
-                                </div>
-                                <button type="button" className="ds-btn ds-btn-primary" onClick={resetForm}>
-                                    Submit Another Request
-                                </button>
-                            </div>
-                        )}
-                    </div>
                 </div>
             )}
 
+            {/* ---- STEP: SUCCESS ---- */}
+            {step === "success" && (
+                <div className="ds-form-success">
+                    <div className="ds-success-icon">
+                        <i className="bi bi-check-circle-fill"></i>
+                    </div>
+                    <h3>Request Submitted!</h3>
+                    <p>
+                        Thank you, <strong>{form.fullName || "graduate"}</strong>. Your document request
+                        has been received. We will verify your payment and contact you at{" "}
+                        <strong>{form.email || "your email"}</strong> with updates on your request.
+                    </p>
+                    <div className="ds-success-docs">
+                        {form.documentType.map(t => (
+                            <span key={t} className="ds-success-doc-tag">{t}</span>
+                        ))}
+                    </div>
+                    <div className="ds-success-total">
+                        Total Paid: <strong>GHS {totalAmount}</strong>
+                    </div>
+                    <button type="button" className="ds-btn ds-btn-primary" onClick={resetForm}>
+                        Submit Another Request
+                    </button>
+                </div>
+            )}
         </div>
+                </div >
+            )
+}
+
+        </div >
     )
 }
