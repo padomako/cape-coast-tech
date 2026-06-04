@@ -267,11 +267,10 @@ export default function GraduateDocuments() {
                 </div>
             </footer>
 
-            {/* ============ POPUP FORM ============ */}
             {popupOpen && (
                 <div className="grad-docs-modal-backdrop" onClick={closePopup}>
                     <div
-                        className="grad-docs-modal"
+                        className="grad-docs-modal ds-modal"
                         role="dialog"
                         aria-modal="true"
                         onClick={(e) => e.stopPropagation()}
@@ -285,103 +284,160 @@ export default function GraduateDocuments() {
                             <i className="bi bi-x-lg"></i>
                         </button>
 
-                        <div className="grad-docs-form-card">
-                            <div className="student-life-section-header">
-                                <p className="eyebrow-line">Request a Document</p>
-                                <h2 className="section-serif-title">Online Request Form</h2>
-                            </div>
-
-                            {submitted ? (
-                                <div className="grad-docs-success">
-                                    <div className="success-icon">
-                                        <i className="bi bi-check-circle-fill"></i>
-                                    </div>
-                                    <h3>Request Received</h3>
-                                    <p>
-                                        Thank you, {form.fullName || "graduate"}. We will verify your
-                                        details and contact you at {form.email || "your email"} with
-                                        payment instructions and next steps.
-                                    </p>
-                                    <button
-                                        type="button"
-                                        className="btn-editorial btn-editorial-outline mt-3"
-                                        onClick={() => {
-                                            setSubmitted(false)
-                                            setForm({
-                                                fullName: "", indexNumber: "", email: "", phone: "",
-                                                programme: "", yearCompleted: "", documentType: "",
-                                                deliveryMethod: "pickup", destination: "", notes: "",
-                                            })
-                                        }}
-                                    >
-                                        Submit Another Request
-                                    </button>
+                        {submitted ? (
+                            <div className="ds-form-success">
+                                <div className="ds-success-icon">
+                                    <i className="bi bi-check-circle-fill"></i>
                                 </div>
-                            ) : (
-                                <form onSubmit={handleSubmit}>
-                                    <div className="row g-3">
-                                        <div className="col-md-6">
-                                            <label className="form-label-custom">Full Name *</label>
-                                            <input required type="text" className="form-input-custom" value={form.fullName} onChange={update("fullName")} placeholder="Your full name" />
+                                <h3>Request Received</h3>
+                                <p>
+                                    Thank you, <strong>{form.fullName || "graduate"}</strong>. We will
+                                    verify your details and contact you at <strong>{form.email || "your email"}</strong> with
+                                    payment instructions and next steps.
+                                </p>
+                                <button
+                                    type="button"
+                                    className="ds-btn ds-btn-primary"
+                                    onClick={() => {
+                                        setSubmitted(false)
+                                        setForm({
+                                            fullName: "", indexNumber: "", email: "", phone: "",
+                                            programme: "", yearCompleted: "", documentType: "",
+                                            deliveryMethod: "pickup", destination: "", notes: "",
+                                        })
+                                    }}
+                                >
+                                    Submit Another Request
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="ds-form-wrap">
+
+                                {/* Left panel */}
+                                <div className="ds-form-left">
+                                    <div className="ds-form-left-top">
+                                        <div className="ds-form-brand">
+                                            <div className="ds-nav-logo" style={{ width: "36px", height: "36px", fontSize: "0.65rem" }}>CC</div>
+                                            <span className="ds-nav-name">CCTI <span>DocSwift</span></span>
                                         </div>
-                                        <div className="col-md-6">
-                                            <label className="form-label-custom">Index Number *</label>
-                                            <input required type="text" className="form-input-custom" value={form.indexNumber} onChange={update("indexNumber")} placeholder="Student index number" />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label className="form-label-custom">Email Address *</label>
-                                            <input required type="email" className="form-input-custom" value={form.email} onChange={update("email")} placeholder="your@email.com" />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label className="form-label-custom">Phone Number *</label>
-                                            <input required type="tel" className="form-input-custom" value={form.phone} onChange={update("phone")} placeholder="+233 XX XXX XXXX" />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label className="form-label-custom">Programme Completed *</label>
-                                            <input required type="text" className="form-input-custom" value={form.programme} onChange={update("programme")} placeholder="e.g. Electrical Engineering" />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label className="form-label-custom">Year Completed *</label>
-                                            <input required type="text" className="form-input-custom" value={form.yearCompleted} onChange={update("yearCompleted")} placeholder="e.g. 2022" />
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label className="form-label-custom">Document Type *</label>
-                                            <select required className="form-input-custom" value={form.documentType} onChange={update("documentType")}>
-                                                <option value="">Select a document...</option>
-                                                {documentTypes.map((d) => (
-                                                    <option key={d.title} value={d.title}>{d.title}</option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <label className="form-label-custom">Delivery Method *</label>
-                                            <select required className="form-input-custom" value={form.deliveryMethod} onChange={update("deliveryMethod")}>
-                                                <option value="pickup">Pick up at CCTI Records Office</option>
-                                                <option value="courier">Courier delivery</option>
-                                                <option value="email">Email (soft copy where applicable)</option>
-                                            </select>
-                                        </div>
-                                        <div className="col-12">
-                                            <label className="form-label-custom">Delivery Address / Destination</label>
-                                            <input type="text" className="form-input-custom" value={form.destination} onChange={update("destination")} placeholder="Full delivery address or institution name" />
-                                        </div>
-                                        <div className="col-12">
-                                            <label className="form-label-custom">Additional Notes</label>
-                                            <textarea className="form-input-custom" rows="3" value={form.notes} onChange={update("notes")} placeholder="Any additional information we should know..."></textarea>
-                                        </div>
-                                        <div className="col-12 text-center mt-2">
-                                            <button type="submit" className="btn-editorial btn-editorial-solid">
-                                                <i className="bi bi-send-fill me-2"></i>
-                                                Submit Request
-                                            </button>
+                                        <h2 className="ds-form-title">Document<br />Request Form</h2>
+                                        <p className="ds-form-subtitle">Fill out the form to request your official academic documents. We'll contact you with payment instructions.</p>
+                                    </div>
+
+                                    {/* Document selector */}
+                                    <div className="ds-doc-selector">
+                                        <p className="ds-doc-selector-label">Select Document(s)</p>
+                                        <div className="ds-doc-options">
+                                            {documentTypes.map((doc) => (
+                                                <div
+                                                    key={doc.title}
+                                                    className={`ds-doc-option ${form.documentType === doc.title ? "selected" : ""}`}
+                                                    onClick={() => setForm(f => ({ ...f, documentType: doc.title }))}
+                                                >
+                                                    <span className="ds-doc-option-emoji">{doc.emoji}</span>
+                                                    <div className="ds-doc-option-info">
+                                                        <span className="ds-doc-option-name">{doc.title}</span>
+                                                        <span className="ds-doc-option-fee">{doc.fee} · {doc.delivery}</span>
+                                                    </div>
+                                                    <span className="ds-doc-option-check">
+                                                        {form.documentType === doc.title ? "✓" : ""}
+                                                    </span>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
-                                </form>
-                            )}
-                        </div>
+
+                                    <div className="ds-form-contact">
+                                        <p className="ds-form-contact-label">Need help?</p>
+                                        <a href="mailto:capetechedu@gmail.com" className="ds-form-contact-link">
+                                            <i className="bi bi-envelope-fill"></i> capetechedu@gmail.com
+                                        </a>
+                                        <a href="tel:+233246775194" className="ds-form-contact-link">
+                                            <i className="bi bi-whatsapp"></i> 0246775194
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Right panel — form */}
+                                <div className="ds-form-right">
+                                    <form onSubmit={handleSubmit}>
+
+                                        <div className="ds-form-section-title">Personal Information</div>
+                                        <div className="ds-form-grid">
+                                            <div className="ds-field">
+                                                <label className="ds-label">Full Name <span>*</span></label>
+                                                <input required type="text" className="ds-input" value={form.fullName} onChange={update("fullName")} placeholder="Your full legal name" />
+                                            </div>
+                                            <div className="ds-field">
+                                                <label className="ds-label">Index Number <span>*</span></label>
+                                                <input required type="text" className="ds-input" value={form.indexNumber} onChange={update("indexNumber")} placeholder="Student index number" />
+                                            </div>
+                                            <div className="ds-field">
+                                                <label className="ds-label">Email Address <span>*</span></label>
+                                                <input required type="email" className="ds-input" value={form.email} onChange={update("email")} placeholder="your@email.com" />
+                                            </div>
+                                            <div className="ds-field">
+                                                <label className="ds-label">Phone Number <span>*</span></label>
+                                                <input required type="tel" className="ds-input" value={form.phone} onChange={update("phone")} placeholder="+233 XX XXX XXXX" />
+                                            </div>
+                                        </div>
+
+                                        <div className="ds-form-section-title">Academic Details</div>
+                                        <div className="ds-form-grid">
+                                            <div className="ds-field">
+                                                <label className="ds-label">Programme Completed <span>*</span></label>
+                                                <input required type="text" className="ds-input" value={form.programme} onChange={update("programme")} placeholder="e.g. Electrical Engineering" />
+                                            </div>
+                                            <div className="ds-field">
+                                                <label className="ds-label">Year Completed <span>*</span></label>
+                                                <input required type="text" className="ds-input" value={form.yearCompleted} onChange={update("yearCompleted")} placeholder="e.g. 2022" />
+                                            </div>
+                                        </div>
+
+                                        <div className="ds-form-section-title">Delivery Preferences</div>
+                                        <div className="ds-delivery-options">
+                                            {[
+                                                { val: "pickup", label: "Campus Pickup", desc: "Collect at CCTI Records Office", icon: "🏫" },
+                                                { val: "courier", label: "Courier Delivery", desc: "Delivered to your address", icon: "🚚" },
+                                                { val: "email", label: "Email (Soft Copy)", desc: "Where applicable", icon: "📧" },
+                                            ].map((opt) => (
+                                                <div
+                                                    key={opt.val}
+                                                    className={`ds-delivery-opt ${form.deliveryMethod === opt.val ? "selected" : ""}`}
+                                                    onClick={() => setForm(f => ({ ...f, deliveryMethod: opt.val }))}
+                                                >
+                                                    <span className="ds-delivery-icon">{opt.icon}</span>
+                                                    <div>
+                                                        <span className="ds-delivery-label">{opt.label}</span>
+                                                        <span className="ds-delivery-desc">{opt.desc}</span>
+                                                    </div>
+                                                    <span className="ds-delivery-check">
+                                                        {form.deliveryMethod === opt.val ? "✓" : ""}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {form.deliveryMethod === "courier" && (
+                                            <div className="ds-field" style={{ marginTop: "1rem" }}>
+                                                <label className="ds-label">Delivery Address</label>
+                                                <input type="text" className="ds-input" value={form.destination} onChange={update("destination")} placeholder="Full delivery address" />
+                                            </div>
+                                        )}
+
+                                        <div className="ds-field" style={{ marginTop: "1rem" }}>
+                                            <label className="ds-label">Additional Notes</label>
+                                            <textarea className="ds-input ds-textarea" rows="3" value={form.notes} onChange={update("notes")} placeholder="Any additional information..."></textarea>
+                                        </div>
+
+                                        <button type="submit" className="ds-submit-btn">
+                                            <i className="bi bi-send-fill"></i>
+                                            Submit Request
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
-        </div>
-    )
-}
