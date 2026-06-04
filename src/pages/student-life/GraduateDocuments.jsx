@@ -435,9 +435,13 @@ export default function GraduateDocuments() {
                                             Submit Request
                                         </button>
                                     </form>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            )}
+                                </div> {/* ds-form-right */}
+                            </div> {/* ds-form-wrap */}
+                        )} {/* submitted ternary */}
+                    </div> {/* grad-docs-modal */}
+                </div> {/* grad-docs-modal-backdrop */}
+            )} {/* popupOpen */}
+
+        </div> {/* ds-page */ }
+    )
+}
