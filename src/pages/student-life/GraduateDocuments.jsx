@@ -573,6 +573,7 @@ export default function GraduateDocuments() {
                                                 </div>
                                             </div>
 
+                                            {/* KEEP this new one */}
                                             <div className="ds-pay-note">
                                                 <i className="bi bi-shield-lock-fill"></i>
                                                 Your payment is secured and encrypted by Paystack. CCTI does not store your card or mobile money details.
