@@ -7432,7 +7432,7 @@ h1,
 .sl-residential-label {
     position: absolute;
     top: 2rem;
-    left: 12rem;
+    left: 18rem;
     z-index: 3;
 }
 
@@ -7480,7 +7480,7 @@ h1,
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 3rem 12rem;
+    padding: 3rem 18rem;
     z-index: 2;
 }
 
@@ -7560,7 +7560,7 @@ h1,
 .sl-res-arrows {
     position: absolute;
     bottom: 1.5rem;
-    left: 12rem;
+    left: 18rem;
     display: flex;
     gap: 8px;
     z-index: 10;
