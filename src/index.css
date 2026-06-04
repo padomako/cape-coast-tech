@@ -6300,7 +6300,7 @@ h1,
 /* ===============================================
    GRADUATE DOCUMENTS PAGE
 =============================================== */
-.grad-docs-types {
+/*.grad-docs-types {
     padding: 5rem 0;
     background: #0d0d0d;
 }
@@ -6384,7 +6384,7 @@ h1,
     color: var(--brand-gold);
 }
 
-/* ---- Timeline steps ---- */
+/* ---- Timeline steps ---- *
 .grad-docs-steps {
     padding: 5rem 0;
     background: #1A1A1A;
@@ -6445,7 +6445,7 @@ h1,
     font-size: 0.88rem;
     line-height: 1.6;
     margin: 0;
-}
+}*/
 
 /* ---- Request form ---- */
 .grad-docs-form-section {
