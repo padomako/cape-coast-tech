@@ -6894,6 +6894,316 @@ h1,
     margin-left: 0.25rem;
 }
 
+/* Email note */
+.ds-email-note {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(245, 196, 0, 0.08);
+    border: 1px solid rgba(245, 196, 0, 0.2);
+    border-radius: 6px;
+    padding: 0.65rem 1rem;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 0.85rem;
+    font-family: "Inter", sans-serif;
+}
+
+.ds-email-note i {
+    color: var(--brand-gold);
+    flex-shrink: 0;
+}
+
+/* Amount summary */
+.ds-amount-summary {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 0.85rem;
+}
+
+.ds-amount-rows {
+    padding: 0.5rem 0;
+}
+
+.ds-amount-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-family: "Inter", sans-serif;
+}
+
+.ds-amount-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--brand-gold);
+}
+
+/* Payment step */
+.ds-payment-wrap {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    min-height: 600px;
+}
+
+.ds-payment-left {
+    background: linear-gradient(180deg, #1a0f00 0%, #0d0d0d 100%);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    overflow-y: auto;
+}
+
+.ds-payment-right {
+    padding: 2.5rem;
+    background: #0d0d0d;
+    overflow-y: auto;
+    max-height: 85vh;
+}
+
+.ds-payment-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.ds-payment-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.ds-payment-meta-label {
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: "Inter", sans-serif;
+}
+
+.ds-payment-meta-value {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: "Inter", sans-serif;
+}
+
+.ds-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.55);
+    font-family: "Inter", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.6rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: auto;
+}
+
+.ds-back-btn:hover {
+    border-color: var(--brand-gold);
+    color: var(--brand-gold);
+}
+
+/* Pay sections */
+.ds-pay-section {
+    margin-bottom: 1.5rem;
+}
+
+.ds-pay-section-label {
+    font-family: "Inter", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.ds-pay-section-label i {
+    color: var(--brand-gold);
+}
+
+.ds-pay-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ds-pay-opt {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+}
+
+.ds-pay-opt-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 800;
+    flex-shrink: 0;
+    letter-spacing: 0.5px;
+}
+
+.ds-pay-opt-name {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.ds-pay-opt-num {
+    display: block;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Inter", sans-serif;
+}
+
+.ds-pay-opt-ref {
+    margin-left: auto;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--brand-gold);
+    font-family: "Inter", sans-serif;
+    background: rgba(245, 196, 0, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+/* Bank details */
+.ds-bank-details {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.ds-bank-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ds-bank-row:last-child {
+    border-bottom: none;
+}
+
+.ds-bank-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: "Inter", sans-serif;
+}
+
+.ds-bank-value {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: "Inter", sans-serif;
+}
+
+/* Pay note */
+.ds-pay-note {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    background: rgba(245, 196, 0, 0.06);
+    border: 1px solid rgba(245, 196, 0, 0.15);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    font-family: "Inter", sans-serif;
+}
+
+.ds-pay-note i {
+    color: var(--brand-gold);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Success */
+.ds-success-docs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 0.5rem 0;
+}
+
+.ds-success-doc-tag {
+    background: rgba(245, 196, 0, 0.1);
+    border: 1px solid rgba(245, 196, 0, 0.25);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.72rem;
+    font-family: "Inter", sans-serif;
+    padding: 4px 12px;
+    border-radius: 999px;
+}
+
+.ds-success-total {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 0.5rem;
+}
+
+.ds-success-total strong {
+    color: var(--brand-gold);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ds-payment-wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .ds-payment-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .ds-payment-right {
+        padding: 1.5rem;
+    }
+}
+
 /* Responsive */
 @media (max-width: 992px) {
     .ds-hero-content {

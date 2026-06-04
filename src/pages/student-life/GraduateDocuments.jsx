@@ -7,7 +7,7 @@ const documentTypes = [
         emoji: "📄",
         title: "Official Transcript",
         description: "A detailed academic record showing all programmes, subjects, grades, and final results.",
-        fee: "GHS XX",
+        fee: 50,
         delivery: "1–3 working days",
     },
     {
@@ -15,47 +15,49 @@ const documentTypes = [
         emoji: "🏅",
         title: "Certificate",
         description: "Replacement for a lost or damaged NABPTEX Certificate II.",
-        fee: "GHS XX",
+        fee: 80,
         delivery: "1–2 working days",
     },
     {
         icon: "bi-file-earmark-check-fill",
         emoji: "✅",
         title: "Testimonial",
-        description: "A signed letter confirming your studies at CCTI — useful for employment or further education.",
-        fee: "GHS XX",
+        description: "A signed letter confirming your studies at CCTI.",
+        fee: 30,
         delivery: "2–3 working days",
     },
     {
         icon: "bi-file-earmark-pdf-fill",
         emoji: "📋",
         title: "Letter of Attestation",
-        description: "Official course outline for the programme you completed, stamped and signed.",
-        fee: "GHS XX",
+        description: "Official attestation letter, stamped and signed.",
+        fee: 30,
         delivery: "1–2 working days",
     },
     {
-        icon: "bi-file-earmark-pdf-fill",
-        emoji: "📋",
-        title: "English Profeciency",
-        description: "Official course outline for the programme you completed, stamped and signed.",
-        fee: "GHS XX",
+        icon: "bi-translate",
+        emoji: "🔤",
+        title: "English Proficiency",
+        description: "Official English proficiency letter for your programme.",
+        fee: 40,
         delivery: "2–3 working days",
     },
     {
-        icon: "bi-file-earmark-pdf-fill",
-        emoji: "📋",
+        icon: "bi-person-check-fill",
+        emoji: "📝",
         title: "Letter of Recommendation",
-        description: "Official course outline for the programme you completed, stamped and signed.",
-        fee: "GHS XX",
+        description: "Official letter of recommendation from the institution.",
+        fee: 40,
         delivery: "2–3 working days",
     },
 ]
 
+const STEPS = ["form", "payment", "success"]
+
 export default function GraduateDocuments() {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [submitted, setSubmitted] = useState(false)
     const [popupOpen, setPopupOpen] = useState(false)
+    const [step, setStep] = useState("form") // form | payment | success
     const [form, setForm] = useState({
         fullName: "",
         indexNumber: "",
@@ -80,6 +82,7 @@ export default function GraduateDocuments() {
 
     const closePopup = () => {
         setPopupOpen(false)
+        setStep("form")
         if (searchParams.get("open")) {
             searchParams.delete("open")
             setSearchParams(searchParams, { replace: true })
@@ -88,6 +91,7 @@ export default function GraduateDocuments() {
 
     const openPopupFor = (docTitle) => {
         setForm((f) => ({ ...f, documentType: [docTitle] }))
+        setStep("form")
         setPopupOpen(true)
     }
 
@@ -105,13 +109,32 @@ export default function GraduateDocuments() {
 
     const update = (field) => (e) => setForm({ ...form, [field]: e.target.value })
 
+    // Calculate total amount
+    const totalAmount = form.documentType.reduce((sum, title) => {
+        const doc = documentTypes.find(d => d.title === title)
+        return sum + (doc ? doc.fee : 0)
+    }, 0)
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if (form.documentType.length === 0) {
             alert("Please select at least one document type.")
             return
         }
-        setSubmitted(true)
+        setStep("payment")
+    }
+
+    const handlePaymentDone = () => {
+        setStep("success")
+    }
+
+    const resetForm = () => {
+        setStep("form")
+        setForm({
+            fullName: "", indexNumber: "", email: "", phone: "",
+            programme: "", yearCompleted: "", documentType: [],
+            deliveryMethod: "pickup", destination: "", notes: "",
+        })
     }
 
     return (
@@ -145,27 +168,18 @@ export default function GraduateDocuments() {
                                 from anywhere, anytime.
                             </p>
                             <div className="ds-hero-btns">
-                                <button
-                                    className="ds-btn ds-btn-primary"
-                                    onClick={() => setPopupOpen(true)}
-                                >
+                                <button className="ds-btn ds-btn-primary" onClick={() => { setStep("form"); setPopupOpen(true) }}>
                                     Request Document
                                 </button>
-                                <a href="#how-it-works" className="ds-btn ds-btn-ghost">
-                                    Getting Started
-                                </a>
-                                <a href="mailto:capetechedu@gmail.com" className="ds-btn ds-btn-ghost">
-                                    Contact Support
-                                </a>
+                                <a href="#how-it-works" className="ds-btn ds-btn-ghost">Getting Started</a>
+                                <a href="mailto:capetechedu@gmail.com" className="ds-btn ds-btn-ghost">Contact Support</a>
                             </div>
                         </div>
                         <div className="ds-hero-card">
                             <div className="ds-hero-card-icon">
                                 <i className="bi bi-file-earmark-text-fill"></i>
                             </div>
-                            <div className="ds-hero-card-name">
-                                CCTI <span>DocSwift</span>
-                            </div>
+                            <div className="ds-hero-card-name">CCTI <span>DocSwift</span></div>
                             <div className="ds-hero-card-sub">Online Document System</div>
                         </div>
                     </div>
@@ -211,7 +225,7 @@ export default function GraduateDocuments() {
                         <div className="ds-feat">
                             <div className="ds-feat-ico">🚚</div>
                             <h4>Flexible Delivery</h4>
-                            <p>Choose campus pickup, courier delivery, or email for applicable documents.</p>
+                            <p>Choose campus pickup or courier delivery. All documents are emailed to you automatically.</p>
                         </div>
                     </div>
                 </div>
@@ -227,7 +241,7 @@ export default function GraduateDocuments() {
                             { n: "01", t: "Submit Request", d: "Fill out the online form with your personal and academic details." },
                             { n: "02", t: "Pay Processing Fee", d: "Complete payment via bank or mobile money." },
                             { n: "03", t: "Verification", d: "Records office verifies your details and prepares your documents." },
-                            { n: "04", t: "Receive Documents", d: "Collect in person or receive by courier or email." },
+                            { n: "04", t: "Receive Documents", d: "Collect in person or receive by courier. Soft copy sent to your email." },
                         ].map((s) => (
                             <div className="ds-step" key={s.n}>
                                 <div className="ds-step-num">{s.n}</div>
@@ -246,17 +260,13 @@ export default function GraduateDocuments() {
                     <h2 className="ds-sec-title">What can you request?</h2>
                     <div className="ds-docs-grid">
                         {documentTypes.map((doc) => (
-                            <div
-                                className="ds-doc"
-                                key={doc.title}
-                                onClick={() => openPopupFor(doc.title)}
-                            >
+                            <div className="ds-doc" key={doc.title} onClick={() => openPopupFor(doc.title)}>
                                 <div className="ds-doc-ico">{doc.emoji}</div>
                                 <div className="ds-doc-info">
                                     <div className="ds-doc-name">{doc.title}</div>
                                     <span className="ds-doc-meta">{doc.delivery}</span>
                                 </div>
-                                <span className="ds-doc-fee">{doc.fee}</span>
+                                <span className="ds-doc-fee">GHS {doc.fee}</span>
                                 <span className="ds-doc-arr">→</span>
                             </div>
                         ))}
@@ -270,20 +280,15 @@ export default function GraduateDocuments() {
                     <h2 className="ds-cta-title">Ready to request your documents?</h2>
                     <p className="ds-cta-sub">Register or log in to get started with your document request today.</p>
                     <div className="ds-cta-btns">
-                        <button
-                            className="ds-btn ds-btn-primary"
-                            onClick={() => setPopupOpen(true)}
-                        >
+                        <button className="ds-btn ds-btn-primary" onClick={() => { setStep("form"); setPopupOpen(true) }}>
                             Get Started →
                         </button>
-                        <a href="mailto:capetechedu@gmail.com" className="ds-btn ds-btn-ghost">
-                            Contact Support
-                        </a>
+                        <a href="mailto:capetechedu@gmail.com" className="ds-btn ds-btn-ghost">Contact Support</a>
                     </div>
                 </div>
             </section>
 
-            {/* ============ POPUP FORM ============ */}
+            {/* ============ POPUP ============ */}
             {popupOpen && (
                 <div className="grad-docs-modal-backdrop" onClick={closePopup}>
                     <div
@@ -292,42 +297,12 @@ export default function GraduateDocuments() {
                         aria-modal="true"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <button
-                            type="button"
-                            className="grad-docs-modal-close"
-                            onClick={closePopup}
-                            aria-label="Close"
-                        >
+                        <button type="button" className="grad-docs-modal-close" onClick={closePopup} aria-label="Close">
                             <i className="bi bi-x-lg"></i>
                         </button>
 
-                        {submitted ? (
-                            <div className="ds-form-success">
-                                <div className="ds-success-icon">
-                                    <i className="bi bi-check-circle-fill"></i>
-                                </div>
-                                <h3>Request Received</h3>
-                                <p>
-                                    Thank you, <strong>{form.fullName || "graduate"}</strong>. We will
-                                    verify your details and contact you at <strong>{form.email || "your email"}</strong> with
-                                    payment instructions and next steps.
-                                </p>
-                                <button
-                                    type="button"
-                                    className="ds-btn ds-btn-primary"
-                                    onClick={() => {
-                                        setSubmitted(false)
-                                        setForm({
-                                            fullName: "", indexNumber: "", email: "", phone: "",
-                                            programme: "", yearCompleted: "", documentType: [],
-                                            deliveryMethod: "pickup", destination: "", notes: "",
-                                        })
-                                    }}
-                                >
-                                    Submit Another Request
-                                </button>
-                            </div>
-                        ) : (
+                        {/* ---- STEP: FORM ---- */}
+                        {step === "form" && (
                             <div className="ds-form-wrap">
 
                                 {/* Left panel */}
@@ -338,17 +313,15 @@ export default function GraduateDocuments() {
                                             <span className="ds-nav-name">CCTI <span>DocSwift</span></span>
                                         </div>
                                         <h2 className="ds-form-title">Document<br />Request Form</h2>
-                                        <p className="ds-form-subtitle">Fill out the form to request your official academic documents. We'll contact you with payment instructions.</p>
+                                        <p className="ds-form-subtitle">Select one or more documents, fill in your details, and proceed to payment.</p>
                                     </div>
 
-                                    {/* Document selector — multi-select */}
+                                    {/* Document selector */}
                                     <div className="ds-doc-selector">
                                         <p className="ds-doc-selector-label">
                                             Select Document(s)
                                             {form.documentType.length > 0 && (
-                                                <span className="ds-doc-selected-count">
-                                                    {form.documentType.length} selected
-                                                </span>
+                                                <span className="ds-doc-selected-count">{form.documentType.length} selected</span>
                                             )}
                                         </p>
                                         <div className="ds-doc-options">
@@ -361,7 +334,7 @@ export default function GraduateDocuments() {
                                                     <span className="ds-doc-option-emoji">{doc.emoji}</span>
                                                     <div className="ds-doc-option-info">
                                                         <span className="ds-doc-option-name">{doc.title}</span>
-                                                        <span className="ds-doc-option-fee">{doc.fee} · {doc.delivery}</span>
+                                                        <span className="ds-doc-option-fee">GHS {doc.fee} · {doc.delivery}</span>
                                                     </div>
                                                     <span className="ds-doc-option-check">
                                                         {form.documentType.includes(doc.title) ? "✓" : ""}
@@ -369,6 +342,27 @@ export default function GraduateDocuments() {
                                                 </div>
                                             ))}
                                         </div>
+
+                                        {/* Amount summary */}
+                                        {form.documentType.length > 0 && (
+                                            <div className="ds-amount-summary">
+                                                <div className="ds-amount-rows">
+                                                    {form.documentType.map(title => {
+                                                        const doc = documentTypes.find(d => d.title === title)
+                                                        return (
+                                                            <div className="ds-amount-row" key={title}>
+                                                                <span>{title}</span>
+                                                                <span>GHS {doc?.fee}</span>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                                <div className="ds-amount-total">
+                                                    <span>Total</span>
+                                                    <span>GHS {totalAmount}</span>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
 
                                     <div className="ds-form-contact">
@@ -419,11 +413,14 @@ export default function GraduateDocuments() {
                                         </div>
 
                                         <div className="ds-form-section-title">Delivery Preferences</div>
+                                        <p className="ds-email-note">
+                                            <i className="bi bi-envelope-check-fill"></i>
+                                            A soft copy will be sent to your email automatically regardless of delivery method.
+                                        </p>
                                         <div className="ds-delivery-options">
                                             {[
-                                                { val: "pickup", label: "Campus Pickup", desc: "Collect at CCTI Records Office", icon: "🏫" },
-                                                { val: "courier", label: "Courier Delivery", desc: "Delivered to your address", icon: "🚚" },
-                                                { val: "email", label: "Email (Soft Copy)", desc: "Where applicable", icon: "📧" },
+                                                { val: "pickup", label: "Campus Pickup", desc: "Collect hard copy at CCTI Records Office", icon: "🏫" },
+                                                { val: "courier", label: "Courier Delivery", desc: "Hard copy delivered to your address", icon: "🚚" },
                                             ].map((opt) => (
                                                 <div
                                                     key={opt.val}
@@ -455,16 +452,167 @@ export default function GraduateDocuments() {
                                         </div>
 
                                         <button type="submit" className="ds-submit-btn">
-                                            <i className="bi bi-send-fill"></i>
-                                            Submit Request
+                                            <i className="bi bi-arrow-right-circle-fill"></i>
+                                            Proceed to Payment
                                             {form.documentType.length > 0 && (
-                                                <span className="ds-submit-count">
-                                                    ({form.documentType.length} doc{form.documentType.length > 1 ? "s" : ""})
-                                                </span>
+                                                <span className="ds-submit-count">— GHS {totalAmount}</span>
                                             )}
                                         </button>
                                     </form>
                                 </div>
+                            </div>
+                        )}
+
+                        {/* ---- STEP: PAYMENT ---- */}
+                        {step === "payment" && (
+                            <div className="ds-payment-wrap">
+                                <div className="ds-payment-left">
+                                    <div className="ds-form-brand" style={{ marginBottom: "1.5rem" }}>
+                                        <div className="ds-nav-logo" style={{ width: "36px", height: "36px", fontSize: "0.65rem" }}>CC</div>
+                                        <span className="ds-nav-name">CCTI <span>DocSwift</span></span>
+                                    </div>
+                                    <h2 className="ds-form-title">Payment<br />Summary</h2>
+                                    <p className="ds-form-subtitle">Review your order before completing payment.</p>
+
+                                    <div className="ds-payment-summary">
+                                        <div className="ds-payment-meta">
+                                            <span className="ds-payment-meta-label">Name</span>
+                                            <span className="ds-payment-meta-value">{form.fullName}</span>
+                                        </div>
+                                        <div className="ds-payment-meta">
+                                            <span className="ds-payment-meta-label">Index Number</span>
+                                            <span className="ds-payment-meta-value">{form.indexNumber}</span>
+                                        </div>
+                                        <div className="ds-payment-meta">
+                                            <span className="ds-payment-meta-label">Email</span>
+                                            <span className="ds-payment-meta-value">{form.email}</span>
+                                        </div>
+                                        <div className="ds-payment-meta">
+                                            <span className="ds-payment-meta-label">Delivery</span>
+                                            <span className="ds-payment-meta-value">{form.deliveryMethod === "pickup" ? "Campus Pickup" : "Courier Delivery"}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="ds-amount-summary" style={{ marginTop: "1rem" }}>
+                                        <div className="ds-amount-rows">
+                                            {form.documentType.map(title => {
+                                                const doc = documentTypes.find(d => d.title === title)
+                                                return (
+                                                    <div className="ds-amount-row" key={title}>
+                                                        <span>{title}</span>
+                                                        <span>GHS {doc?.fee}</span>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                        <div className="ds-amount-total">
+                                            <span>Total Amount</span>
+                                            <span>GHS {totalAmount}</span>
+                                        </div>
+                                    </div>
+
+                                    <button className="ds-back-btn" onClick={() => setStep("form")}>
+                                        <i className="bi bi-arrow-left"></i> Back to Form
+                                    </button>
+                                </div>
+
+                                <div className="ds-payment-right">
+                                    <p className="ds-form-section-title" style={{ marginTop: 0 }}>Choose Payment Method</p>
+
+                                    {/* Mobile Money */}
+                                    <div className="ds-pay-section">
+                                        <p className="ds-pay-section-label">
+                                            <i className="bi bi-phone-fill"></i> Mobile Money
+                                        </p>
+                                        <div className="ds-pay-options">
+                                            <div className="ds-pay-opt">
+                                                <div className="ds-pay-opt-icon" style={{ background: "#FFCB00", color: "#000" }}>MTN</div>
+                                                <div>
+                                                    <span className="ds-pay-opt-name">MTN MoMo</span>
+                                                    <span className="ds-pay-opt-num">0XX XXX XXXX</span>
+                                                </div>
+                                                <span className="ds-pay-opt-ref">Ref: CCTI-DOCS</span>
+                                            </div>
+                                            <div className="ds-pay-opt">
+                                                <div className="ds-pay-opt-icon" style={{ background: "#E2001A", color: "#fff" }}>TEL</div>
+                                                <div>
+                                                    <span className="ds-pay-opt-name">Telecel Cash</span>
+                                                    <span className="ds-pay-opt-num">0XX XXX XXXX</span>
+                                                </div>
+                                                <span className="ds-pay-opt-ref">Ref: CCTI-DOCS</span>
+                                            </div>
+                                            <div className="ds-pay-opt">
+                                                <div className="ds-pay-opt-icon" style={{ background: "#CC0000", color: "#fff" }}>AT</div>
+                                                <div>
+                                                    <span className="ds-pay-opt-name">AirtelTigo Money</span>
+                                                    <span className="ds-pay-opt-num">0XX XXX XXXX</span>
+                                                </div>
+                                                <span className="ds-pay-opt-ref">Ref: CCTI-DOCS</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Bank */}
+                                    <div className="ds-pay-section">
+                                        <p className="ds-pay-section-label">
+                                            <i className="bi bi-bank2"></i> Bank Transfer
+                                        </p>
+                                        <div className="ds-bank-details">
+                                            <div className="ds-bank-row">
+                                                <span className="ds-bank-label">Bank</span>
+                                                <span className="ds-bank-value">GCB Bank</span>
+                                            </div>
+                                            <div className="ds-bank-row">
+                                                <span className="ds-bank-label">Account Name</span>
+                                                <span className="ds-bank-value">Cape Coast Technical Institute</span>
+                                            </div>
+                                            <div className="ds-bank-row">
+                                                <span className="ds-bank-label">Account Number</span>
+                                                <span className="ds-bank-value">XXXX-XXXX-XXXX</span>
+                                            </div>
+                                            <div className="ds-bank-row">
+                                                <span className="ds-bank-label">Reference</span>
+                                                <span className="ds-bank-value" style={{ color: "var(--brand-gold)" }}>CCTI-DOCS-{form.indexNumber || "XXXXXX"}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="ds-pay-note">
+                                        <i className="bi bi-info-circle-fill"></i>
+                                        After payment, click the button below. Upload your payment receipt to confirm your request. Our team will verify and process your documents.
+                                    </div>
+
+                                    <button className="ds-submit-btn" onClick={handlePaymentDone}>
+                                        <i className="bi bi-check-circle-fill"></i>
+                                        I Have Completed Payment
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* ---- STEP: SUCCESS ---- */}
+                        {step === "success" && (
+                            <div className="ds-form-success">
+                                <div className="ds-success-icon">
+                                    <i className="bi bi-check-circle-fill"></i>
+                                </div>
+                                <h3>Request Submitted!</h3>
+                                <p>
+                                    Thank you, <strong>{form.fullName || "graduate"}</strong>. Your document request
+                                    has been received. We will verify your payment and contact you at{" "}
+                                    <strong>{form.email || "your email"}</strong> with updates on your request.
+                                </p>
+                                <div className="ds-success-docs">
+                                    {form.documentType.map(t => (
+                                        <span key={t} className="ds-success-doc-tag">{t}</span>
+                                    ))}
+                                </div>
+                                <div className="ds-success-total">
+                                    Total Paid: <strong>GHS {totalAmount}</strong>
+                                </div>
+                                <button type="button" className="ds-btn ds-btn-primary" onClick={resetForm}>
+                                    Submit Another Request
+                                </button>
                             </div>
                         )}
                     </div>
