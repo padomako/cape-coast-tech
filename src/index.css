@@ -7465,6 +7465,8 @@ h1,
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    overflow-y: auto;
+    max-height: 85vh;
 }
 
 .ds-form-brand {

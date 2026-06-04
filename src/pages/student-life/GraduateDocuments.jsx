@@ -108,12 +108,12 @@ export default function GraduateDocuments() {
     }
 
     const update = (field) => (e) => setForm({ ...form, [field]: e.target.value })
-
+    const COURIER_FEE = 20
     // Calculate total amount
     const totalAmount = form.documentType.reduce((sum, title) => {
         const doc = documentTypes.find(d => d.title === title)
         return sum + (doc ? doc.fee : 0)
-    }, 0)
+    }, 0) + (form.deliveryMethod === "courier" ? COURIER_FEE : 0)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -356,6 +356,12 @@ export default function GraduateDocuments() {
                                                             </div>
                                                         )
                                                     })}
+                                                    {form.deliveryMethod === "courier" && (
+                                                        <div className="ds-amount-row" style={{ color: "rgba(255,255,255,0.45)" }}>
+                                                            <span>Courier Delivery Fee</span>
+                                                            <span>GHS {COURIER_FEE}</span>
+                                                        </div>
+                                                    )}
                                                 </div>
                                                 <div className="ds-amount-total">
                                                     <span>Total</span>
