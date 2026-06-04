@@ -5921,7 +5921,7 @@ h1,
     line-height: 1.05;
     letter-spacing: -0.5px;
     margin: 0 0 1.5rem;
-    display: block;
+    display: table;
     position: relative;
     padding-bottom: 10px;
     opacity: 0;
