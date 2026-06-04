@@ -5849,13 +5849,20 @@ h1,
 
 /* Richer overlay */
 .subpage-hero-overlay {
-    position: relative;
+    position: absolute;
+    inset: 0;
     z-index: 2;
     width: 100%;
     padding: 8rem 0 5rem;
     background:
         linear-gradient(90deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.1) 100%),
         linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+    padding: 0;
+}
+
+.subpage-hero-overlay .container-xl {
+    padding-top: 8rem;
+    padding-bottom: 5rem;
 }
 
 /* Gold eyebrow line */
@@ -5916,7 +5923,7 @@ h1,
     margin: 0 0 1.5rem;
     display: block;
     position: relative;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
     opacity: 0;
     animation: fadeUp 0.6s ease 0.25s forwards;
 }
@@ -5927,8 +5934,9 @@ h1,
     left: 0;
     bottom: 0;
     width: 0%;
-    height: 2.5px;
+    height: 2px;
     background: var(--brand-gold);
+    display: block;
     animation: drawLine 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.7s forwards;
 }
 
