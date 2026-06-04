@@ -6016,208 +6016,216 @@ h1,
 /* ===============================================
    HOSTELS PAGE
 =============================================== */
-.hostels-section {
-    padding: 5rem 0;
-    background: #0d0d0d;
-}
-
-.hostels-section-alt {
-    background: #1A1A1A;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.hostels-group-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.hostels-group-header .section-serif-title {
-    margin: 0;
-}
-
-.hostels-count {
-    font-family: "Inter", sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.hostels-grid {
+/* ---- Hostel Cards Option 3 ---- */
+.hc3-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.75rem;
+    gap: 1.5rem;
 }
 
-.hostel-card {
-    background: #1A1A1A;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 4px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.35s ease;
-}
-
-.hostels-section-alt .hostel-card {
-    background: #0d0d0d;
-}
-
-.hostel-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(245, 196, 0, 0.35);
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
-}
-
-.hostel-card-image {
+.hc3-card {
     position: relative;
-    aspect-ratio: 16 / 10;
+    border-radius: 6px;
     overflow: hidden;
+    height: 480px;
+    cursor: pointer;
+    background: #000;
+    display: block;
 }
 
-.hostel-card-image img {
+.hc3-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.7s ease;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
 }
 
-.hostel-card:hover .hostel-card-image img {
+.hc3-card:hover .hc3-img {
     transform: scale(1.06);
 }
 
-.hostel-gender-tag {
+.hc3-overlay {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: rgba(13, 13, 13, 0.92);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #fff;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.05) 0%,
+            rgba(0, 0, 0, 0.5) 50%,
+            rgba(0, 0, 0, 0.92) 100%);
+    transition: background 0.4s ease;
+}
+
+.hc3-card:hover .hc3-overlay {
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.3) 0%,
+            rgba(0, 0, 0, 0.7) 50%,
+            rgba(0, 0, 0, 0.96) 100%);
+}
+
+/* Default visible body */
+.hc3-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.hc3-card:hover .hc3-body {
+    opacity: 0;
+}
+
+.hc3-tag {
+    display: inline-block;
     font-family: "Inter", sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0.4rem 0.8rem;
-    border-radius: 999px;
-}
-
-.hostel-gender-tag.male {
-    border-color: rgba(30, 136, 229, 0.5);
-    color: #6fb8ff;
-}
-
-.hostel-gender-tag.female {
-    border-color: rgba(244, 114, 182, 0.5);
-    color: #ff8fd1;
-}
-
-.hostel-card-body {
-    padding: 1.75rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.hostel-card-body h3 {
-    font-family: "Cormorant Garamond", Georgia, serif !important;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: #fff;
-    margin: 0 0 1.25rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.hostel-details {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 1.5rem;
-    flex: 1;
-}
-
-.hostel-details li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.85rem;
-    padding: 0.6rem 0;
-    font-family: "Inter", sans-serif;
-}
-
-.hostel-details li i {
-    font-size: 0.95rem;
-    color: var(--brand-gold);
-    margin-top: 3px;
-    flex-shrink: 0;
-}
-
-.hostel-details .label {
-    display: block;
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: rgba(255, 255, 255, 0.4);
-    margin-bottom: 0.1rem;
-}
-
-.hostel-details .value {
-    display: block;
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.hostel-price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.25rem;
-    background: rgba(245, 196, 0, 0.08);
-    border: 1px solid rgba(245, 196, 0, 0.2);
-    border-radius: 4px;
-}
-
-.hostel-price .label {
-    font-family: "Inter", sans-serif;
-    font-size: 0.72rem;
+    font-size: 0.6rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: rgba(255, 255, 255, 0.6);
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
 }
 
-.hostel-price .value {
+.hc3-tag-male {
+    background: rgba(59, 130, 246, 0.15);
+    color: #6fb8ff;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.hc3-tag-female {
+    background: rgba(244, 114, 182, 0.15);
+    color: #ff8fd1;
+    border: 1px solid rgba(244, 114, 182, 0.3);
+}
+
+.hc3-name {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 0.4rem;
+}
+
+.hc3-meta {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 0.85rem;
+}
+
+.hc3-meta i {
+    color: var(--brand-gold);
+    font-size: 0.72rem;
+    margin-right: 4px;
+}
+
+.hc3-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0.85rem;
+    background: rgba(245, 196, 0, 0.1);
+    border: 1px solid rgba(245, 196, 0, 0.25);
+    border-radius: 4px;
+}
+
+.hc3-price-label {
+    font-family: "Inter", sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.hc3-price-value {
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--brand-gold);
 }
 
-.hostels-note {
-    background: #0d0d0d;
-    padding: 2rem 0 5rem;
+/* Hover detail panel */
+.hc3-detail {
+    position: absolute;
+    inset: 0;
+    padding: 1.5rem;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.35s ease;
 }
 
-.hostels-note p {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.88rem;
-    font-style: italic;
-    margin: 0;
+.hc3-card:hover .hc3-detail {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.hostels-note i {
+.hc3-detail-name {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hc3-detail-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.6rem;
+}
+
+.hc3-detail-row i {
     color: var(--brand-gold);
+    font-size: 0.75rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.hc3-detail-label {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 1px;
+}
+
+.hc3-detail-value {
+    display: block;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hc3-detail-price {
+    margin-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hc3-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .hc3-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hc3-card {
+        height: 360px;
+    }
 }
 
 /* ===============================================
