@@ -2742,116 +2742,507 @@ body {
     transform: translateY(-2px);
 }
 
-/* about header image now set via PageHeader component */
-
-/* About header only */
-.page-header-about .container {
-    text-align: center;
+/* ===============================================
+   ABOUT PAGE — Option B
+=============================================== */
+.ab-page {
+    background: #0d0d0d;
+    color: #fff;
+    min-height: 100vh;
 }
 
-.page-header-about .page-header-overlay {
-    background: rgba(0, 0, 0, 0.45);
+/* ---- Hero ---- */
+.ab-hero {
+    position: relative;
+    height: 65vh;
+    min-height: 460px;
+    overflow: hidden;
+    background: #000;
+}
+
+.ab-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.4;
+    transform: scale(1.04);
+    transition: transform 8s ease;
+}
+
+.ab-hero:hover .ab-hero-img {
+    transform: scale(1.0);
+}
+
+.ab-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+}
+
+.ab-hero-inner {
+    position: absolute;
+    bottom: 4.5rem;
+    left: 0;
+    right: 0;
+    padding: 0 1.75rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.ab-hero-title {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin: 0;
+}
+
+.ab-hero-title span {
+    color: var(--brand-gold);
+}
+
+.ab-hero-right {
+    text-align: right;
+}
+
+.ab-hero-est {
+    font-family: "Inter", sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.4);
+    display: block;
+    margin-bottom: 0.2rem;
+}
+
+.ab-hero-since {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.6rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---- Body ---- */
+.ab-body {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 70vh;
+}
+
+/* ---- Sidebar ---- */
+.ab-sidebar {
+    background: #0a0a0a;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 3rem 2rem;
+    position: sticky;
+    top: 76px;
+    height: fit-content;
+}
+
+.ab-sidebar-title {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+}
+
+.ab-sidebar-title span {
+    color: var(--brand-gold);
+}
+
+.ab-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 2.5rem;
+}
+
+.ab-nav-item {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.05rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.25s ease;
+    width: 100%;
 }
 
-.page-header-about .page-title,
-.page-header-about .page-subtitle {
-    margin-left: auto;
-    margin-right: auto;
+.ab-nav-item i {
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: all 0.25s ease;
+    color: var(--brand-gold);
+}
+
+.ab-nav-item:hover,
+.ab-nav-item.active {
     color: #fff;
+    padding-left: 0.5rem;
 }
 
-.section-title {
-    font-weight: 700;
+.ab-nav-item.active {
     color: var(--brand-gold);
-}
-
-.about-history p {
-    line-height: 1.8;
-    color: white;
-}
-
-.about-image-wrapper img {
-    border-radius: 12px;
-    transition: transform 0.4s ease;
-}
-
-.about-image-wrapper img:hover {
-    transform: scale(1.03);
-}
-
-/* Vision Cards */
-.about-vision-section {
-    background: linear-gradient(135deg, var(--brand-gold) 0%, #b8891a 100%);
-}
-
-.vision-card {
-    background: var(--brand-dark);
-    padding: 2rem;
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(245, 196, 0, 0.2);
-}
-
-/* Core Values */
-.value-card {
-    background: var(--brand-dark-2);
-    color: var(--brand-gold);
-    padding: 2rem;
-    border-radius: 14px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(245, 196, 0, 0.12);
-    transition: 0.3s ease;
-}
-
-.value-card i {
-    font-size: 2rem;
-    color: var(--brand-gold);
-    margin-bottom: 1rem;
-}
-
-.value-card:hover {
-    transform: translateY(-6px);
-}
-
-.about-message {
-    background: var(--brand-dark);
-}
-
-.message-box {
-    margin-top: -10px;
-    background: var(--brand-dark-2);
-    padding: 2rem;
-    border-radius: 18px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(245, 196, 0, 0.12);
-}
-
-/* Principal Image */
-.principal-image-wrapper {
-    display: flex;
-    justify-content: center;
-}
-
-.principal-image {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 6px solid #f5b400;
-    /* brand gold */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* Name Styling */
-.principal-name {
     font-weight: 600;
 }
 
-.principal-title {
-    font-size: 0.9rem;
+.ab-nav-item:hover i,
+.ab-nav-item.active i {
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+/* Sidebar stats */
+.ab-sidebar-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ab-sidebar-stat {
+    background: #0a0a0a;
+    padding: 1rem;
+    text-align: center;
+}
+
+.ab-sidebar-stat-val {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand-gold);
+    display: block;
+}
+
+.ab-sidebar-stat-lbl {
+    font-family: "Inter", sans-serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* ---- Main ---- */
+.ab-main {
+    padding: 4rem 3.5rem;
+}
+
+.ab-section {
+    scroll-margin-top: 100px;
+}
+
+.ab-section-eye {
+    font-family: "Inter", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--brand-gold);
+    margin-bottom: 0.4rem;
+}
+
+.ab-section-title {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1.75rem;
+    display: table;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.ab-section-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--brand-gold);
+    animation: drawLine 0.7s cubic-bezier(0.65, 0, 0.35, 1) 0.3s forwards;
+}
+
+.ab-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin: 3.5rem 0;
+}
+
+/* History grid */
+.ab-section-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.ab-section-text p {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.97rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.ab-section-image {
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.ab-section-image img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.ab-section-image:hover img {
+    transform: scale(1.04);
+}
+
+/* Vision & Mission */
+.ab-vm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.ab-vm-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 2px solid var(--brand-gold);
+    border-radius: 4px;
+    padding: 1.75rem;
+    transition: all 0.3s ease;
+}
+
+.ab-vm-card:hover {
+    border-color: rgba(245, 196, 0, 0.35);
+    transform: translateY(-3px);
+}
+
+.ab-vm-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(245, 196, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.ab-vm-icon i {
+    font-size: 1.2rem;
+    color: var(--brand-gold);
+}
+
+.ab-vm-card h3 {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.65rem;
+}
+
+.ab-vm-card p {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.62);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Core Values */
+.ab-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.ab-value-card {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    transition: all 0.25s ease;
+    cursor: default;
+}
+
+.ab-value-card:hover {
+    border-color: rgba(245, 196, 0, 0.3);
+    background: rgba(245, 196, 0, 0.04);
+}
+
+.ab-value-card i {
+    font-size: 1.1rem;
+    color: var(--brand-gold);
+    flex-shrink: 0;
+}
+
+.ab-value-card span {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.4;
+}
+
+/* Principal */
+.ab-principal-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2.5rem;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    padding: 2.5rem;
+    align-items: start;
+}
+
+.ab-principal-left {
+    text-align: center;
+}
+
+.ab-principal-left img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--brand-gold);
+    margin-bottom: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ab-principal-name {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 3px;
+}
+
+.ab-principal-title {
+    font-family: "Inter", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--brand-gold);
+}
+
+.ab-principal-quote {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.6;
+    border-left: 3px solid var(--brand-gold);
+    padding-left: 1.25rem;
+    margin: 0 0 1.25rem;
+}
+
+.ab-principal-text {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+}
+
+.ab-principal-cta {
+    display: inline-flex;
+    align-items: center;
+    background: var(--brand-gold);
+    color: #0d0d0d;
+    font-family: "Inter", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.ab-principal-cta:hover {
+    background: #fff;
+    color: #0d0d0d;
+    transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .ab-body {
+        grid-template-columns: 1fr;
+    }
+
+    .ab-sidebar {
+        position: relative;
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 2rem 1.5rem;
+    }
+
+    .ab-sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .ab-nav-item {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        width: auto;
+    }
+
+    .ab-main {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .ab-section-grid,
+    .ab-vm-grid,
+    .ab-principal-card {
+        grid-template-columns: 1fr;
+    }
+
+    .ab-values-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .ab-values-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ================= CONTACT PAGE ================= */
