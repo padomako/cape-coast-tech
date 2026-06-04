@@ -64,6 +64,7 @@ export default function GraduateDocuments() {
         email: "",
         phone: "",
         programme: "",
+        programmeOther: "",
         yearCompleted: "",
         documentType: [],
         deliveryMethod: "pickup",
@@ -132,7 +133,7 @@ export default function GraduateDocuments() {
         setStep("form")
         setForm({
             fullName: "", indexNumber: "", email: "", phone: "",
-            programme: "", yearCompleted: "", documentType: [],
+            programme: "", programmeOther: "", yearCompleted: "", documentType: [],
             deliveryMethod: "pickup", destination: "", notes: "",
         })
     }
@@ -389,8 +390,44 @@ export default function GraduateDocuments() {
                                         <div className="ds-form-section-title">Personal Information</div>
                                         <div className="ds-form-grid">
                                             <div className="ds-field">
-                                                <label className="ds-label">Full Name <span>*</span></label>
-                                                <input required type="text" className="ds-input" value={form.fullName} onChange={update("fullName")} placeholder="Your full legal name" />
+                                                <label className="ds-label">Programme Completed <span>*</span></label>
+                                                <select
+                                                    required
+                                                    className="ds-input"
+                                                    value={form.programme}
+                                                    onChange={update("programme")}
+                                                >
+                                                    <option value="">Select a programme...</option>
+                                                    <option>Architectural Draughtmanship</option>
+                                                    <option>Building Construction</option>
+                                                    <option>Business Accounting</option>
+                                                    <option>Business Information Technology</option>
+                                                    <option>Business Secretarial</option>
+                                                    <option>Creative Art Technology</option>
+                                                    <option>Electrical Engineering Technology</option>
+                                                    <option>Electronics Engineering Technology</option>
+                                                    <option>Garment / Fashion Technology</option>
+                                                    <option>Furniture Technology</option>
+                                                    <option>Catering & Hospitality Management</option>
+                                                    <option>Mechanical Engineering Technology</option>
+                                                    <option>Automotive Engineering Technology</option>
+                                                    <option>Plumbing & Gas Technology</option>
+                                                    <option>Refrigeration & Air-Conditioning</option>
+                                                    <option>Welding & Fabrication Technology</option>
+                                                    <option>Wood Technology</option>
+                                                    <option>Other</option>
+                                                </select>
+                                                {form.programme === "Other" && (
+                                                    <input
+                                                        required
+                                                        type="text"
+                                                        className="ds-input"
+                                                        style={{ marginTop: "0.5rem" }}
+                                                        value={form.programmeOther || ""}
+                                                        onChange={(e) => setForm(f => ({ ...f, programmeOther: e.target.value }))}
+                                                        placeholder="Enter your programme"
+                                                    />
+                                                )}
                                             </div>
                                             <div className="ds-field">
                                                 <label className="ds-label">Index Number <span>*</span></label>
