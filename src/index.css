@@ -6414,7 +6414,8 @@ h1,
 .ds-hero-bg {
     position: absolute;
     inset: 0;
-    background: url('/images/DJI_20260414222736_0670_D.jpg') center/cover;
+    background-size: cover;
+    background-position: center;
     opacity: 0.35;
     transform: scale(1.04);
     transition: transform 8s ease;

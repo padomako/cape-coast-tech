@@ -155,7 +155,10 @@ export default function GraduateDocuments() {
                 </nav>
 
                 <section className="ds-hero">
-                    <div className="ds-hero-bg" />
+                    <div
+                        className="ds-hero-bg"
+                        style={{ backgroundImage: "url('/images/berry-college-historic.jpg')" }}
+                    />
                     <div className="ds-hero-overlay" />
                     <div className="ds-hero-content container-xl">
                         <div className="ds-hero-left">
