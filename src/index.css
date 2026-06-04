@@ -7837,6 +7837,36 @@ h1,
     }
 }
 
+/* ---- Custom scrollbar for modal panels ---- */
+.ds-form-right::-webkit-scrollbar,
+.ds-form-left::-webkit-scrollbar,
+.ds-payment-right::-webkit-scrollbar,
+.ds-payment-left::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ds-form-right::-webkit-scrollbar-track,
+.ds-form-left::-webkit-scrollbar-track,
+.ds-payment-right::-webkit-scrollbar-track,
+.ds-payment-left::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ds-form-right::-webkit-scrollbar-thumb,
+.ds-form-left::-webkit-scrollbar-thumb,
+.ds-payment-right::-webkit-scrollbar-thumb,
+.ds-payment-left::-webkit-scrollbar-thumb {
+    background: rgba(245, 196, 0, 0.3);
+    border-radius: 999px;
+}
+
+.ds-form-right::-webkit-scrollbar-thumb:hover,
+.ds-form-left::-webkit-scrollbar-thumb:hover,
+.ds-payment-right::-webkit-scrollbar-thumb:hover,
+.ds-payment-left::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-gold);
+}
+
 /* ===============================================
    RESPONSIVE
 =============================================== */
