@@ -510,6 +510,12 @@ export default function GraduateDocuments() {
                                                     </div>
                                                 )
                                             })}
+                                            {form.deliveryMethod === "courier" && (
+                                                <div className="ds-amount-row" style={{ color: "rgba(255,255,255,0.45)" }}>
+                                                    <span>Courier Delivery Fee</span>
+                                                    <span>GHS {COURIER_FEE}</span>
+                                                </div>
+                                            )}
                                         </div>
                                         <div className="ds-amount-total">
                                             <span>Total Amount</span>
@@ -522,83 +528,70 @@ export default function GraduateDocuments() {
                                     </button>
                                 </div>
 
-                                        <div className="ds-payment-right">
-                                            <p className="ds-form-section-title" style={{ marginTop: 0 }}>Complete Payment</p>
+                                <div className="ds-payment-right">
+                                    <p className="ds-form-section-title" style={{ marginTop: 0 }}>Complete Payment</p>
 
-                                            {/* Order summary */}
-                                            <div className="ds-pay-order">
-                                                <p className="ds-pay-section-label">
-                                                    <i className="bi bi-receipt"></i> Order Summary
-                                                </p>
-                                                <div className="ds-bank-details">
-                                                    {form.documentType.map(title => {
-                                                        const doc = documentTypes.find(d => d.title === title)
-                                                        return (
-                                                            <div className="ds-bank-row" key={title}>
-                                                                <span className="ds-bank-label">{title}</span>
-                                                                <span className="ds-bank-value">GHS {doc?.fee}</span>
-                                                            </div>
-                                                        )
-                                                    })}
-                                                    {form.deliveryMethod === "courier" && (
-                                                        <div className="ds-bank-row">
-                                                            <span className="ds-bank-label">Courier Delivery Fee</span>
-                                                            <span className="ds-bank-value">GHS {COURIER_FEE}</span>
-                                                        </div>
-                                                    )}
-                                                    <div className="ds-bank-row" style={{ borderTop: "1px solid rgba(245,196,0,0.2)" }}>
-                                                        <span className="ds-bank-label" style={{ color: "var(--brand-gold)" }}>Total Amount</span>
-                                                        <span className="ds-bank-value" style={{ color: "var(--brand-gold)", fontSize: "1.1rem", fontFamily: "Cormorant Garamond, serif" }}>
-                                                            GHS {totalAmount}
-                                                        </span>
+                                    <div className="ds-pay-order">
+                                        <p className="ds-pay-section-label">
+                                            <i className="bi bi-receipt"></i> Order Summary
+                                        </p>
+                                        <div className="ds-bank-details">
+                                            {form.documentType.map(title => {
+                                                const doc = documentTypes.find(d => d.title === title)
+                                                return (
+                                                    <div className="ds-bank-row" key={title}>
+                                                        <span className="ds-bank-label">{title}</span>
+                                                        <span className="ds-bank-value">GHS {doc?.fee}</span>
                                                     </div>
+                                                )
+                                            })}
+                                            {form.deliveryMethod === "courier" && (
+                                                <div className="ds-bank-row">
+                                                    <span className="ds-bank-label">Courier Delivery Fee</span>
+                                                    <span className="ds-bank-value">GHS {COURIER_FEE}</span>
                                                 </div>
+                                            )}
+                                            <div className="ds-bank-row" style={{ borderTop: "1px solid rgba(245,196,0,0.2)" }}>
+                                                <span className="ds-bank-label" style={{ color: "var(--brand-gold)" }}>Total Amount</span>
+                                                <span className="ds-bank-value" style={{ color: "var(--brand-gold)", fontSize: "1.1rem", fontFamily: "Cormorant Garamond, serif" }}>
+                                                    GHS {totalAmount}
+                                                </span>
                                             </div>
+                                        </div>
+                                    </div>
 
-                                            {/* Paystack info */}
-                                            <div className="ds-paystack-info">
-                                                <div className="ds-paystack-logo">
-                                                    <span className="ds-paystack-badge">Secured by</span>
-                                                    <span className="ds-paystack-name">Paystack</span>
-                                                </div>
-                                                <p className="ds-paystack-desc">
-                                                    You will be redirected to Paystack's secure payment page to complete your payment. We accept MTN MoMo, Telecel Cash, AirtelTigo Money, and major debit/credit cards.
-                                                </p>
-                                                <div className="ds-paystack-methods">
-                                                    <span className="ds-pay-method" style={{ background: "#FFCB00", color: "#000" }}>MTN</span>
-                                                    <span className="ds-pay-method" style={{ background: "#E2001A", color: "#fff" }}>TEL</span>
-                                                    <span className="ds-pay-method" style={{ background: "#CC0000", color: "#fff" }}>AT</span>
-                                                    <span className="ds-pay-method" style={{ background: "#1A1A2E", color: "#fff", border: "1px solid rgba(255,255,255,0.2)" }}>VISA</span>
-                                                    <span className="ds-pay-method" style={{ background: "#EB001B", color: "#fff" }}>MC</span>
-                                                </div>
-                                            </div>
-
-                                            {/* KEEP this new one */}
-                                            <div className="ds-pay-note">
-                                                <i className="bi bi-shield-lock-fill"></i>
-                                                Your payment is secured and encrypted by Paystack. CCTI does not store your card or mobile money details.
-                                            </div>
-
-                                            <button className="ds-paystack-btn" onClick={handlePaymentDone}>
-                                                <i className="bi bi-lock-fill"></i>
-                                                Pay GHS {totalAmount} with Paystack
-                                            </button>
-
-                                            <p className="ds-pay-terms">
-                                                By completing payment you agree to CCTI's document request terms and conditions.
-                                            </p>
+                                    <div className="ds-paystack-info">
+                                        <div className="ds-paystack-logo">
+                                            <span className="ds-paystack-badge">Secured by</span>
+                                            <span className="ds-paystack-name">Paystack</span>
+                                        </div>
+                                        <p className="ds-paystack-desc">
+                                            You will be redirected to Paystack's secure payment page to complete your payment. We accept MTN MoMo, Telecel Cash, AirtelTigo Money, and major debit/credit cards.
+                                        </p>
+                                        <div className="ds-paystack-methods">
+                                            <span className="ds-pay-method" style={{ background: "#FFCB00", color: "#000" }}>MTN</span>
+                                            <span className="ds-pay-method" style={{ background: "#E2001A", color: "#fff" }}>TEL</span>
+                                            <span className="ds-pay-method" style={{ background: "#CC0000", color: "#fff" }}>AT</span>
+                                            <span className="ds-pay-method" style={{ background: "#1A1A2E", color: "#fff", border: "1px solid rgba(255,255,255,0.2)" }}>VISA</span>
+                                            <span className="ds-pay-method" style={{ background: "#EB001B", color: "#fff" }}>MC</span>
                                         </div>
                                     </div>
 
                                     <div className="ds-pay-note">
-                                        <i className="bi bi-info-circle-fill"></i>
-                                        After payment, click the button below. Upload your payment receipt to confirm your request. Our team will verify and process your documents.
+                                        <i className="bi bi-shield-lock-fill"></i>
+                                        Your payment is secured and encrypted by Paystack. CCTI does not store your card or mobile money details.
                                     </div>
 
-                                    <button className="ds-submit-btn" onClick={handlePaymentDone}>
-                                        <i className="bi bi-check-circle-fill"></i>
-                                        I Have Completed Payment
+                                    <button className="ds-paystack-btn" onClick={handlePaymentDone}>
+                                        <i className="bi bi-lock-fill"></i>
+                                        Pay GHS {totalAmount} with Paystack
                                     </button>
+
+                                    <p className="ds-pay-terms">
+                                        By completing payment you agree to CCTI's document request terms and conditions.
+                                    </p>
+                                </div>
+                            </div>
                         )}
 
                         {/* ---- STEP: SUCCESS ---- */}
