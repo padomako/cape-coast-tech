@@ -28,9 +28,11 @@ const HOSTEL_PREVIEW = [
 
 const GRAD_DOC_PREVIEW = [
     "Official Transcript",
-    "Certificate Replacement",
+    "Certificate",
+    "Testimonial",
     "Letter of Attestation",
-    "Course Outline",
+    "English Proficiency",
+    "Recommendation Letter",
 ]
 
 const RESIDENTIAL_IMAGES = [
