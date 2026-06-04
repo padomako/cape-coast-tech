@@ -5805,25 +5805,71 @@ h1,
     overflow: hidden;
 }
 
+/* Gold top accent bar */
+.subpage-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--brand-gold), transparent);
+    z-index: 4;
+}
+
+/* Gold radial glow */
+.subpage-hero::after {
+    content: "";
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(245, 196, 0, 0.07), transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Ken Burns image */
 .subpage-hero-image {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.06);
+    transition: transform 8s ease;
 }
 
+.subpage-hero:hover .subpage-hero-image {
+    transform: scale(1.0);
+}
+
+
+/* Richer overlay */
 .subpage-hero-overlay {
     position: relative;
     z-index: 2;
     width: 100%;
     padding: 8rem 0 5rem;
-    background: linear-gradient(100deg,
-            rgba(13, 13, 13, 0.92) 0%,
-            rgba(13, 13, 13, 0.7) 55%,
-            rgba(13, 13, 13, 0.4) 100%);
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.1) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
+/* Gold eyebrow line */
+.subpage-hero-overlay .eyebrow-bar {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--brand-gold);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.4s ease 0.1s forwards;
+}
+
+/* Breadcrumb */
 .subpage-breadcrumb {
     display: inline-flex;
     align-items: center;
@@ -5833,7 +5879,9 @@ h1,
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    animation: fadeUp 0.5s ease 0.15s forwards;
 }
 
 .subpage-breadcrumb a {
@@ -5855,32 +5903,115 @@ h1,
     color: rgba(255, 255, 255, 0.35);
 }
 
-.subpage-hero-overlay .eyebrow {
-    font-family: "Inter", sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--brand-gold);
-    margin: 0 0 0.85rem;
-}
 
+
+/* Heading */
 .subpage-hero-overlay h1 {
     font-family: "Cormorant Garamond", Georgia, serif !important;
     font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 600;
+    font-weight: 700;
     color: #fff;
     line-height: 1.05;
     letter-spacing: -0.5px;
     margin: 0 0 1.5rem;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.25s forwards;
 }
 
+.subpage-hero-overlay h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2.5px;
+    background: var(--brand-gold);
+    animation: drawLine 0.8s cubic-bezier(0.65, 0, 0.35, 1) 0.7s forwards;
+}
+
+/* Description */
 .subpage-hero-overlay p {
     color: rgba(255, 255, 255, 0.8);
     font-size: 1.02rem;
     line-height: 1.75;
-    max-width: 680px;
+    max-width: 580px;
     margin: 0;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.45s forwards;
+}
+
+/* Scroll indicator */
+.subpage-hero::before {
+    content: "";
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    z-index: 3;
+}
+
+.subpage-scroll-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "Inter", sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.35);
+    z-index: 3;
+}
+
+.subpage-scroll-line {
+    width: 30px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.subpage-scroll-line::after {
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--brand-gold);
+    animation: scrollPulse 2s ease infinite;
+}
+
+@keyframes scrollPulse {
+    0% {
+        left: -100%;
+    }
+
+    50% {
+        left: 0%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes drawLine {
+    to {
+        width: 100%;
+    }
 }
 
 /* ===============================================

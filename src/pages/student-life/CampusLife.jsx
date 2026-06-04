@@ -57,12 +57,17 @@ export default function CampusLife() {
                             <i className="bi bi-chevron-right"></i>
                             <span>Campus Life</span>
                         </nav>
+                        <span className="eyebrow-bar"></span>
                         <h1>Campus Life</h1>
                         <p>
                             Discover the clubs, sports, cultural events, and everyday moments
                             that shape the CCTI student experience — from practical workshops
                             to parades and celebrations.
                         </p>
+                    </div>
+                    <div className="subpage-scroll-hint">
+                        <div className="subpage-scroll-line"></div>
+                        Scroll
                     </div>
                 </div>
             </section>
