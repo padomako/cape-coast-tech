@@ -24,7 +24,6 @@ function App() {
     <Router>
       <Navbar />
 
-      {/* Space reserved for fixed navbar */}
       <div className="app-content">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,7 +36,7 @@ function App() {
           <Route path="/academics/:programmeSlug" element={<ProgrammePage />} />
           <Route path="/weekend-training" element={<WeekendTrainingPage />} />
           <Route path="/announcements" element={<Announcements />} />
-          <Route path="/news/:slug" element={<NewsArticle />} />
+          <Route path="/announcements/:slug" element={<NewsArticle />} />
           <Route path="/programmes" element={<Programmes />} />
           <Route path="/student-life/campus" element={<CampusLife />} />
           <Route path="/student-life/hostels" element={<Hostels />} />

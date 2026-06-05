@@ -25,7 +25,7 @@ export default function NewsArticle() {
                     <p style={{ color: "var(--brand-text-muted)", marginBottom: "2rem" }}>
                         This article may have been moved or removed.
                     </p>
-                    <Link to="/news" className="article-back">
+                    <Link to="/announcements" className="article-back">
                         <i className="bi bi-arrow-left"></i> Back to News
                     </Link>
                 </div>
@@ -53,7 +53,7 @@ export default function NewsArticle() {
                         <nav className="subpage-breadcrumb" aria-label="breadcrumb">
                             <Link to="/">Home</Link>
                             <i className="bi bi-chevron-right"></i>
-                            <Link to="/news">News</Link>
+                            <Link to="/announcements">News</Link>
                             <i className="bi bi-chevron-right"></i>
                             <span>{article.category}</span>
                         </nav>
@@ -103,8 +103,8 @@ export default function NewsArticle() {
             {/* ---- BODY ---- */}
             <div className="article-body">
 
-                {/* Back link */}
-                <Link to="/news" className="article-back">
+                {/* Back link (top) */}
+                <Link to="/announcements" className="article-back">
                     <i className="bi bi-arrow-left"></i> Back to News
                 </Link>
 
@@ -142,7 +142,7 @@ export default function NewsArticle() {
                 <div className="article-divider" />
 
                 {/* Back link (bottom) */}
-                <Link to="/news" className="article-back">
+                <Link to="/announcements" className="article-back">
                     <i className="bi bi-arrow-left"></i> Back to News
                 </Link>
             </div>
@@ -154,20 +154,20 @@ export default function NewsArticle() {
                     <div className="around-campus-grid">
                         {related.map((item) => (
                             <article className="around-campus-card" key={item.slug}>
-                                <Link to={`/news/${item.slug}`} className="around-campus-card-image">
+                                <Link to={`/announcements/${item.slug}`} className="around-campus-card-image">
                                     <img src={item.image} alt={item.title} />
                                 </Link>
                                 <span className="announcement-tag">{item.category}</span>
                                 <h4>
                                     <Link
-                                        to={`/news/${item.slug}`}
+                                        to={`/announcements/${item.slug}`}
                                         style={{ color: "inherit", textDecoration: "none" }}
                                     >
                                         {item.title}
                                     </Link>
                                 </h4>
                                 <p>{item.excerpt}</p>
-                                <Link to={`/news/${item.slug}`} className="harvard-link">
+                                <Link to={`/announcements/${item.slug}`} className="harvard-link">
                                     <span>Read Full Story</span>
                                 </Link>
                             </article>
