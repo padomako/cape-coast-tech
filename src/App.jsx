@@ -17,34 +17,41 @@ import Programmes from "./pages/Programmes"
 import CampusLife from "./pages/student-life/CampusLife"
 import Hostels from "./pages/student-life/Hostels"
 import GraduateDocuments from "./pages/student-life/GraduateDocuments"
+import AdminDashboard from "./pages/AdminDashboard"
 
 
 function App() {
   return (
     <Router>
-      <Navbar />
-
-      <div className="app-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/academics" element={<Academics />} />
-          <Route path="/admissions" element={<Admissions />} />
-          <Route path="/students" element={<Students />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/student-login" element={<StudentLogin />} />
-          <Route path="/academics/:programmeSlug" element={<ProgrammePage />} />
-          <Route path="/weekend-training" element={<WeekendTrainingPage />} />
-          <Route path="/announcements" element={<Announcements />} />
-          <Route path="/announcements/:slug" element={<NewsArticle />} />
-          <Route path="/programmes" element={<Programmes />} />
-          <Route path="/student-life/campus" element={<CampusLife />} />
-          <Route path="/student-life/hostels" element={<Hostels />} />
-          <Route path="/student-life/graduate-documents" element={<GraduateDocuments />} />
-        </Routes>
-      </div>
-
-      <Footer />
+      {/* Hide navbar and footer on the admin page */}
+      <Routes>
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="*" element={
+          <>
+            <Navbar />
+            <div className="app-content">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/academics" element={<Academics />} />
+                <Route path="/admissions" element={<Admissions />} />
+                <Route path="/students" element={<Students />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/student-login" element={<StudentLogin />} />
+                <Route path="/academics/:programmeSlug" element={<ProgrammePage />} />
+                <Route path="/weekend-training" element={<WeekendTrainingPage />} />
+                <Route path="/announcements" element={<Announcements />} />
+                <Route path="/announcements/:slug" element={<NewsArticle />} />
+                <Route path="/programmes" element={<Programmes />} />
+                <Route path="/student-life/campus" element={<CampusLife />} />
+                <Route path="/student-life/hostels" element={<Hostels />} />
+                <Route path="/student-life/graduate-documents" element={<GraduateDocuments />} />
+              </Routes>
+            </div>
+            <Footer />
+          </>
+        } />
+      </Routes>
     </Router>
   )
 }

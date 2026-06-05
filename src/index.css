@@ -8825,3 +8825,293 @@ textarea.form-input-custom {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==================================================
+   33. ADMIN DASHBOARD
+================================================== */
+
+/* Detail panel backdrop */
+.adm-detail-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 8000;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.adm-detail-panel {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    background: var(--brand-dark-2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    animation: panelSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: 1rem;
+}
+
+.adm-detail-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--brand-text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.adm-detail-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.adm-detail-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.adm-detail-ref {
+    font-family: "Inter", monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--brand-gold);
+    text-transform: uppercase;
+    margin: 0 0 0.35rem;
+}
+
+.adm-detail-name {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 0.25rem;
+    line-height: 1.2;
+}
+
+.adm-detail-meta {
+    color: var(--brand-text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.adm-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.adm-detail-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.adm-detail-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--brand-text-muted);
+    margin: 0;
+}
+
+.adm-detail-value {
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.adm-detail-docs {
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 1.25rem;
+}
+
+.adm-detail-notes {
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 1.25rem;
+}
+
+.adm-detail-actions {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Clearance upload block in DocSwift form */
+.ds-clearance-block {
+    margin-bottom: 1.5rem;
+}
+
+.ds-clearance-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+}
+
+.ds-clearance-info p {
+    color: var(--brand-text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+    max-width: 100%;
+}
+
+.ds-clearance-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--brand-gold);
+    text-decoration: none;
+    border: 1px solid rgba(245, 196, 0, 0.3);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.ds-clearance-download:hover {
+    background: rgba(245, 196, 0, 0.1);
+    border-color: var(--brand-gold);
+}
+
+.ds-file-drop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 1.5rem;
+    border: 1.5px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: center;
+    color: var(--brand-text-muted);
+}
+
+.ds-file-drop:hover {
+    border-color: rgba(245, 196, 0, 0.4);
+    background: rgba(245, 196, 0, 0.04);
+    color: var(--brand-gold);
+}
+
+.ds-file-drop i {
+    font-size: 1.75rem;
+    color: inherit;
+}
+
+.ds-file-drop span {
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.ds-file-hint {
+    font-size: 0.75rem !important;
+    font-weight: 400 !important;
+    color: var(--brand-text-dim) !important;
+}
+
+.ds-file-attached {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: rgba(62, 201, 122, 0.08);
+    border: 1px solid rgba(62, 201, 122, 0.25);
+    border-radius: 10px;
+}
+
+.ds-file-attached i {
+    font-size: 1.25rem;
+    color: #3ec97a;
+    flex-shrink: 0;
+}
+
+.ds-file-name {
+    flex: 1;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ds-file-remove {
+    background: transparent;
+    border: none;
+    color: var(--brand-text-muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 0.2rem 0.4rem;
+    transition: color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.ds-file-remove:hover {
+    color: #f06060;
+}
+
+.ds-file-error {
+    color: #f06060;
+    font-size: 0.82rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .adm-detail-backdrop {
+        align-items: flex-end;
+        padding: 0;
+    }
+
+    .adm-detail-panel {
+        max-width: 100%;
+        border-radius: 16px 16px 0 0;
+        margin-top: 0;
+    }
+
+    .adm-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .adm-detail-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
