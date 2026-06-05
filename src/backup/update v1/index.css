@@ -33,8 +33,9 @@
    27. INSTITUTE NEWS PAGE
    28. WEEKEND TRAINING PAGE
    29. ANNOUNCEMENTS PAGE
-   30. FOOTER
-   31. RESPONSIVE — ALL BREAKPOINTS
+   30. STUDENTS PAGE (Legacy sidebar)
+   31. FOOTER
+   32. RESPONSIVE — ALL BREAKPOINTS
 ================================================== */
 
 
@@ -487,6 +488,29 @@ h1,
     }
 }
 
+@keyframes contentFade {
+    from {
+        opacity: 0;
+        transform: translateY(15px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes imageFade {
+    from {
+        opacity: 0;
+        transform: scale(1.02)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
 
 @keyframes panelFadeIn {
     from {
@@ -1173,6 +1197,49 @@ h1,
     padding: 6px 10px;
     font-size: 18px;
     border-radius: 6px;
+}
+
+.students-menu-toggle {
+    width: 100%;
+    background: #1A1A1A;
+    color: #fff;
+    border: none;
+    padding: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.students-mobile-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: var(--brand-dark-2);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.students-mobile-links.open {
+    max-height: 500px;
+}
+
+.students-mobile-links li {
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #ddd;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.students-mobile-links li:hover {
+    background: rgba(245, 196, 0, 0.1);
+    color: var(--brand-gold);
+}
+
+.students-mobile-links li.active {
+    background: var(--brand-gold);
+    color: #111;
 }
 
 
@@ -2195,6 +2262,11 @@ h1,
     width: 100%;
 }
 
+.page-header-students {
+    background-image: url("/images/CENTRAL%20REGION%20TVET%20INTER%20INSTITUTE%20SPORTS%20COMPETITION/1.jpg");
+    background-size: cover;
+    background-position: center;
+}
 
 .page-header-contact .container {
     text-align: center;
@@ -3880,6 +3952,256 @@ h1,
     margin: 0 0 0.75rem;
     flex: 1;
 }
+
+/* Old admission hero (legacy) */
+.admission-hero {
+    position: relative;
+    height: 75vh;
+    overflow: hidden;
+}
+
+.admission-hero .hero-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(55%);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.75);
+    padding: 2rem 2.2rem;
+    border-radius: 14px;
+    max-width: 480px;
+}
+
+.hero-overlay h1 {
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--brand-gold);
+    margin-bottom: 1rem;
+}
+
+.hero-overlay p {
+    color: #e4e4e4;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.begin-btn {
+    background: var(--brand-gold);
+    color: #fff;
+    border: none;
+    padding: 0.85rem 1.6rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.begin-btn:hover {
+    background: #b28302;
+    transform: translateY(-2px);
+}
+
+.admission-steps {
+    margin-top: -150px;
+    background: linear-gradient(135deg, var(--brand-gold) 0%, #b8891a 100%);
+    padding: 1rem 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 16px;
+    position: relative;
+    width: 1100px;
+    z-index: 30;
+}
+
+.admission-steps .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.steps-title {
+    font-weight: 600;
+    color: #181818;
+    font-size: 1.9rem;
+}
+
+.steps-divider {
+    width: 90px;
+    height: 3px;
+    background: #181818;
+    margin: 14px auto 0;
+    border-radius: 4px;
+}
+
+.step-item {
+    padding: 0 20px;
+    transition: all 0.3s ease;
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    border: 2px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: #f5f3f3;
+    transition: all 0.35s ease;
+    background-color: #181818;
+}
+
+.step-item h5 {
+    font-weight: 600;
+    color: #181818;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.step-item p {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.admission-info {
+    margin-top: 5rem;
+}
+
+.video-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.video-card img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: red;
+    color: white;
+    padding: 1rem 1.2rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.watch-btn {
+    background: #1f7a5c;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+}
+
+.announcement-section {
+    margin-top: 4rem;
+}
+
+.announcement-section h3 {
+    color: var(--brand-gold);
+    margin-bottom: 0.5rem;
+}
+
+.announcement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.announcement-card {
+    background: var(--brand-dark);
+    border: 1px solid rgba(245, 196, 0, 0.12);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.announcement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(245, 196, 0, 0.3);
+}
+
+.pdf-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(220, 53, 53, 0.12);
+    color: #e74c3c;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.pdf-badge i {
+    font-size: 1.4rem;
+    color: #e74c3c;
+}
+
+.announcement-title {
+    color: var(--brand-text);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+}
+
+.announcement-card p {
+    color: var(--brand-text-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+}
+
+.announcement-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    background: rgba(26, 158, 143, 0.12);
+    color: var(--brand-teal);
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    margin-top: auto;
+}
+
+.announcement-link:hover {
+    background: var(--brand-teal);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.announcement-link i {
+    color: inherit;
+    font-size: 0.9rem;
+}
+
 
 /* ==================================================
    19. ABOUT PAGE
@@ -5670,6 +5992,12 @@ textarea.form-input-custom {
 /* ==================================================
    24. HOSTELS PAGE
 ================================================== */
+.hostels-section-alt {
+    background: #1A1A1A;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 5rem 0;
+    margin-top: 3rem;
+}
 
 .hc3-grid {
     display: grid;
@@ -7643,214 +7971,6 @@ textarea.form-input-custom {
     margin: 0;
 }
 
-/* ==================================================
-   32. NEWS ARTICLE PAGE
-   Add this block to index.css (after section 32)
-================================================== */
-
-.news-article-page {
-    background: var(--brand-dark);
-    min-height: 100vh;
-}
-
-/* ---- Hero ---- */
-.article-hero {
-    position: relative;
-    height: 55vh;
-    min-height: 400px;
-    overflow: hidden;
-    background: #000;
-}
-
-.article-hero-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 8s ease;
-    transform: scale(1.04);
-}
-
-.article-hero:hover .article-hero-img {
-    transform: scale(1.0);
-}
-
-.article-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top,
-            rgba(0, 0, 0, 0.8) 0%,
-            rgba(0, 0, 0, 0.35) 55%,
-            rgba(0, 0, 0, 0.1) 100%);
-}
-
-.article-hero-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    padding: 2.5rem 0;
-}
-
-/* ---- Meta row ---- */
-.article-meta {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    flex-wrap: wrap;
-}
-
-.article-meta-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--brand-text-muted);
-    font-size: 0.85rem;
-}
-
-.article-meta-item i {
-    color: var(--brand-gold);
-    font-size: 0.95rem;
-}
-
-/* ---- Body ---- */
-.article-body {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 2rem 1.75rem 4rem;
-}
-
-.article-lead {
-    font-size: 1.15rem;
-    line-height: 1.75;
-    color: var(--brand-text);
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-}
-
-.article-para {
-    font-size: 0.97rem;
-    line-height: 1.85;
-    color: var(--brand-text-muted);
-    margin-bottom: 1.1rem;
-}
-
-/* ---- Pull quote ---- */
-.article-pull-quote {
-    border-left: 3px solid var(--brand-gold);
-    border-radius: 0;
-    padding: 0.85rem 1.5rem;
-    margin: 2rem 0;
-    background: var(--brand-dark-2);
-}
-
-.article-pull-quote p {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: var(--brand-text);
-    line-height: 1.65;
-    margin: 0;
-}
-
-/* ---- Inline image ---- */
-.article-inline-image {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 4px;
-    display: block;
-    margin: 2rem 0 0.75rem;
-}
-
-.article-image-caption {
-    font-size: 0.82rem;
-    color: var(--brand-text-dim);
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-/* ---- Divider ---- */
-.article-divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.08);
-    margin: 2.5rem 0;
-}
-
-/* ---- Related stories ---- */
-.article-related {
-    padding: 0 1.75rem 5rem;
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
-.article-related-title {
-    font-family: "Cormorant Garamond", Georgia, serif !important;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 1.75rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* ---- Back button ---- */
-.article-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    color: var(--brand-text-muted);
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 0.55rem 1.1rem;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    transition: all 0.25s ease;
-    margin-bottom: 1.75rem;
-    width: fit-content;
-}
-
-.article-back:hover {
-    border-color: var(--brand-gold);
-    color: var(--brand-gold);
-}
-
-.article-back i {
-    font-size: 1rem;
-}
-
-/* ---- Responsive ---- */
-@media (max-width: 768px) {
-    .article-hero {
-        height: 45vh;
-        min-height: 320px;
-    }
-
-    .article-body {
-        padding: 1.5rem 1.25rem 3rem;
-    }
-
-    .article-lead {
-        font-size: 1.05rem;
-    }
-
-    .article-pull-quote p {
-        font-size: 1.05rem;
-    }
-
-    .article-meta {
-        gap: 1rem;
-    }
-
-    .article-related {
-        padding: 0 1.25rem 3rem;
-    }
-}
 
 /* ==================================================
    28. WEEKEND TRAINING PAGE
@@ -8141,7 +8261,348 @@ textarea.form-input-custom {
 
 
 /* ==================================================
-   30. FOOTER
+   30. STUDENTS PAGE (Legacy sidebar)
+================================================== */
+.students-sidebar {
+    width: 100%;
+    max-width: 320px;
+    background: linear-gradient(180deg, var(--brand-dark-2), #1A1A1A);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.students-page .row {
+    align-items: flex-start;
+}
+
+.students-sidebar-header {
+    background: #1A1A1A;
+    color: #e6e6e6;
+    font-size: 1rem;
+    font-family: serif;
+    padding: 1.2rem 2rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.students-sidebar-header.active {
+    background: var(--brand-gold);
+    color: #1a1a1a;
+}
+
+.sidebar-title {
+    color: #fff;
+    background: #1A1A1A;
+    padding: 0.6rem 1rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-links button,
+.sidebar-links a {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    color: #ddd;
+    text-align: left;
+    padding: 0.6rem 0;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.sidebar-links button:hover {
+    color: var(--brand-gold);
+    padding-left: 6px;
+}
+
+.sidebar-links button.active {
+    color: var(--brand-gold);
+    font-weight: 700;
+    padding-left: 10px;
+    border-left: 4px solid var(--brand-gold);
+    background: rgba(245, 196, 0, 0.08);
+}
+
+.students-menu {
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.students-menu li {
+    padding: 1rem 2rem;
+    color: #e6e6e6;
+    font-size: 0.8rem;
+    font-family: serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+
+.students-menu li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1px;
+}
+
+.students-menu li.active {
+    background: var(--brand-gold);
+    color: #1a1a1a;
+    border-radius: 1px;
+}
+
+.students-menu li.active .arrow {
+    transform: translateX(6px);
+}
+
+.students-menu .arrow {
+    opacity: 0.6;
+    transition: transform 0.3s ease;
+}
+
+.students-image-wrapper {
+    width: 100%;
+    max-height: 420px;
+    overflow: hidden;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+}
+
+.students-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.students-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    animation: imageFade 0.4s ease;
+}
+
+.students-content {
+    max-width: 920px;
+}
+
+.students-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.students-text-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.students-text-wrapper p {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: #d8d8d8;
+    letter-spacing: 0.3px;
+}
+
+.students-default-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.students-caption {
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.students-main-image {
+    width: 100%;
+    height: 450px;
+    display: block;
+}
+
+.student-section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.students-image img {
+    border: 3px solid var(--brand-gold);
+}
+
+.students-text p {
+    color: #ddd;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.students-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--brand-gold);
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+.students-hero h1 {
+    color: var(--brand-gold);
+    letter-spacing: 6px;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.students-default-image img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.students-content-animate {
+    animation: contentFade 0.35s ease;
+}
+
+.header-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.divider-line {
+    width: 5%;
+    min-width: 50px;
+    max-width: 400px;
+    height: 1px;
+    background-color: var(--brand-gold);
+    flex: none;
+}
+
+.divider-icon-wrapper {
+    background: rgb(0, 0, 0);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divider-icon-wrapper img {
+    width: 20px;
+    height: 20px;
+}
+
+.campus-slider {
+    position: relative;
+}
+
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.slide-arrow {
+    background: none;
+    border: none;
+    color: #080808;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.slide-arrow:hover {
+    transform: scale(1.2);
+    transition: 0.2s ease;
+}
+
+.hostel-list li,
+.documents-list li {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.hostel-list li:hover,
+.documents-list li:hover {
+    background: rgba(245, 196, 0, 0.1);
+    transform: translateX(4px);
+}
+
+.graduate-documents-clean {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.documents-clean-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.document-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    margin-bottom: 18px;
+    background: linear-gradient(90deg, #1a1a1a, #222);
+    border-radius: 1px;
+    transition: 0.3s ease;
+}
+
+.document-row:hover {
+    background: linear-gradient(90deg, #222, #2a2a2a);
+}
+
+.document-name {
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.download-clean-btn {
+    background: var(--brand-gold);
+    color: #000;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.download-clean-btn:hover {
+    background: #ffcc33;
+    transform: translateY(-2px);
+}
+
+
+/* ==================================================
+   31. FOOTER
 ================================================== */
 .site-footer {
     background: var(--brand-dark);
@@ -8278,7 +8739,7 @@ textarea.form-input-custom {
 }
 
 /* ==================================================
-   31. RESPONSIVE — ALL BREAKPOINTS
+   32. RESPONSIVE — ALL BREAKPOINTS
 ================================================== */
 
 @media (min-width: 1200px) {
@@ -8289,7 +8750,7 @@ textarea.form-input-custom {
 
 @media (max-width: 1200px) {
     .menu-grid {
-        grid-template-columns: 1.3fr repeat(3, 1fr);
+        grid-template-columns: 1.3fr repeat(2, 1fr);
     }
 }
 
@@ -8619,6 +9080,62 @@ textarea.form-input-custom {
         font-size: 1rem;
     }
 
+    .students-sidebar {
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .students-menu li {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .students-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .students-main-image {
+        height: auto;
+        max-height: 260px;
+    }
+
+    .students-caption {
+        font-size: 0.95rem;
+        padding: 0 0.5rem;
+    }
+
+    .student-section {
+        padding: 0 0.75rem;
+    }
+
+    .document-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 15px;
+    }
+
+    .document-name {
+        font-size: 1rem;
+    }
+
+    .download-clean-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .slide-arrow {
+        font-size: 28px;
+    }
+
+    .students-menu-toggle {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        background: var(--brand-gold);
+        color: #3a3a3a;
+    }
+
     .admissions-image-hero {
         height: 55vh;
         min-height: 360px;
@@ -8632,6 +9149,34 @@ textarea.form-input-custom {
     .admissions-step-body,
     .admissions-step-side {
         padding: 1.75rem 1.5rem;
+    }
+
+    .admission-hero {
+        height: 65vh;
+    }
+
+    .hero-overlay {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        padding: 1.5rem;
+    }
+
+    .hero-overlay h1 {
+        font-size: 1.6rem;
+    }
+
+    .admission-steps {
+        margin-top: -150px;
+        width: 460px;
+    }
+
+    .step-item {
+        margin-bottom: 5px;
+    }
+
+    .announcement-grid {
+        grid-template-columns: 1fr;
     }
 
     .programmes-hero-overlay {
