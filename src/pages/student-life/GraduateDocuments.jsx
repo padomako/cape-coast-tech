@@ -17,15 +17,15 @@ const CLEARANCE_TEMPLATE_PATH = "/docs/clearance-form-template.pdf"
 const STORAGE_KEY = "ccti_docswift_requests"
 
 const documentTypes = [
-    { emoji: "📄", title: "Official Transcript", fee: 50, delivery: "1–3 working days" },
-    { emoji: "🏅", title: "Certificate", fee: 80, delivery: "1–2 working days" },
-    { emoji: "✅", title: "Testimonial", fee: 30, delivery: "2–3 working days" },
-    { emoji: "📋", title: "Letter of Attestation", fee: 30, delivery: "1–2 working days" },
-    { emoji: "🔤", title: "English Proficiency", fee: 40, delivery: "2–3 working days" },
-    { emoji: "📝", title: "Letter of Recommendation", fee: 40, delivery: "2–3 working days" },
+    { emoji: "📄", title: "Official Transcript", fee: 70, delivery: "1–3 working days" },
+    { emoji: "🏅", title: "Certificate", fee: 50, delivery: "1–2 working days" },
+    { emoji: "✅", title: "Testimonial", fee: 50, delivery: "2–3 working days" },
+    { emoji: "📋", title: "Letter of Attestation", fee: 50, delivery: "1–2 working days" },
+    { emoji: "🔤", title: "English Proficiency", fee: 70, delivery: "2–3 working days" },
+    { emoji: "📝", title: "Letter of Recommendation", fee: 50, delivery: "2–3 working days" },
 ]
 
-const COURIER_FEE = 20
+const COURIER_FEE = 50
 
 const BLANK_FORM = {
     fullName: "", indexNumber: "", email: "", phone: "",
