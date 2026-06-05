@@ -118,7 +118,7 @@ export const newsItems = [
         date: "January 28, 2026",
         author: "Students' Representative Council",
         readTime: "3 min read",
-        image: "/images/AFRICAN%20UNION%20PARADE/2.jpg",
+        image: "/images/IMG_4118.jpg",
         excerpt:
             "Promoting unity, leadership, and student engagement through a week of impactful activities.",
         body: [
