@@ -9,19 +9,19 @@ export const newsItems = [
         date: "April 14, 2026",
         author: "CCTI Communications",
         readTime: "3 min read",
-        image: "/images/DJI_20260414220331_0660_D.jpg",
+        image: "/images/Inaugration_main.jpg",
         excerpt:
-            "The Cape Coast Technical Institute officially inaugurated its new Governing Board in a ceremony attended by faculty, staff, students, and distinguished guests from across the Central Region.",
+            "Cape Coast Technical Institute successfully held its Institutional Governing Board Inauguration on Tuesday 31st March, 2026",
         body: [
-            "The Cape Coast Technical Institute officially inaugurated its new Governing Board on Monday, 14 April 2026, in a ceremony attended by faculty, staff, students, and distinguished guests from across the Central Region.",
-            "The newly constituted board is composed of representatives from industry, academia, and the local community, bringing a wealth of experience to guide the institute's strategic direction over the coming years.",
-            "The inauguration ceremony was presided over by the Regional Director of Education, who commended the institute for its continued excellence in technical and vocational training. Outgoing board members were recognised for their service.",
-            "The Principal of CCTI outlined key priorities for the board's first term, including infrastructure expansion, curriculum modernisation aligned with TVET standards, and strengthened industry partnerships to improve graduate employment outcomes.",
-            "Students' Representative Council president also addressed the gathering, expressing confidence in the new board's ability to champion student welfare and academic advancement.",
+            "The newly appointed board members, representing various key institutions, were duly sworn into office by a representative of the Attorney General. Below are the names of the representatives to serve on the institutional board.",
+            "1. The Chief of Pedu, Cape Coast — Mr. Robert Sam\n2. Principal — Mr. Alfred Davis\n3. Mission/Historical Interest/Founder, Cape Coast — Nana Kwame Edu VI\n4. Director General, Ghana TVET Service, Accra — Engr. Prof. Humphrey Danso\n5. Parent Teacher Association (PTA), Cape Coast Tech. Inst. — Ms. Lucy Esi Kwansima Quainoo\n6. Ghana National Chamber of Commerce and Industries, Cape Coast — Mad. Benedicta Anita Mensah (Reg. Manageress)\n7. Ghana National Chamber of Commerce and Industries, Cape Coast — Mr. George Ben-Smith\n8. Non-Teaching Staff, Cape Coast Technical Institute — Mr. Richard Appiah-Mintah\n9. Teaching Staff, Cape Coast Technical Institute — Mr. William Edmund Thompson\n10. Cape Coast Metropolitan Assembly — Hon. James Arthur\n11. Old Students Association, Cape Tech. — Ing. Frank Nana Osei",
+            "This marks an important step toward strengthening governance, strategic direction, and institutional development.",
+            "We are pleased to announce that Prof. Humphrey Danso has been elected as Chairman of the board, while the Vice Principal Administration and General Services, Cynthia Dussey (Mrs. Aheto) has been appointed as Secretary.",
+            "The Institute extends its warmest congratulations to all board members and looks forward to their leadership, commitment, and contribution toward advancing technical and vocational education. Together, we build a stronger future.",
         ],
         pullQuote:
-            "This board represents a new chapter for CCTI — one grounded in accountability, innovation, and a deep commitment to the technical education of Ghana's youth.",
-        inlineImage: "/images/DJI_20260414220331_0660_D.jpg",
+            "This marks an important step toward strengthening governance, strategic direction, and institutional development at Cape Coast Technical Institute.",
+        inlineImage: "/images/Inaugration_main.jpg",
         inlineImageCaption:
             "Members of the new Governing Board at the inauguration ceremony, April 2026.",
         relatedSlugs: [

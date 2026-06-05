@@ -144,7 +144,15 @@ export default function NewsArticle() {
                 {/* Remaining paragraphs — inline image injected after paragraph 2 */}
                 {article.body.slice(1).map((para, i) => (
                     <div key={i}>
-                        <p className="article-para">{para}</p>
+                        {para.includes("\n") ? (
+                            <div className="article-para">
+                                {para.split("\n").map((line, j) => (
+                                    <span key={j} style={{ display: "block", marginBottom: "0.35rem" }}>{line}</span>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="article-para">{para}</p>
+                        )}
                         {i === 1 && article.inlineImage && (
                             <>
                                 <img
