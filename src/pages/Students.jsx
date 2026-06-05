@@ -153,7 +153,7 @@ export default function Students() {
                                     {TODAY_LINKS.map((l) => (
                                         <li key={l}>
                                             <a href="#" className="harvard-link sl-quick-link">
-                                                {l}
+                                                <span>{l}</span>
                                             </a>
                                         </li>
                                     ))}

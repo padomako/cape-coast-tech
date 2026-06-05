@@ -1,31 +1,44 @@
-import { useMemo, useState } from "react"
+import { useMemo, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { newsItems } from "../data/newsData"
+import { fetchNewsItems } from "../data/api"
 
 const CATEGORIES = ["All", "Announcements", "Academics", "Stories of Excellence", "Events"]
 
-// Derived from newsData — first item is always the featured story
-const featuredStory = newsItems[0]
-
-// Headline list — items 1–3
-const headlineList = newsItems.slice(1, 4)
-
-// SRC week feature — find by slug
-const srcWeekFeature = newsItems.find((n) => n.slug === "src-week-2026")
-
-// Around campus feature — find by slug
-const aroundCampusFeature = newsItems.find((n) => n.slug === "tvet-sports-competition")
-
-// Around campus 3-col grid — items 1–3 (same as headlines)
-const aroundCampusColumns = newsItems.slice(1, 4)
-
 export default function Announcements() {
     const [active, setActive] = useState("All")
+    const [allItems, setAllItems] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    // Fetch all news items on mount
+    useEffect(() => {
+        fetchNewsItems().then((items) => {
+            setAllItems(items)
+            setLoading(false)
+        })
+    }, [])
+
+    // Derived data — computed from allItems
+    const featuredStory = allItems[0] ?? null
+    const headlineList = allItems.slice(1, 4)
+    const srcWeekFeature = allItems.find((n) => n.slug === "src-week-2026") ?? null
+    const aroundCampusFeat = allItems.find((n) => n.slug === "tvet-sports-competition") ?? null
+    const aroundCampusCols = allItems.slice(1, 4)
 
     const filteredHeadlines = useMemo(() => {
         if (active === "All") return headlineList
         return headlineList.filter((h) => h.category === active)
-    }, [active])
+    }, [active, headlineList])
+
+    // Loading state
+    if (loading) {
+        return (
+            <div className="institute-news-page" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <p style={{ color: "var(--brand-text-muted)", fontSize: "0.9rem", letterSpacing: "2px", textTransform: "uppercase" }}>
+                    Loading...
+                </p>
+            </div>
+        )
+    }
 
     return (
         <div className="institute-news-page">
@@ -48,38 +61,40 @@ export default function Announcements() {
                         ))}
                     </nav>
 
-                    <div className="institute-news-feature-grid">
+                    {featuredStory && (
+                        <div className="institute-news-feature-grid">
 
-                        {/* Big featured story */}
-                        <Link to={`/announcements/${featuredStory.slug}`} className="news-feature-card">
-                            <div className="news-feature-image">
-                                <img src={featuredStory.image} alt={featuredStory.title} />
-                            </div>
-                            <div className="news-feature-overlay">
-                                <h2>{featuredStory.title}</h2>
-                                <span className="harvard-link">
-                                    Read Full Story <i className="bi bi-arrow-right ms-1"></i>
-                                </span>
-                            </div>
-                        </Link>
+                            {/* Big featured story */}
+                            <Link to={`/announcements/${featuredStory.slug}`} className="news-feature-card">
+                                <div className="news-feature-image">
+                                    <img src={featuredStory.image} alt={featuredStory.title} />
+                                </div>
+                                <div className="news-feature-overlay">
+                                    <h2>{featuredStory.title}</h2>
+                                    <span className="harvard-link">
+                                        Read Full Story <i className="bi bi-arrow-right ms-1"></i>
+                                    </span>
+                                </div>
+                            </Link>
 
-                        {/* Right-hand headlines */}
-                        <ul className="news-headline-list">
-                            {filteredHeadlines.length === 0 && (
-                                <li className="news-empty">
-                                    No stories under &ldquo;{active}&rdquo; right now.
-                                </li>
-                            )}
-                            {filteredHeadlines.map((h) => (
-                                <li key={h.slug}>
-                                    <Link to={`/announcements/${h.slug}`} className="news-headline-row">
-                                        <span className="news-headline-text">{h.title}</span>
-                                        <i className="bi bi-arrow-right"></i>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                            {/* Right-hand headlines */}
+                            <ul className="news-headline-list">
+                                {filteredHeadlines.length === 0 && (
+                                    <li className="news-empty">
+                                        No stories under &ldquo;{active}&rdquo; right now.
+                                    </li>
+                                )}
+                                {filteredHeadlines.map((h) => (
+                                    <li key={h.slug}>
+                                        <Link to={`/announcements/${h.slug}`} className="news-headline-row">
+                                            <span className="news-headline-text">{h.title}</span>
+                                            <i className="bi bi-arrow-right"></i>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </section>
 
@@ -107,38 +122,29 @@ export default function Announcements() {
                     <h2 className="section-serif-title around-campus-title">All News</h2>
 
                     {/* Around-campus feature row */}
-                    {aroundCampusFeature && (
+                    {aroundCampusFeat && (
                         <div className="around-campus-feature">
                             <div className="around-campus-feature-image">
-                                <img
-                                    src={aroundCampusFeature.image}
-                                    alt={aroundCampusFeature.title}
-                                />
+                                <img src={aroundCampusFeat.image} alt={aroundCampusFeat.title} />
                             </div>
                             <div className="around-campus-feature-body">
                                 <span className="announcement-tag" style={{ marginBottom: "0.75rem", display: "inline-block" }}>
-                                    {aroundCampusFeature.category}
+                                    {aroundCampusFeat.category}
                                 </span>
-                                <h3>{aroundCampusFeature.title}</h3>
-                                <p>{aroundCampusFeature.excerpt}</p>
-                                <Link
-                                    to={`/announcements/${aroundCampusFeature.slug}`}
-                                    className="harvard-link"
-                                >
+                                <h3>{aroundCampusFeat.title}</h3>
+                                <p>{aroundCampusFeat.excerpt}</p>
+                                <Link to={`/announcements/${aroundCampusFeat.slug}`} className="harvard-link">
                                     <span>Read Full Story</span>
                                 </Link>
                             </div>
                         </div>
                     )}
 
-                    {/* 3-column grid — linked to headlines */}
+                    {/* 3-column grid */}
                     <div className="around-campus-grid">
-                        {aroundCampusColumns.map((item) => (
+                        {aroundCampusCols.map((item) => (
                             <article className="around-campus-card" key={item.slug}>
-                                <Link
-                                    to={`/announcements/${item.slug}`}
-                                    className="around-campus-card-image"
-                                >
+                                <Link to={`/announcements/${item.slug}`} className="around-campus-card-image">
                                     <img src={item.image} alt={item.title} />
                                 </Link>
                                 <span className="announcement-tag">{item.category}</span>

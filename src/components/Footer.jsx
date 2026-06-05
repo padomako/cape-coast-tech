@@ -34,7 +34,7 @@ export default function Footer() {
 
     return (
         <footer className="site-footer">
-            <div className="container">
+            <div className="container-xl">
 
                 <div className="row gy-5 footer-row">
 

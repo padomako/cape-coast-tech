@@ -1,15 +1,40 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { getNewsItem, getRelatedItems } from "../data/newsData"
+import { fetchNewsItem, fetchRelatedItems } from "../data/api"
 
 export default function NewsArticle() {
     const { slug } = useParams()
-    const article = getNewsItem(slug)
+    const [article, setArticle] = useState(null)
+    const [related, setRelated] = useState([])
+    const [loading, setLoading] = useState(true)
 
-    // Scroll to top on each new article
+    // Fetch article + related items whenever slug changes
     useEffect(() => {
+        setLoading(true)
         window.scrollTo(0, 0)
+
+        fetchNewsItem(slug).then(async (item) => {
+            setArticle(item)
+            if (item?.relatedSlugs?.length) {
+                const relatedItems = await fetchRelatedItems(item.relatedSlugs)
+                setRelated(relatedItems)
+            } else {
+                setRelated([])
+            }
+            setLoading(false)
+        })
     }, [slug])
+
+    // Loading state
+    if (loading) {
+        return (
+            <div className="news-article-page" style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <p style={{ color: "var(--brand-text-muted)", fontSize: "0.9rem", letterSpacing: "2px", textTransform: "uppercase" }}>
+                    Loading...
+                </p>
+            </div>
+        )
+    }
 
     // 404 state
     if (!article) {
@@ -32,8 +57,6 @@ export default function NewsArticle() {
             </div>
         )
     }
-
-    const related = getRelatedItems(article.relatedSlugs)
 
     return (
         <div className="news-article-page">
@@ -111,7 +134,7 @@ export default function NewsArticle() {
                 {/* Lead paragraph */}
                 <p className="article-lead">{article.body[0]}</p>
 
-                {/* Pull quote (after first paragraph) */}
+                {/* Pull quote */}
                 {article.pullQuote && (
                     <blockquote className="article-pull-quote">
                         <p>"{article.pullQuote}"</p>

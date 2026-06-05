@@ -1,6 +1,21 @@
 import { useEffect, useState } from "react"
 import { Link, useSearchParams } from "react-router-dom"
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Paystack public key — safe to use in frontend code
+// NEVER put the secret key (sk_live_...) here
+// ─────────────────────────────────────────────────────────────────────────────
+const PAYSTACK_PUBLIC_KEY = "pk_live_102b2ab0b07585ba1d1701a3916502b07405160e"
+
+// EmailJS config — sign up at emailjs.com, create a service + template, paste IDs here
+// Template variables used: {{full_name}}, {{index_number}}, {{email}}, {{phone}},
+// {{programme}}, {{year_started}}, {{year_completed}}, {{document_types}},
+// {{delivery_method}}, {{destination}}, {{notes}}, {{total_amount}}
+const EMAILJS_SERVICE_ID = "service_65fy5j9"   // e.g. "service_abc123"
+const EMAILJS_TEMPLATE_ID = "template_0tg8brl"  // e.g. "template_xyz456"
+const EMAILJS_PUBLIC_KEY = "3HO8hlGlC0KbE9esu"   // e.g. "AbCdEfGhIjKlMnOp"
+const RECIPIENT_EMAIL = "capetechedu@gmail.com"
+
 const documentTypes = [
     {
         icon: "bi-file-earmark-text-fill",
@@ -52,38 +67,81 @@ const documentTypes = [
     },
 ]
 
-const STEPS = ["form", "payment", "success"]
+const COURIER_FEE = 20
+
+const BLANK_FORM = {
+    fullName: "",
+    indexNumber: "",
+    email: "",
+    phone: "",
+    programme: "",
+    programmeOther: "",
+    yearStarted: "",
+    yearCompleted: "",
+    documentType: [],
+    deliveryMethod: "pickup",
+    destination: "",
+    notes: "",
+}
+
+// ─── Load Paystack inline script once ────────────────────────────────────────
+function loadPaystackScript() {
+    return new Promise((resolve) => {
+        if (window.PaystackPop) { resolve(); return }
+        const script = document.createElement("script")
+        script.src = "https://js.paystack.co/v1/inline.js"
+        script.onload = resolve
+        document.head.appendChild(script)
+    })
+}
+
+// ─── Load EmailJS script once ─────────────────────────────────────────────────
+function loadEmailJSScript() {
+    return new Promise((resolve) => {
+        if (window.emailjs) { resolve(); return }
+        const script = document.createElement("script")
+        script.src = "https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+        script.onload = () => {
+            window.emailjs.init(EMAILJS_PUBLIC_KEY)
+            resolve()
+        }
+        document.head.appendChild(script)
+    })
+}
 
 export default function GraduateDocuments() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [popupOpen, setPopupOpen] = useState(false)
-    const [step, setStep] = useState("form") // form | payment | success
-    const [form, setForm] = useState({
-        fullName: "",
-        indexNumber: "",
-        email: "",
-        phone: "",
-        programme: "",
-        programmeOther: "",
-        yearCompleted: "",
-        documentType: [],
-        deliveryMethod: "pickup",
-        destination: "",
-        notes: "",
-    })
+    const [step, setStep] = useState("form") // form | payment | processing | success | error
+    const [form, setForm] = useState(BLANK_FORM)
+    const [payError, setPayError] = useState("")
 
+    // Open popup if URL has ?open=request
     useEffect(() => {
         if (searchParams.get("open") === "request") setPopupOpen(true)
     }, [searchParams])
 
+    // Lock body scroll while popup is open
     useEffect(() => {
         document.body.style.overflow = popupOpen ? "hidden" : ""
         return () => { document.body.style.overflow = "" }
     }, [popupOpen])
 
+    // Pre-load scripts on mount
+    useEffect(() => {
+        loadPaystackScript()
+        loadEmailJSScript()
+    }, [])
+
+    const totalAmount = form.documentType.reduce((sum, title) => {
+        const doc = documentTypes.find((d) => d.title === title)
+        return sum + (doc ? doc.fee : 0)
+    }, 0) + (form.deliveryMethod === "courier" ? COURIER_FEE : 0)
+
     const closePopup = () => {
         setPopupOpen(false)
         setStep("form")
+        setPayError("")
         if (searchParams.get("open")) {
             searchParams.delete("open")
             setSearchParams(searchParams, { replace: true })
@@ -97,24 +155,18 @@ export default function GraduateDocuments() {
     }
 
     const toggleDocument = (docTitle) => {
-        setForm(f => {
+        setForm((f) => {
             const already = f.documentType.includes(docTitle)
             return {
                 ...f,
                 documentType: already
-                    ? f.documentType.filter(t => t !== docTitle)
-                    : [...f.documentType, docTitle]
+                    ? f.documentType.filter((t) => t !== docTitle)
+                    : [...f.documentType, docTitle],
             }
         })
     }
 
-    const update = (field) => (e) => setForm({ ...form, [field]: e.target.value })
-    const COURIER_FEE = 20
-    // Calculate total amount
-    const totalAmount = form.documentType.reduce((sum, title) => {
-        const doc = documentTypes.find(d => d.title === title)
-        return sum + (doc ? doc.fee : 0)
-    }, 0) + (form.deliveryMethod === "courier" ? COURIER_FEE : 0)
+    const update = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }))
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -125,17 +177,74 @@ export default function GraduateDocuments() {
         setStep("payment")
     }
 
-    const handlePaymentDone = () => {
-        setStep("success")
+    // ── Send confirmation email via EmailJS ────────────────────────────────────
+    const sendConfirmationEmail = async () => {
+        try {
+            await loadEmailJSScript()
+            await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                to_email: RECIPIENT_EMAIL,
+                full_name: form.fullName,
+                index_number: form.indexNumber,
+                email: form.email,
+                phone: form.phone,
+                programme: form.programme === "Other" ? form.programmeOther : form.programme,
+                year_started: form.yearStarted,
+                year_completed: form.yearCompleted,
+                document_types: form.documentType.join(", "),
+                delivery_method: form.deliveryMethod === "pickup" ? "Campus Pickup" : "Courier Delivery",
+                destination: form.deliveryMethod === "courier" ? form.destination : "N/A",
+                notes: form.notes || "None",
+                total_amount: `GHS ${totalAmount}`,
+            })
+        } catch (err) {
+            console.error("EmailJS error:", err)
+            // Don't block success — payment already confirmed, email is secondary
+        }
+    }
+
+    // ── Initiate Paystack payment ──────────────────────────────────────────────
+    const handlePayWithPaystack = async () => {
+        setPayError("")
+        await loadPaystackScript()
+
+        if (!window.PaystackPop) {
+            setPayError("Payment gateway failed to load. Please refresh and try again.")
+            return
+        }
+
+        const handler = window.PaystackPop.setup({
+            key: PAYSTACK_PUBLIC_KEY,
+            email: form.email,
+            amount: totalAmount * 100,  // Paystack uses pesewas (kobo)
+            currency: "GHS",
+            ref: `CCTI-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+            metadata: {
+                custom_fields: [
+                    { display_name: "Full Name", variable_name: "full_name", value: form.fullName },
+                    { display_name: "Index Number", variable_name: "index_number", value: form.indexNumber },
+                    { display_name: "Programme", variable_name: "programme", value: form.programme },
+                    { display_name: "Document Types", variable_name: "document_types", value: form.documentType.join(", ") },
+                ],
+            },
+            callback: async (response) => {
+                // Payment successful — send email then show success screen
+                setStep("processing")
+                await sendConfirmationEmail()
+                setStep("success")
+            },
+            onClose: () => {
+                // User closed the Paystack modal without paying — stay on payment screen
+                setPayError("Payment was not completed. Please try again.")
+            },
+        })
+
+        handler.openIframe()
     }
 
     const resetForm = () => {
         setStep("form")
-        setForm({
-            fullName: "", indexNumber: "", email: "", phone: "",
-            programme: "", programmeOther: "", yearCompleted: "", documentType: [],
-            deliveryMethod: "pickup", destination: "", notes: "",
-        })
+        setPayError("")
+        setForm(BLANK_FORM)
     }
 
     return (
@@ -172,7 +281,10 @@ export default function GraduateDocuments() {
                                 from anywhere, anytime.
                             </p>
                             <div className="ds-hero-btns">
-                                <button className="ds-btn ds-btn-primary" onClick={() => { setStep("form"); setPopupOpen(true) }}>
+                                <button
+                                    className="ds-btn ds-btn-primary"
+                                    onClick={() => { setStep("form"); setPopupOpen(true) }}
+                                >
                                     Request Document
                                 </button>
                                 <a href="#how-it-works" className="ds-btn ds-btn-ghost">Getting Started</a>
@@ -243,7 +355,7 @@ export default function GraduateDocuments() {
                     <div className="ds-steps">
                         {[
                             { n: "01", t: "Submit Request", d: "Fill out the online form with your personal and academic details." },
-                            { n: "02", t: "Pay Processing Fee", d: "Complete payment via bank or mobile money." },
+                            { n: "02", t: "Pay Processing Fee", d: "Complete payment securely via Paystack — MoMo, card, or bank." },
                             { n: "03", t: "Verification", d: "Records office verifies your details and prepares your documents." },
                             { n: "04", t: "Receive Documents", d: "Collect in person or receive by courier. Soft copy sent to your email." },
                         ].map((s) => (
@@ -282,9 +394,12 @@ export default function GraduateDocuments() {
             <section className="ds-cta">
                 <div className="container-xl">
                     <h2 className="ds-cta-title">Ready to request your documents?</h2>
-                    <p className="ds-cta-sub">Register or log in to get started with your document request today.</p>
+                    <p className="ds-cta-sub">Complete your request online and pay securely with Paystack.</p>
                     <div className="ds-cta-btns">
-                        <button className="ds-btn ds-btn-primary" onClick={() => { setStep("form"); setPopupOpen(true) }}>
+                        <button
+                            className="ds-btn ds-btn-primary"
+                            onClick={() => { setStep("form"); setPopupOpen(true) }}
+                        >
                             Get Started →
                         </button>
                         <a href="mailto:capetechedu@gmail.com" className="ds-btn ds-btn-ghost">Contact Support</a>
@@ -301,26 +416,30 @@ export default function GraduateDocuments() {
                         aria-modal="true"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <button type="button" className="grad-docs-modal-close" onClick={closePopup} aria-label="Close">
+                        <button
+                            type="button"
+                            className="grad-docs-modal-close"
+                            onClick={closePopup}
+                            aria-label="Close"
+                        >
                             <i className="bi bi-x-lg"></i>
                         </button>
 
-                        {/* ---- STEP: FORM ---- */}
+                        {/* ──────────────────── STEP: FORM ──────────────────── */}
                         {step === "form" && (
                             <div className="ds-form-wrap">
 
-                                {/* Left panel */}
+                                {/* Left panel — document selector */}
                                 <div className="ds-form-left">
-                                    <div className="ds-form-left-top">
-                                        <div className="ds-form-brand">
-                                            <div className="ds-nav-logo" style={{ width: "36px", height: "36px", fontSize: "0.65rem" }}>CC</div>
-                                            <span className="ds-nav-name">CCTI <span>DocSwift</span></span>
-                                        </div>
-                                        <h2 className="ds-form-title">Document<br />Request Form</h2>
-                                        <p className="ds-form-subtitle">Select one or more documents, fill in your details, and proceed to payment.</p>
+                                    <div className="ds-form-brand">
+                                        <div className="ds-nav-logo" style={{ width: "36px", height: "36px", fontSize: "0.65rem" }}>CC</div>
+                                        <span className="ds-nav-name">CCTI <span>DocSwift</span></span>
                                     </div>
+                                    <h2 className="ds-form-title">Document<br />Request Form</h2>
+                                    <p className="ds-form-subtitle">
+                                        Select one or more documents, fill in your details, and proceed to payment.
+                                    </p>
 
-                                    {/* Document selector */}
                                     <div className="ds-doc-selector">
                                         <p className="ds-doc-selector-label">
                                             Select Document(s)
@@ -351,8 +470,8 @@ export default function GraduateDocuments() {
                                         {form.documentType.length > 0 && (
                                             <div className="ds-amount-summary">
                                                 <div className="ds-amount-rows">
-                                                    {form.documentType.map(title => {
-                                                        const doc = documentTypes.find(d => d.title === title)
+                                                    {form.documentType.map((title) => {
+                                                        const doc = documentTypes.find((d) => d.title === title)
                                                         return (
                                                             <div className="ds-amount-row" key={title}>
                                                                 <span>{title}</span>
@@ -386,13 +505,63 @@ export default function GraduateDocuments() {
                                     </div>
                                 </div>
 
-                                {/* Right panel */}
+                                {/* Right panel — form fields */}
                                 <div className="ds-form-right">
                                     <form onSubmit={handleSubmit}>
 
+                                        {/* ── Personal Information ── */}
                                         <div className="ds-form-section-title">Personal Information</div>
                                         <div className="ds-form-grid">
                                             <div className="ds-field">
+                                                <label className="ds-label">Full Name <span>*</span></label>
+                                                <input
+                                                    required
+                                                    type="text"
+                                                    className="ds-input"
+                                                    value={form.fullName}
+                                                    onChange={update("fullName")}
+                                                    placeholder="Your full name"
+                                                />
+                                            </div>
+                                            <div className="ds-field">
+                                                <label className="ds-label">Index Number <span>*</span></label>
+                                                <input
+                                                    required
+                                                    type="text"
+                                                    className="ds-input"
+                                                    value={form.indexNumber}
+                                                    onChange={update("indexNumber")}
+                                                    placeholder="Student index number"
+                                                />
+                                            </div>
+                                            <div className="ds-field">
+                                                <label className="ds-label">Email Address <span>*</span></label>
+                                                <input
+                                                    required
+                                                    type="email"
+                                                    className="ds-input"
+                                                    value={form.email}
+                                                    onChange={update("email")}
+                                                    placeholder="your@email.com"
+                                                />
+                                            </div>
+                                            <div className="ds-field">
+                                                <label className="ds-label">Phone Number <span>*</span></label>
+                                                <input
+                                                    required
+                                                    type="tel"
+                                                    className="ds-input"
+                                                    value={form.phone}
+                                                    onChange={update("phone")}
+                                                    placeholder="+233 XX XXX XXXX"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        {/* ── Academic Details ── */}
+                                        <div className="ds-form-section-title">Academic Details</div>
+                                        <div className="ds-form-grid">
+                                            <div className="ds-field" style={{ gridColumn: "1 / -1" }}>
                                                 <label className="ds-label">Programme Completed <span>*</span></label>
                                                 <select
                                                     required
@@ -402,21 +571,21 @@ export default function GraduateDocuments() {
                                                 >
                                                     <option value="">Select a programme...</option>
                                                     <option>Architectural Draughtmanship</option>
+                                                    <option>Automotive Engineering Technology</option>
                                                     <option>Building Construction</option>
                                                     <option>Business Accounting</option>
                                                     <option>Business Information Technology</option>
                                                     <option>Business Secretarial</option>
+                                                    <option>Catering &amp; Hospitality Management</option>
                                                     <option>Creative Art Technology</option>
                                                     <option>Electrical Engineering Technology</option>
                                                     <option>Electronics Engineering Technology</option>
                                                     <option>Garment / Fashion Technology</option>
                                                     <option>Furniture Technology</option>
-                                                    <option>Catering & Hospitality Management</option>
                                                     <option>Mechanical Engineering Technology</option>
-                                                    <option>Automotive Engineering Technology</option>
-                                                    <option>Plumbing & Gas Technology</option>
-                                                    <option>Refrigeration & Air-Conditioning</option>
-                                                    <option>Welding & Fabrication Technology</option>
+                                                    <option>Plumbing &amp; Gas Technology</option>
+                                                    <option>Refrigeration &amp; Air-Conditioning</option>
+                                                    <option>Welding &amp; Fabrication Technology</option>
                                                     <option>Wood Technology</option>
                                                     <option>Other</option>
                                                 </select>
@@ -426,38 +595,39 @@ export default function GraduateDocuments() {
                                                         type="text"
                                                         className="ds-input"
                                                         style={{ marginTop: "0.5rem" }}
-                                                        value={form.programmeOther || ""}
-                                                        onChange={(e) => setForm(f => ({ ...f, programmeOther: e.target.value }))}
+                                                        value={form.programmeOther}
+                                                        onChange={update("programmeOther")}
                                                         placeholder="Enter your programme"
                                                     />
                                                 )}
                                             </div>
                                             <div className="ds-field">
-                                                <label className="ds-label">Index Number <span>*</span></label>
-                                                <input required type="text" className="ds-input" value={form.indexNumber} onChange={update("indexNumber")} placeholder="Student index number" />
-                                            </div>
-                                            <div className="ds-field">
-                                                <label className="ds-label">Email Address <span>*</span></label>
-                                                <input required type="email" className="ds-input" value={form.email} onChange={update("email")} placeholder="your@email.com" />
-                                            </div>
-                                            <div className="ds-field">
-                                                <label className="ds-label">Phone Number <span>*</span></label>
-                                                <input required type="tel" className="ds-input" value={form.phone} onChange={update("phone")} placeholder="+233 XX XXX XXXX" />
-                                            </div>
-                                        </div>
-
-                                        <div className="ds-form-section-title">Academic Details</div>
-                                        <div className="ds-form-grid">
-                                            <div className="ds-field">
-                                                <label className="ds-label">Programme Completed <span>*</span></label>
-                                                <input required type="text" className="ds-input" value={form.programme} onChange={update("programme")} placeholder="e.g. Electrical Engineering" />
+                                                <label className="ds-label">Year Started <span>*</span></label>
+                                                <input
+                                                    required
+                                                    type="text"
+                                                    className="ds-input"
+                                                    value={form.yearStarted}
+                                                    onChange={update("yearStarted")}
+                                                    placeholder="e.g. 2020"
+                                                    maxLength={4}
+                                                />
                                             </div>
                                             <div className="ds-field">
                                                 <label className="ds-label">Year Completed <span>*</span></label>
-                                                <input required type="text" className="ds-input" value={form.yearCompleted} onChange={update("yearCompleted")} placeholder="e.g. 2022" />
+                                                <input
+                                                    required
+                                                    type="text"
+                                                    className="ds-input"
+                                                    value={form.yearCompleted}
+                                                    onChange={update("yearCompleted")}
+                                                    placeholder="e.g. 2022"
+                                                    maxLength={4}
+                                                />
                                             </div>
                                         </div>
 
+                                        {/* ── Delivery Preferences ── */}
                                         <div className="ds-form-section-title">Delivery Preferences</div>
                                         <p className="ds-email-note">
                                             <i className="bi bi-envelope-check-fill"></i>
@@ -466,12 +636,12 @@ export default function GraduateDocuments() {
                                         <div className="ds-delivery-options">
                                             {[
                                                 { val: "pickup", label: "Campus Pickup", desc: "Collect hard copy at CCTI Records Office", icon: "🏫" },
-                                                { val: "courier", label: "Courier Delivery", desc: "Hard copy delivered to your address", icon: "🚚" },
+                                                { val: "courier", label: "Courier Delivery", desc: `Hard copy delivered to your address (+GHS ${COURIER_FEE})`, icon: "🚚" },
                                             ].map((opt) => (
                                                 <div
                                                     key={opt.val}
                                                     className={`ds-delivery-opt ${form.deliveryMethod === opt.val ? "selected" : ""}`}
-                                                    onClick={() => setForm(f => ({ ...f, deliveryMethod: opt.val }))}
+                                                    onClick={() => setForm((f) => ({ ...f, deliveryMethod: opt.val }))}
                                                 >
                                                     <span className="ds-delivery-icon">{opt.icon}</span>
                                                     <div>
@@ -487,14 +657,27 @@ export default function GraduateDocuments() {
 
                                         {form.deliveryMethod === "courier" && (
                                             <div className="ds-field" style={{ marginTop: "1rem" }}>
-                                                <label className="ds-label">Delivery Address</label>
-                                                <input type="text" className="ds-input" value={form.destination} onChange={update("destination")} placeholder="Full delivery address" />
+                                                <label className="ds-label">Delivery Address <span>*</span></label>
+                                                <input
+                                                    required
+                                                    type="text"
+                                                    className="ds-input"
+                                                    value={form.destination}
+                                                    onChange={update("destination")}
+                                                    placeholder="Full delivery address"
+                                                />
                                             </div>
                                         )}
 
                                         <div className="ds-field" style={{ marginTop: "1rem" }}>
                                             <label className="ds-label">Additional Notes</label>
-                                            <textarea className="ds-input ds-textarea" rows="3" value={form.notes} onChange={update("notes")} placeholder="Any additional information..."></textarea>
+                                            <textarea
+                                                className="ds-input ds-textarea"
+                                                rows="3"
+                                                value={form.notes}
+                                                onChange={update("notes")}
+                                                placeholder="Any additional information..."
+                                            />
                                         </div>
 
                                         <button type="submit" className="ds-submit-btn">
@@ -509,7 +692,7 @@ export default function GraduateDocuments() {
                             </div>
                         )}
 
-                        {/* ---- STEP: PAYMENT ---- */}
+                        {/* ──────────────────── STEP: PAYMENT ──────────────────── */}
                         {step === "payment" && (
                             <div className="ds-payment-wrap">
                                 <div className="ds-payment-left">
@@ -534,15 +717,23 @@ export default function GraduateDocuments() {
                                             <span className="ds-payment-meta-value">{form.email}</span>
                                         </div>
                                         <div className="ds-payment-meta">
+                                            <span className="ds-payment-meta-label">Programme</span>
+                                            <span className="ds-payment-meta-value">
+                                                {form.programme === "Other" ? form.programmeOther : form.programme}
+                                            </span>
+                                        </div>
+                                        <div className="ds-payment-meta">
                                             <span className="ds-payment-meta-label">Delivery</span>
-                                            <span className="ds-payment-meta-value">{form.deliveryMethod === "pickup" ? "Campus Pickup" : "Courier Delivery"}</span>
+                                            <span className="ds-payment-meta-value">
+                                                {form.deliveryMethod === "pickup" ? "Campus Pickup" : "Courier Delivery"}
+                                            </span>
                                         </div>
                                     </div>
 
                                     <div className="ds-amount-summary" style={{ marginTop: "1rem" }}>
                                         <div className="ds-amount-rows">
-                                            {form.documentType.map(title => {
-                                                const doc = documentTypes.find(d => d.title === title)
+                                            {form.documentType.map((title) => {
+                                                const doc = documentTypes.find((d) => d.title === title)
                                                 return (
                                                     <div className="ds-amount-row" key={title}>
                                                         <span>{title}</span>
@@ -571,13 +762,14 @@ export default function GraduateDocuments() {
                                 <div className="ds-payment-right">
                                     <p className="ds-form-section-title" style={{ marginTop: 0 }}>Complete Payment</p>
 
+                                    {/* Order summary */}
                                     <div className="ds-pay-order">
                                         <p className="ds-pay-section-label">
                                             <i className="bi bi-receipt"></i> Order Summary
                                         </p>
                                         <div className="ds-bank-details">
-                                            {form.documentType.map(title => {
-                                                const doc = documentTypes.find(d => d.title === title)
+                                            {form.documentType.map((title) => {
+                                                const doc = documentTypes.find((d) => d.title === title)
                                                 return (
                                                     <div className="ds-bank-row" key={title}>
                                                         <span className="ds-bank-label">{title}</span>
@@ -600,13 +792,15 @@ export default function GraduateDocuments() {
                                         </div>
                                     </div>
 
+                                    {/* Paystack info */}
                                     <div className="ds-paystack-info">
                                         <div className="ds-paystack-logo">
                                             <span className="ds-paystack-badge">Secured by</span>
                                             <span className="ds-paystack-name">Paystack</span>
                                         </div>
                                         <p className="ds-paystack-desc">
-                                            You will be redirected to Paystack's secure payment page to complete your payment. We accept MTN MoMo, Telecel Cash, AirtelTigo Money, and major debit/credit cards.
+                                            You will be redirected to Paystack's secure payment page.
+                                            We accept MTN MoMo, Telecel Cash, AirtelTigo Money, and major debit/credit cards.
                                         </p>
                                         <div className="ds-paystack-methods">
                                             <span className="ds-pay-method" style={{ background: "#FFCB00", color: "#000" }}>MTN</span>
@@ -622,7 +816,15 @@ export default function GraduateDocuments() {
                                         Your payment is secured and encrypted by Paystack. CCTI does not store your card or mobile money details.
                                     </div>
 
-                                    <button className="ds-paystack-btn" onClick={handlePaymentDone}>
+                                    {/* Error message */}
+                                    {payError && (
+                                        <p style={{ color: "var(--brand-red)", fontSize: "0.85rem", marginBottom: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                                            <i className="bi bi-exclamation-triangle-fill"></i>
+                                            {payError}
+                                        </p>
+                                    )}
+
+                                    <button className="ds-paystack-btn" onClick={handlePayWithPaystack}>
                                         <i className="bi bi-lock-fill"></i>
                                         Pay GHS {totalAmount} with Paystack
                                     </button>
@@ -634,7 +836,18 @@ export default function GraduateDocuments() {
                             </div>
                         )}
 
-                        {/* ---- STEP: SUCCESS ---- */}
+                        {/* ──────────────────── STEP: PROCESSING ──────────────────── */}
+                        {step === "processing" && (
+                            <div className="ds-form-success">
+                                <div className="ds-success-icon" style={{ opacity: 0.6 }}>
+                                    <i className="bi bi-arrow-repeat"></i>
+                                </div>
+                                <h3>Processing...</h3>
+                                <p>Payment confirmed. Sending your confirmation email.</p>
+                            </div>
+                        )}
+
+                        {/* ──────────────────── STEP: SUCCESS ──────────────────── */}
                         {step === "success" && (
                             <div className="ds-form-success">
                                 <div className="ds-success-icon">
@@ -642,12 +855,13 @@ export default function GraduateDocuments() {
                                 </div>
                                 <h3>Request Submitted!</h3>
                                 <p>
-                                    Thank you, <strong>{form.fullName || "graduate"}</strong>. Your document request
-                                    has been received. We will verify your payment and contact you at{" "}
-                                    <strong>{form.email || "your email"}</strong> with updates on your request.
+                                    Thank you, <strong>{form.fullName}</strong>. Your document request
+                                    has been received and payment confirmed. A confirmation email
+                                    has been sent to <strong>{form.email}</strong>. The Records Office
+                                    will contact you with updates.
                                 </p>
                                 <div className="ds-success-docs">
-                                    {form.documentType.map(t => (
+                                    {form.documentType.map((t) => (
                                         <span key={t} className="ds-success-doc-tag">{t}</span>
                                     ))}
                                 </div>
@@ -659,11 +873,10 @@ export default function GraduateDocuments() {
                                 </button>
                             </div>
                         )}
-                    </div>
-                </div >
-            )
-            }
 
-        </div >
+                    </div>
+                </div>
+            )}
+        </div>
     )
 }
