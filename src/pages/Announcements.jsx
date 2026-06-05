@@ -51,7 +51,7 @@ export default function Announcements() {
                     <div className="institute-news-feature-grid">
 
                         {/* Big featured story */}
-                        <Link to={`/news/${featuredStory.slug}`} className="news-feature-card">
+                        <Link to={`/announcements/${featuredStory.slug}`} className="news-feature-card">
                             <div className="news-feature-image">
                                 <img src={featuredStory.image} alt={featuredStory.title} />
                             </div>
@@ -72,7 +72,7 @@ export default function Announcements() {
                             )}
                             {filteredHeadlines.map((h) => (
                                 <li key={h.slug}>
-                                    <Link to={`/news/${h.slug}`} className="news-headline-row">
+                                    <Link to={`/announcements/${h.slug}`} className="news-headline-row">
                                         <span className="news-headline-text">{h.title}</span>
                                         <i className="bi bi-arrow-right"></i>
                                     </Link>
@@ -86,7 +86,7 @@ export default function Announcements() {
             {/* ============ SECTION 2 — SRC WEEK FEATURE ============ */}
             {srcWeekFeature && (
                 <section className="src-week-section">
-                    <Link to={`/news/${srcWeekFeature.slug}`} className="src-week-card">
+                    <Link to={`/announcements/${srcWeekFeature.slug}`} className="src-week-card">
                         <img src={srcWeekFeature.image} alt={srcWeekFeature.title} />
                         <div className="src-week-overlay">
                             <div className="container-xl">
@@ -122,7 +122,7 @@ export default function Announcements() {
                                 <h3>{aroundCampusFeature.title}</h3>
                                 <p>{aroundCampusFeature.excerpt}</p>
                                 <Link
-                                    to={`/news/${aroundCampusFeature.slug}`}
+                                    to={`/announcements/${aroundCampusFeature.slug}`}
                                     className="harvard-link"
                                 >
                                     <span>Read Full Story</span>
@@ -136,7 +136,7 @@ export default function Announcements() {
                         {aroundCampusColumns.map((item) => (
                             <article className="around-campus-card" key={item.slug}>
                                 <Link
-                                    to={`/news/${item.slug}`}
+                                    to={`/announcements/${item.slug}`}
                                     className="around-campus-card-image"
                                 >
                                     <img src={item.image} alt={item.title} />
@@ -144,14 +144,14 @@ export default function Announcements() {
                                 <span className="announcement-tag">{item.category}</span>
                                 <h4>
                                     <Link
-                                        to={`/news/${item.slug}`}
+                                        to={`/announcements/${item.slug}`}
                                         style={{ color: "inherit", textDecoration: "none" }}
                                     >
                                         {item.title}
                                     </Link>
                                 </h4>
                                 <p>{item.excerpt}</p>
-                                <Link to={`/news/${item.slug}`} className="harvard-link">
+                                <Link to={`/announcements/${item.slug}`} className="harvard-link">
                                     <span>Read Full Story</span>
                                 </Link>
                             </article>
