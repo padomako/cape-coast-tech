@@ -7715,6 +7715,214 @@ textarea.form-input-custom {
     margin: 0;
 }
 
+/* ==================================================
+   33. NEWS ARTICLE PAGE
+   Add this block to index.css (after section 32)
+================================================== */
+
+.news-article-page {
+    background: var(--brand-dark);
+    min-height: 100vh;
+}
+
+/* ---- Hero ---- */
+.article-hero {
+    position: relative;
+    height: 55vh;
+    min-height: 400px;
+    overflow: hidden;
+    background: #000;
+}
+
+.article-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 8s ease;
+    transform: scale(1.04);
+}
+
+.article-hero:hover .article-hero-img {
+    transform: scale(1.0);
+}
+
+.article-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.35) 55%,
+            rgba(0, 0, 0, 0.1) 100%);
+}
+
+.article-hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 2.5rem 0;
+}
+
+/* ---- Meta row ---- */
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    flex-wrap: wrap;
+}
+
+.article-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--brand-text-muted);
+    font-size: 0.85rem;
+}
+
+.article-meta-item i {
+    color: var(--brand-gold);
+    font-size: 0.95rem;
+}
+
+/* ---- Body ---- */
+.article-body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 1.75rem 4rem;
+}
+
+.article-lead {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--brand-text);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.article-para {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    color: var(--brand-text-muted);
+    margin-bottom: 1.1rem;
+}
+
+/* ---- Pull quote ---- */
+.article-pull-quote {
+    border-left: 3px solid var(--brand-gold);
+    border-radius: 0;
+    padding: 0.85rem 1.5rem;
+    margin: 2rem 0;
+    background: var(--brand-dark-2);
+}
+
+.article-pull-quote p {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--brand-text);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ---- Inline image ---- */
+.article-inline-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    margin: 2rem 0 0.75rem;
+}
+
+.article-image-caption {
+    font-size: 0.82rem;
+    color: var(--brand-text-dim);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* ---- Divider ---- */
+.article-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 2.5rem 0;
+}
+
+/* ---- Related stories ---- */
+.article-related {
+    padding: 0 1.75rem 5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.article-related-title {
+    font-family: "Cormorant Garamond", Georgia, serif !important;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ---- Back button ---- */
+.article-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--brand-text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    transition: all 0.25s ease;
+    margin-bottom: 1.75rem;
+    width: fit-content;
+}
+
+.article-back:hover {
+    border-color: var(--brand-gold);
+    color: var(--brand-gold);
+}
+
+.article-back i {
+    font-size: 1rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .article-hero {
+        height: 45vh;
+        min-height: 320px;
+    }
+
+    .article-body {
+        padding: 1.5rem 1.25rem 3rem;
+    }
+
+    .article-lead {
+        font-size: 1.05rem;
+    }
+
+    .article-pull-quote p {
+        font-size: 1.05rem;
+    }
+
+    .article-meta {
+        gap: 1rem;
+    }
+
+    .article-related {
+        padding: 0 1.25rem 3rem;
+    }
+}
 
 /* ==================================================
    28. WEEKEND TRAINING PAGE

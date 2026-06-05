@@ -1,72 +1,23 @@
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
+import { newsItems } from "../data/newsData"
 
 const CATEGORIES = ["All", "Announcements", "Academics", "Stories of Excellence", "Events"]
 
-const featuredStory = {
-    title: "Inauguration of Governing Board of Cape Coast Technical Institute",
-    image: "/images/DJI_20260414220331_0660_D.jpg",
-    category: "Announcements",
-    href: "#",
-}
+// Derived from newsData — first item is always the featured story
+const featuredStory = newsItems[0]
 
-const headlineList = [
-    {
-        title: "2026 May/June NABPTEX Examination",
-        category: "Academics",
-        href: "#",
-    },
-    {
-        title: "Speech & Prize Giving Day Celebration",
-        category: "Events",
-        href: "#",
-    },
-    {
-        title: "Registration of New Students for 2025/2026 Academic Year",
-        category: "Announcements",
-        href: "#",
-    },
-]
+// Headline list — items 1–3
+const headlineList = newsItems.slice(1, 4)
 
-const srcWeekFeature = {
-    title: "SRC Week Celebration 2026",
-    description: "Promoting unity, leadership, and student engagement through a week of impactful activities.",
-    image: "/images/AFRICAN%20UNION%20PARADE/2.jpg",
-    href: "#",
-}
+// SRC week feature — find by slug
+const srcWeekFeature = newsItems.find((n) => n.slug === "src-week-2026")
 
-const aroundCampusFeature = {
-    title: "Central Region TVET Inter-Institute Sports Competition",
-    description:
-        "CCTI continues to participate in the Central Region TVET Inter-Institute Sports Competition, showcasing talent and sportsmanship across the region.",
-    image: "/images/CENTRAL%20REGION%20TVET%20INTER%20INSTITUTE%20SPORTS%20COMPETITION/1.jpg",
-    category: "Stories of Excellence",
-    href: "#",
-}
+// Around campus feature — find by slug
+const aroundCampusFeature = newsItems.find((n) => n.slug === "tvet-sports-competition")
 
-const aroundCampusColumns = [
-    {
-        title: "2026 May/June NABPTEX Examination",
-        excerpt: "All students are advised to collect their index slips from their respective department heads ahead of the May/June examinations.",
-        image: "/images/PLUMBING%20PRACTICAL%20SESSION/1.jpg",
-        category: "Academics",
-        href: "#",
-    },
-    {
-        title: "Speech & Prize Giving Day Celebration",
-        excerpt: "Recognising academic excellence, character, and dedication across all trade areas at this year's Speech & Prize Giving Day.",
-        image: "/images/GREEN%20DAY%20CELEBRATION/3.jpg",
-        category: "Events",
-        href: "#",
-    },
-    {
-        title: "Registration of New Students for 2025/2026 Academic Year",
-        excerpt: "Notice to placed applicants regarding registration dates, fees, and required documents for the 2025/2026 academic year.",
-        image: "/images/AFRICAN%20UNION%20PARADE/5.jpg",
-        category: "Announcements",
-        href: "#",
-    },
-]
+// Around campus 3-col grid — items 1–3 (same as headlines)
+const aroundCampusColumns = newsItems.slice(1, 4)
 
 export default function Announcements() {
     const [active, setActive] = useState("All")
@@ -98,8 +49,9 @@ export default function Announcements() {
                     </nav>
 
                     <div className="institute-news-feature-grid">
+
                         {/* Big featured story */}
-                        <Link to={featuredStory.href} className="news-feature-card">
+                        <Link to={`/news/${featuredStory.slug}`} className="news-feature-card">
                             <div className="news-feature-image">
                                 <img src={featuredStory.image} alt={featuredStory.title} />
                             </div>
@@ -119,8 +71,8 @@ export default function Announcements() {
                                 </li>
                             )}
                             {filteredHeadlines.map((h) => (
-                                <li key={h.title}>
-                                    <Link to={h.href} className="news-headline-row">
+                                <li key={h.slug}>
+                                    <Link to={`/news/${h.slug}`} className="news-headline-row">
                                         <span className="news-headline-text">{h.title}</span>
                                         <i className="bi bi-arrow-right"></i>
                                     </Link>
@@ -132,20 +84,22 @@ export default function Announcements() {
             </section>
 
             {/* ============ SECTION 2 — SRC WEEK FEATURE ============ */}
-            <section className="src-week-section">
-                <Link to={srcWeekFeature.href} className="src-week-card">
-                    <img src={srcWeekFeature.image} alt={srcWeekFeature.title} />
-                    <div className="src-week-overlay">
-                        <div className="container-xl">
-                            <h2>{srcWeekFeature.title}</h2>
-                            <p>{srcWeekFeature.description}</p>
-                            <span className="harvard-link">
-                                Read Full Story <i className="bi bi-arrow-right ms-1"></i>
-                            </span>
+            {srcWeekFeature && (
+                <section className="src-week-section">
+                    <Link to={`/news/${srcWeekFeature.slug}`} className="src-week-card">
+                        <img src={srcWeekFeature.image} alt={srcWeekFeature.title} />
+                        <div className="src-week-overlay">
+                            <div className="container-xl">
+                                <h2>{srcWeekFeature.title}</h2>
+                                <p>{srcWeekFeature.excerpt}</p>
+                                <span className="harvard-link">
+                                    Read Full Story <i className="bi bi-arrow-right ms-1"></i>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                </Link>
-            </section>
+                    </Link>
+                </section>
+            )}
 
             {/* ============ SECTION 3 — ALL NEWS ============ */}
             <section className="around-campus-section">
@@ -153,30 +107,52 @@ export default function Announcements() {
                     <h2 className="section-serif-title around-campus-title">All News</h2>
 
                     {/* Around-campus feature row */}
-                    <div className="around-campus-feature">
-                        <div className="around-campus-feature-image">
-                            <img src={aroundCampusFeature.image} alt={aroundCampusFeature.title} />
+                    {aroundCampusFeature && (
+                        <div className="around-campus-feature">
+                            <div className="around-campus-feature-image">
+                                <img
+                                    src={aroundCampusFeature.image}
+                                    alt={aroundCampusFeature.title}
+                                />
+                            </div>
+                            <div className="around-campus-feature-body">
+                                <span className="announcement-tag" style={{ marginBottom: "0.75rem", display: "inline-block" }}>
+                                    {aroundCampusFeature.category}
+                                </span>
+                                <h3>{aroundCampusFeature.title}</h3>
+                                <p>{aroundCampusFeature.excerpt}</p>
+                                <Link
+                                    to={`/news/${aroundCampusFeature.slug}`}
+                                    className="harvard-link"
+                                >
+                                    <span>Read Full Story</span>
+                                </Link>
+                            </div>
                         </div>
-                        <div className="around-campus-feature-body">
-                            <h3>{aroundCampusFeature.title}</h3>
-                            <p>{aroundCampusFeature.description}</p>
-                            <Link to={aroundCampusFeature.href} className="harvard-link">
-                                Read Full Story <i className="bi bi-arrow-right ms-1"></i>
-                            </Link>
-                        </div>
-                    </div>
+                    )}
 
-                    {/* 3 column row, linked to headlines in section 1 */}
+                    {/* 3-column grid — linked to headlines */}
                     <div className="around-campus-grid">
-                        {aroundCampusColumns.map((c) => (
-                            <article className="around-campus-card" key={c.title}>
-                                <div className="around-campus-card-image">
-                                    <img src={c.image} alt={c.title} />
-                                </div>
-                                <h4>{c.title}</h4>
-                                <p>{c.excerpt}</p>
-                                <Link to={c.href} className="harvard-link">
-                                    Read Full Story <i className="bi bi-arrow-right ms-1"></i>
+                        {aroundCampusColumns.map((item) => (
+                            <article className="around-campus-card" key={item.slug}>
+                                <Link
+                                    to={`/news/${item.slug}`}
+                                    className="around-campus-card-image"
+                                >
+                                    <img src={item.image} alt={item.title} />
+                                </Link>
+                                <span className="announcement-tag">{item.category}</span>
+                                <h4>
+                                    <Link
+                                        to={`/news/${item.slug}`}
+                                        style={{ color: "inherit", textDecoration: "none" }}
+                                    >
+                                        {item.title}
+                                    </Link>
+                                </h4>
+                                <p>{item.excerpt}</p>
+                                <Link to={`/news/${item.slug}`} className="harvard-link">
+                                    <span>Read Full Story</span>
                                 </Link>
                             </article>
                         ))}

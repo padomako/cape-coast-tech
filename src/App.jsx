@@ -12,6 +12,7 @@ import StudentLogin from "./pages/StudentLogin"
 import ProgrammePage from "./pages/programmes/ProgrammePage"
 import WeekendTrainingPage from "./pages/WeekendTrainingPage"
 import Announcements from "./pages/Announcements"
+import NewsArticle from "./pages/NewsArticle"
 import Programmes from "./pages/Programmes"
 import CampusLife from "./pages/student-life/CampusLife"
 import Hostels from "./pages/student-life/Hostels"
@@ -36,6 +37,7 @@ function App() {
           <Route path="/academics/:programmeSlug" element={<ProgrammePage />} />
           <Route path="/weekend-training" element={<WeekendTrainingPage />} />
           <Route path="/announcements" element={<Announcements />} />
+          <Route path="/news/:slug" element={<NewsArticle />} />
           <Route path="/programmes" element={<Programmes />} />
           <Route path="/student-life/campus" element={<CampusLife />} />
           <Route path="/student-life/hostels" element={<Hostels />} />
