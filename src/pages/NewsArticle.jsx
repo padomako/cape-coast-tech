@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { fetchNewsItem, fetchRelatedItems } from "../data/api"
 
@@ -6,7 +6,6 @@ import { fetchNewsItem, fetchRelatedItems } from "../data/api"
 function ArticleSlideshow({ images }) {
     const [current, setCurrent] = useState(0)
     const [fading, setFading] = useState(false)
-    const timerRef = useRef(null)
 
     const goTo = (index) => {
         if (index === current || fading) return
@@ -14,19 +13,8 @@ function ArticleSlideshow({ images }) {
         setTimeout(() => { setCurrent(index); setFading(false) }, 350)
     }
 
-    // Reset timer and slide when images change
-    useEffect(() => {
-        setCurrent(0)
-        clearInterval(timerRef.current)
-        timerRef.current = setInterval(() => {
-            setFading(true)
-            setTimeout(() => {
-                setCurrent((s) => (s + 1) % images.length)
-                setFading(false)
-            }, 350)
-        }, 4000)
-        return () => clearInterval(timerRef.current)
-    }, [images.length])
+    const prev = () => goTo((current - 1 + images.length) % images.length)
+    const next = () => goTo((current + 1) % images.length)
 
     const img = images[current]
 
@@ -39,7 +27,7 @@ function ArticleSlideshow({ images }) {
                     style={{
                         position: "absolute", inset: 0,
                         width: "100%", height: "100%",
-                        objectFit: "cover",
+                        objectFit: "contain",
                         opacity: fading ? 0 : 1,
                         transition: "opacity 0.35s ease",
                     }}
@@ -58,6 +46,42 @@ function ArticleSlideshow({ images }) {
                             {img.caption}
                         </p>
                     </div>
+                )}
+
+                {/* Prev / Next arrows — only show if more than 1 image */}
+                {images.length > 1 && (
+                    <>
+                        <button
+                            onClick={prev}
+                            aria-label="Previous image"
+                            style={{
+                                position: "absolute", left: "0.75rem", top: "50%",
+                                transform: "translateY(-50%)",
+                                width: "36px", height: "36px", borderRadius: "50%",
+                                background: "rgba(0,0,0,0.45)", border: "1px solid rgba(255,255,255,0.2)",
+                                color: "#fff", fontSize: "1rem", cursor: "pointer",
+                                display: "flex", alignItems: "center", justifyContent: "center",
+                                transition: "background 0.2s ease", zIndex: 2,
+                            }}
+                        >
+                            ‹
+                        </button>
+                        <button
+                            onClick={next}
+                            aria-label="Next image"
+                            style={{
+                                position: "absolute", right: "0.75rem", top: "50%",
+                                transform: "translateY(-50%)",
+                                width: "36px", height: "36px", borderRadius: "50%",
+                                background: "rgba(0,0,0,0.45)", border: "1px solid rgba(255,255,255,0.2)",
+                                color: "#fff", fontSize: "1rem", cursor: "pointer",
+                                display: "flex", alignItems: "center", justifyContent: "center",
+                                transition: "background 0.2s ease", zIndex: 2,
+                            }}
+                        >
+                            ›
+                        </button>
+                    </>
                 )}
 
                 {/* Dot indicators */}
