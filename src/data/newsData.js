@@ -55,8 +55,10 @@ export const newsItems = [
         ],
         pullQuote:
             "Students with outstanding balances are encouraged to visit the Finance Office as soon as possible to avoid any disruption to their registration.",
-        inlineImage: "/images/PLUMBING%20PRACTICAL%20SESSION/1.jpg",
-        inlineImageCaption: "Students during a practical session at CCTI.",
+        inlineImages: [
+            { src: "/images/PLUMBING%20PRACTICAL%20SESSION/1.jpg", caption: "Students during a practical session at CCTI." },
+            // Add more images here
+        ],
         relatedSlugs: [
             "governing-board-inauguration",
             "speech-prize-giving-day",
@@ -82,8 +84,10 @@ export const newsItems = [
         ],
         pullQuote:
             "The prize-winning students have shown that with discipline and consistency, excellence is not an exception — it is a standard within reach.",
-        inlineImage: "/images/GREEN%20DAY%20CELEBRATION/3.jpg",
-        inlineImageCaption: "Students during the Speech and Prize Giving Day celebration.",
+        inlineImages: [
+            { src: "/images/GREEN%20DAY%20CELEBRATION/3.jpg", caption: "Students during the Speech and Prize Giving Day celebration." },
+            // Add more images here
+        ],
         relatedSlugs: [
             "governing-board-inauguration",
             "nabptex-examination-2026",
@@ -109,8 +113,10 @@ export const newsItems = [
         ],
         pullQuote:
             "Hostel places are allocated on a first-come, first-served basis. Early registration is strongly encouraged.",
-        inlineImage: "/images/AFRICAN%20UNION%20PARADE/5.jpg",
-        inlineImageCaption: "New students at a previous registration and orientation.",
+        inlineImages: [
+            { src: "/images/AFRICAN%20UNION%20PARADE/5.jpg", caption: "New students at a previous registration and orientation." },
+            // Add more images here
+        ],
         relatedSlugs: [
             "governing-board-inauguration",
             "nabptex-examination-2026",
@@ -136,8 +142,10 @@ export const newsItems = [
         ],
         pullQuote:
             "SRC Week is not just a celebration — it is a demonstration of what students can achieve when they lead with purpose and work together.",
-        inlineImage: "/images/AFRICAN%20UNION%20PARADE/2.jpg",
-        inlineImageCaption: "Students during the SRC Week parade, January 2026.",
+        inlineImages: [
+            { src: "/images/AFRICAN%20UNION%20PARADE/2.jpg", caption: "Students during the SRC Week parade, January 2026." },
+            // Add more images here
+        ],
         relatedSlugs: [
             "speech-prize-giving-day",
             "governing-board-inauguration",
@@ -163,9 +171,10 @@ export const newsItems = [
         ],
         pullQuote:
             "These students represent the best of CCTI — disciplined, determined, and proud to carry the institute's name.",
-        inlineImage:
-            "/images/CENTRAL%20REGION%20TVET%20INTER%20INSTITUTE%20SPORTS%20COMPETITION/1.jpg",
-        inlineImageCaption: "CCTI athletes at the 2026 Central Region TVET Sports Competition.",
+        inlineImages: [
+            { src: "/images/CENTRAL%20REGION%20TVET%20INTER%20INSTITUTE%20SPORTS%20COMPETITION/1.jpg", caption: "CCTI athletes at the 2026 Central Region TVET Sports Competition." },
+            // Add more images here
+        ],
         relatedSlugs: ["src-week-2026", "speech-prize-giving-day", "governing-board-inauguration"],
     },
 ]
