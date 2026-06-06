@@ -21,9 +21,15 @@ export const newsItems = [
         ],
         pullQuote:
             "This marks an important step toward strengthening governance, strategic direction, and institutional development at Cape Coast Technical Institute.",
-        inlineImage: "/images/Inaugration_main.jpg",
-        inlineImageCaption:
-            "Members of the new Governing Board at the inauguration ceremony, April 2026.",
+        inlineImages: [
+            { src: "/images/INAUGRATION/Inaugration_main.jpg", caption: "Board members at the inauguration ceremony, March 2026." },
+            { src: "/images/INAUGRATION/Inaugration_inline.jpg", caption: "Swearing-in of board members by the Attorney General's representative." },
+            { src: "/images/INAUGRATION/inaugration3.jpg", caption: "Prof. Humphrey Danso, elected Chairman of the Governing Board." },
+            { src: "/images/INAUGRATION/inaugration4.jpg", caption: "Cape Coast Technical Institute campus, April 2026." },
+            { src: "/images/INAUGRATION/inaugration9.jpg", caption: "Cape Coast Technical Institute campus, April 2026." },
+            { src: "/images/INAUGRATION/inaugration7.jpg", caption: "Cape Coast Technical Institute campus, April 2026." },
+            { src: "/images/INAUGRATION/inaugration8.jpg", caption: "Cape Coast Technical Institute campus, April 2026." },
+        ],
         relatedSlugs: [
             "nabptex-examination-2026",
             "speech-prize-giving-day",
