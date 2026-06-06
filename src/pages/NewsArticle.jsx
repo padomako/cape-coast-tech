@@ -27,7 +27,7 @@ function ArticleSlideshow({ images }) {
                     style={{
                         position: "absolute", inset: 0,
                         width: "100%", height: "100%",
-                        objectFit: "contain",
+                        objectFit: "cover",
                         opacity: fading ? 0 : 1,
                         transition: "opacity 0.35s ease",
                     }}
